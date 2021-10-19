@@ -14,6 +14,17 @@ We will consider two different data formats:
 
 
 The target data structures are dictionaries, which enable efficient queries about the data.
+If run with the command `python3 tramdata.py`, the program will enable the following kind of dialogue:
+
+    $ python3 tramdata.py 
+    > via Chalmers
+    ['6', '7', '8', '10', '13']
+    > between Chalmers and Valand
+    ['7', '10']
+    > time with 6 from Chalmers to Järntorget
+    10
+    > distance from Chalmers to Järntorget
+    1.628
 
 These structures and queries are preparation for the later labs, where they are embedded in an object-oriented hierarchy (Lab 2) and used in the back-end of a web application (Lab 3).
 
@@ -139,8 +150,8 @@ Following kinds of input are interpreted:
 - `time with <line> from <stop1> to <top2>`, answered by `time_between_stops()`
 - `distance from <stop1> to <top2>`, answered by `distance_between_stops()`
 - `quit` - terminating the program
-- any other input results in the message "sorry, try again" and a new prompt
 - input with non-existing line or stop names results in the message "unknown arguments" and a new prompt
+- any other input results in the message "sorry, try again" and a new prompt
 - the prompt is `> `.
 
 
@@ -168,7 +179,8 @@ You may only - ever - share it with
 
 The submission is via Canvas, where you post a link to your repository.
 Lab1 solution should be the file `tramdata.py` in that repository, in the main branch.
-We may fetch the file at any point after the submission deadline, so make sure that it remains correct!
+We may fetch the file at any point after the submission deadline, so make sure that it remains correct at all times!
+You can use other branches for experimentation.
 
 
 
