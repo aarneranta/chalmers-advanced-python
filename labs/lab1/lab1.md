@@ -9,9 +9,14 @@ by Aarne Ranta
 
 The purpose of Lab 1 is to read information from different formats and combine it to useful data structures.
 We will consider two different data formats:
-- JSon, processed by the Python library `json`,
-- plain text, processed by indices `[0]`, slices `[1:5]`, and standard string methods such as `split()`, `strip()`, `join()`.
+- JSON, processed by the Python library `json`,
+- plain text, processed by indices `[0]`, slices `[1:5]`, and standard
+string methods such as `split()`, `strip()`, `join()`.
 
+The data collected from these file is saved in a new JSON file,
+`tramnetwork.json`, which
+is ready to be used in applications - including Labs 2 and 3.
+The command `python3 tramdata.py init` produces this file.
 
 The target data structures are dictionaries, which enable efficient queries about the data.
 If run with the command `python3 tramdata.py`, the program will enable the following kind of dialogue:
@@ -31,7 +36,7 @@ These structures and queries are preparation for the later labs, where they are 
 
 ## Task
 
-The task is to write two functions that build dictionaries, four functions that extract information from them, and a dialogue function that answers to queries.
+The task is to write three functions that build dictionaries, four functions that extract information from them, and a dialogue function that answers to queries.
 
 ### Dictionary building functions
 
@@ -39,7 +44,6 @@ The task is to write two functions that build dictionaries, four functions that 
 
 * keys are names of tram stops
 * values are dictionaries with
-    * the name of the town
     * the latitude
 	* the longitude
 
@@ -47,7 +51,6 @@ Here is a part of the stop dictionary, showing just one stop:
 
     {
       'Majvallen': {
-        'town': 'Göteborg',
         'lat': '57.6909343',
 	    'lon': '11.9354935'
        }
@@ -100,13 +103,26 @@ This information is extracted from the text lines
     Kapellplatsen 2
     Chalmers
 
-The meaning of this is:
+where the number appended to a stop name indicates the transfer time
+between the stop on the previous line and this one.
+If no number is appended, the transfer takes 1 minute.
+The meaning of there three lines
 
 - the trip from Vasaplatsen to Kapellplatsen takes 2 minutes,
 - the trip from Kapellplatsen to Chalmers takes 1 minute (the default, when no number is given).
 
 It is enough to collect times in one direction, and only for transition times other than one minute.
-Thus no time *from* Kapellplatsen is needed, since the only possibilities are to Vasaplatsen (already covered) and to Chalmers (the default).
+Thus no time *from* Kapellplatsen is needed, since the only
+possibilities are to Vasaplatsen (already covered) and to Chalmers
+(the default).
+Moreover, the time for each transfer need only be given once in the
+data: if some other tram line lists
+
+    Vasaplatsen
+    Kapellplatsen 
+    Chalmers 2
+
+then the explicitly given times, 2 minutes for both transfers, are stored.
 
 The general idea with these data structures and functions is to **avoid redundancy**: every piece of information is given only once in the dictionaries.
 In particular,
@@ -118,7 +134,32 @@ Moreover,
 
 - the text file that gives lines and their stops and times is read only once.
 
+`build_tram_network(somefiles)` reads the two input files and writes a
+third one, entitled `tramnetwork.json`.
+This file represents a dictionary that contains the three dictionaries
+built:
 
+    {
+    "stops": {
+        "\u00d6stra Sjukhuset": {
+            "lat": 57.7224618,
+            "lon": 12.0478166
+			},  # and so on, the entire stop dict			
+		}
+      },
+    "lines": {
+        "1": [
+            "\u00d6stra Sjukhuset",
+            "Tingvallsv\u00e4gen",
+			# and so on, all stops on line 1
+			],  # and so on, the entire line dict
+		},
+    "times": {
+        "Tingvallsv\u00e4gen": {
+            "Kaggeledstorget": 2
+            },  # and so on, the entire time dict
+        }
+    }
 
 ### Query functions
 
@@ -140,8 +181,9 @@ Use the formula from [this Wikipedia description](https://en.wikipedia.org/wiki/
 
 ### The dialogue function
 
-The `dialogue(somefiles)` function implements a dialogue about tram information.
-It starts by reading the data from files, using the dictionary-building functions that you have written.
+The `dialogue(jsonfile)` function implements a dialogue about tram information.
+It starts by reading the data from the JSON file `tramnetwork.json`,
+which has been produced by your program.
 Then it takes user input and answers to any number of questions by using your query functions.
 Following kinds of input are interpreted:
 
