@@ -31,7 +31,21 @@ If run with the command `python3 tramdata.py`, the program will enable the follo
     > distance from Chalmers to Järntorget
     1.628
 
-These structures and queries are preparation for the later labs, where they are embedded in an object-oriented hierarchy (Lab 2) and used in the back-end of a web application (Lab 3).
+These structures and queries are preparation for the later labs, where
+they are embedded in an object-oriented hierarchy (Lab 2) and used in
+the back-end of a web application (Lab 3).
+
+Learning outcomes:
+
+- main constructs of Python, reaching the level of the introductory
+Python course:
+  - string manipulation
+  - input and output
+  - reading and writing files
+  - lists and dictionaries
+  - mathematical formulas and the `math` library
+
+- the JSON data format and the `json` library
 
 
 ## Task
