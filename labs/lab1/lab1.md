@@ -93,52 +93,42 @@ Here is an example:
 	
 An input file in the expected format is
 [`tramlines.txt`](../data/tramlines.txt).
-The conversion needs a bit more processing than the previous function.
-Notice that some stop names are followed by numbers indicating the transition time from the previous stop.
-These numbers are ignored by this function, but will be used in the next one.
+It is a textual representation of timetables for each line, looking as
+follows:
 
-The same function will use the same file to build, at the same time, a
-**time dictionary**, where
+  1:
+  Östra Sjukhuset           10:00
+  Tingvallsvägen            10:01
+  Kaggeledstorget           10:03
+  Ättehögsgatan             10:03
+
+Thus, for each line, there is a section starting with the line number
+and a colon.
+After that, the stops are given together with times.
+For simplicity, each line starts from time 10:00.
+We are not interested in these times as such, but in the **transition times** between stops.
+Thus, for instance, the transition time between Tingvallsvägen and Kaggeledstorget is 2 minutes.
+We want to store these transition times in a non-redundant way, under the following assumptions:
+
+- transition times are independent of line, departure time and direction:
+  - the transition time from A to B is the same for all lines and departures
+  - the transition time from B to A is the same as from A to B
+
+Hence, we don't want to add transition times to the line dictionary, because this would lead to storing redundant information.
+Instead, when reading the file [`tramlines.txt`](../data/tramlines.txt), we simultaneously build a **time dictionary**, where
 
   - keys are stop names
   - values are dictionaries from stop names to numbers of minutes
 
-Here is an example:
+Here is an example of a time dictionary entry:
 
     {
-      "Vasaplatsen": {
-         "Kapellplatsen": 2
+      "Tingvallsvägen": {
+         "Kaggeledstorget": 2
       }
     }
 
-This information is extracted from the text lines
-
-    Vasaplatsen
-    Kapellplatsen 2
-    Chalmers
-
-where the number appended to a stop name indicates the transfer time
-between the stop on the previous line and this one.
-If no number is appended, the transfer takes 1 minute.
-The meaning of there three lines
-
-- the trip from Vasaplatsen to Kapellplatsen takes 2 minutes,
-- the trip from Kapellplatsen to Chalmers takes 1 minute (the default, when no number is given).
-
-It is enough to collect times in one direction, and only for transition times other than one minute.
-Thus no time *from* Kapellplatsen is needed, since the only
-possibilities are to Vasaplatsen (already covered) and to Chalmers
-(the default).
-Moreover, the time for each transfer need only be given once in the
-data: if some other tram line lists
-
-    Vasaplatsen
-    Kapellplatsen 
-    Chalmers 2
-
-then the explicitly given times, 2 minutes for both transfers, are stored.
-
-The general idea with these data structures and functions is to **avoid redundancy**: every piece of information is given only once in the dictionaries.
+To summarize, the general idea with these data structures and functions is to **avoid redundancy**: every piece of information is given only once in the dictionaries.
 In particular,
 
 - the location of each stop is given only once, in the stop dictionary,
@@ -148,9 +138,9 @@ Moreover,
 
 - the text file that gives lines and their stops and times is read only once.
 
-`build_tram_network(somefiles)` reads the two input files and writes a
+`build_tram_network(somefiles)` puts everything together. It reads the two input files and writes a
 third one, entitled `tramnetwork.json`.
-This file represents a dictionary that contains the three dictionaries
+This JSON file represents a dictionary that contains the three dictionaries
 built:
 
     {
