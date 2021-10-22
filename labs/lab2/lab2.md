@@ -1,4 +1,4 @@
-# Lab2 Graphs and transport networks
+# Lab2: Graphs and transport networks
 
 Advanced Python Course, Chalmers DAT515, 2021
 
