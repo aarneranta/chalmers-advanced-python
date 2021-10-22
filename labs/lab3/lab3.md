@@ -50,6 +50,32 @@ In this way, you can make sure that everything works as required.
 But do not include this experiment in your course GitHub repository!
 
 
+### Python files
+
+Directly the `app` directory, you need to create the following files:
+
+- `__init__.py`, standard
+- `forms.py`, standard
+- `routes.py`, standard
+- `graphs.py`, a copy from Lab 2, with import paths set to `app` 
+- `trams.py`, a copy from Lab 2, with import paths set to `app` 
+- `tramnet.py`, a new file, where most of the work happens
+- directory `static`, where you just copy
+  - `auto.css` from [./static/]
+  - `auto.js` from [./static/]
+  - `tramnetwork.json` as created in Lab 1
+
+- directory `templates`, where you put
+  - `base.html` copied from [./templates/], inherited by most other pages
+  - `route.html` copied from [./templates/], for searching for a route
+  - `lines.html` which you create yourself, for just showing the network or restricting it to certain lines
+  - `index.html` which you create yourself and where you can put whatever you want, but it must give links to `route.html` and `lines.html` 
+
+Most part of the actual work will happen in ``tramnet.py``, which we will describe in a separate section.
+However, you may actually spend much of your time just to make this all work so that you can see the app in action in your web browser.
+
+### The file `tramnet.py`
+
 
 
 

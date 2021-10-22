@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<!-- <link rel="stylesheet" href="static/auto.css">-->
+
+    <head>
+      {% if title %}
+      <title>{{ title }}</title>
+      {% else %}
+      <title>Tram Demo</title>
+      {% endif %}
+    </head>
+    <body>
+<div>
+  <a href="/index">Home</a>
+  <a href="/autoroute">FindRoute</a>
+  <a href="/lines">Lines</a>
+</div>
+<hr>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+	{% endwith %}
+
+	{% block content %}{% endblock %}
+    </body>
+</html>
+
