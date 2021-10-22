@@ -74,14 +74,75 @@ Directly the `app` directory, you need to create the following files:
 Most part of the actual work will happen in ``tramnet.py``, which we will describe in a separate section.
 However, you may actually spend much of your time just to make this all work so that you can see the app in action in your web browser.
 
+
+### Changes to `trams.py`
+
+The imports of Lab 2 files are now from their app versions:
+
+    import json
+    from app import graphs as g
+    from urllib.request import urlopen
+
+In `readTramNetwork()`, the JSON file is read from a URL, pointing to the `static` subdirectory of the app.
+The URL that can be used is
+
+    http://127.0.0.1:5000/static/gbg_trams.json
+
+Instead of `open` on a file, the content is loaded by
+
+    urlopen(url-of-tramfile).read().decode('utf8')
+
+In order to position the stops well on the map, we need to know the extreme points of the network - that is, the minimum and maximum latitude and longitude.
+To this end, we add a function (or a class method in `TramNetwork`)
+
+    def extreme_positions(network):
+        # code to compute the extreme positions
+        return minlon, minlat, maxlon, maxlat
+
+TODO: The following is a bit complicated and might be given as extra:
+
+In Lab2 shortest path, we have ignored the effect of changing from one line to the other.
+This effect is that major factor that can make "shortest time" and "shortest distance" differ.
+Its implementation requires that we recognize when a change must be made and add a suitable number of minutes or meters to the cost.
+
+
+
+
 ### The file `tramnet.py`
 
+This is the file that makes most of the work in the app.
+It imports three modules, the first two copied to app with modified paths:
+
+   from app import graphs as g
+   from app import trams as t
+   import graphviz
+
+Two functions are used in the app:
+
+- `shortest(dep, dest)`, displaying the shortest path on the map
+- `focused(lines)`, to display only the listed lines
+
+A baseline implementation could use `graphs.visualize` from Lab 2.
+But here we want more:
+
+- the stops should be put into positions that correspond to their longitude and latitude;
+- there should be separate, coloured edges for each tramline that serves the same edge;
+- two possibly different shortest paths should be shown: the temporally and geographically shortest.
+
+Moreover, there is a technical difference:
+
+- the map should be generated in the SVG format (Scalable Vector Graphics) and piped directly to the app.
+
+This, however, is easy to implement: 
 
 
 
 ### Autocompletion
 
-The route finding page helps users with autocompletion of tram stop names.
+The route finding page helps users with autocompletion of tram stop names:
+
+![autocompletion](../images/find-auto.png)
+
 We provide ready-made Javascript and CSS files, given in the [static](./static) directory.
 These files are copied and slightly modified from [W3Schools](https://www.w3schools.com/howto/howto_js_autocomplete.asp).
 Since this kind of communication is not directly covered in Grinberg's tutorial, we also provide the HTML template file [route.html](./templates/route.html).
