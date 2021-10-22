@@ -99,13 +99,19 @@ To this end, we add a function (or a class method in `TramNetwork`)
         # code to compute the extreme positions
         return minlon, minlat, maxlon, maxlat
 
-TODO: The following is a bit complicated and might be given as extra:
+(TODO: The following is a bit complicated and might be given as extra.)
 
 In Lab2 shortest path, we have ignored the effect of changing from one line to the other.
 This effect is that major factor that can make "shortest time" and "shortest distance" differ.
 Its implementation requires that we recognize when a change must be made and add a suitable number of minutes or meters to the cost.
 
+One way to do this with the existing algorithms is simply to build a new graph for the network, where
 
+- vertices are pairs `(stop, line)` for each `stop` in the original graph and each `line` than passes through it,
+- every edge `(a, b)` of the original graph is multiplied to edges `((a, line), (b, line))` for every `line` that serves both `a` and `b`,
+- edges are added between all vertices that have the same `stop`,
+- distances and transfer time between different stops are the same as in the original graph,
+- a special change distance and change time is added between vertices that have the same stop but different times - for instance, 20 metres and 10 minutes, respectively.
 
 
 ### The file `tramnet.py`
@@ -133,7 +139,31 @@ Moreover, there is a technical difference:
 
 - the map should be generated in the SVG format (Scalable Vector Graphics) and piped directly to the app.
 
-This, however, is easy to implement: 
+This, however, is easy to implement: as the last steps of visualization, use
+
+    dot.format = 'svg'
+    return dot.pipe().decode('utf-8')
+
+The most complex part of this file - and the whole Lab 3 - is to make sure that the positions and colours come out right.
+Here is a possible sequence of steps to follow:
+
+- use `graphs.extreme_positions()` to compute the corners, the width, and the height of the map in geographic degrees;
+- calculate `x` coordinates from *longitudes* by subtracting the minimal longitude from the actual longitude, and multiplying with a suitable constant (500 works well for me);
+- calculate `y` coordinates similarly from latitudes;
+- create a canvas of suitable size for the map, by for instance
+
+    dot = graphviz.Graph(engine='fdp', graph_attr={'size': '12,12'})
+
+which works fine for me (the engine 'fdp' is needed to preserve absolute positions);
+- compute the shortest paths, with respect to both distance and time;
+- print the nodes of the map, displaying the name of each tram stop and colouring it in three of different colours depending on if it appears on the shortest time path, shortest distance path, or both (see the picture at the beginning of this document, using yellow, cyan, and lightgreen, respectively);
+- draw edges corresponding to each line with their colors - the following color map is an approximation of what is actually used
+
+    {1: 'gray', 2: 'yellow', 3: 'blue', 4: 'green', 5: 'red',
+     6: 'orange', 7: 'brown', 8: 'purple', 9: 'blue',
+     10: 'lightgreen', 11: 'black', 13: 'pink'}
+
+- print the listing of the quickest path and its duration, and the shortest (if different) and its length
 
 
 
