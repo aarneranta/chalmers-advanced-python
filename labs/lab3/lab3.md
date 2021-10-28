@@ -163,7 +163,7 @@ which works fine for me (the engine 'fdp' is needed to preserve absolute positio
      6: 'orange', 7: 'brown', 8: 'purple', 9: 'blue',
      10: 'lightgreen', 11: 'black', 13: 'pink'}
 
-- print the listing of the quickest path and its duration, and the shortest (if different) and its length
+- print the listing of the quickest path and its duration, and the shortest (if different) and its length.
 
 
 
