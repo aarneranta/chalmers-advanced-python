@@ -4,6 +4,8 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
+*Preliminary version, to be finalized 9 November*
+
 
 ## Purpose
 
@@ -13,9 +15,8 @@ We will consider two different data formats:
 - plain text, processed by indices `[0]`, slices `[1:5]`, and standard
 string methods such as `split()`, `strip()`, `join()`.
 
-The data collected from these file is saved in a new JSON file,
-`tramnetwork.json`, which
-is ready to be used in applications - including Labs 2 and 3.
+The data collected from these files is saved in a new JSON file,
+`tramnetwork.json`, which is ready to be used in applications - including Labs 2 and 3.
 The command `python3 tramdata.py init` produces this file.
 
 The target data structures are dictionaries, which enable efficient queries about the data.
@@ -35,6 +36,12 @@ These structures and queries are preparation for the later labs, where
 they are embedded in an object-oriented hierarchy (Lab 2) and used in
 the back-end of a web application (Lab 3).
 
+An integral part of the lab is also a set of **tests**, which you will submit together with your solutions.
+These tests must be written by using the `unittest` standard library of Python.
+
+The solution will be submitted via Canvas as usual, but the code will be stored in a private Git repository on GitHub, as an exercise for working with *version control*.
+This will also help combine your Lab1 solution with the later labs.
+
 Learning outcomes:
 
 - main constructs of Python, reaching the level of the introductory
@@ -47,10 +54,15 @@ Python course:
 
 - the JSON data format and the `json` library
 
+- testing and the `unittest` library
+
+- version control and Git
+
 
 ## Task
 
 The task is to write three functions that build dictionaries, four functions that extract information from them, and a dialogue function that answers to queries.
+The dialogue function should be divided into two parts to enable more accurate testing.
 
 ### Dictionary building functions
 
@@ -102,20 +114,20 @@ follows:
   Kaggeledstorget           10:03
   Ättehögsgatan             10:03
 
-Thus, for each line, there is a section starting with the line number
+Thus, for each tram line, there is a section starting with the line number
 and a colon.
 After that, the stops are given together with times.
 For simplicity, each line starts from time 10:00.
 We are not interested in these times as such, but in the **transition times** between stops.
 Thus, for instance, the transition time between Tingvallsvägen and Kaggeledstorget is 2 minutes.
-We want to store these transition times in a non-redundant way, under the following assumptions:
+We want to store the transition times in a non-redundant way, under the following assumptions:
 
 - transition times are independent of line, departure time and direction:
   - the transition time from A to B is the same for all lines and departures
-  - the transition time from B to A is the same as from A to B
+  - the transition time from B to A is always the same as from A to B
 
 Hence, we don't want to add transition times to the line dictionary, because this would lead to storing redundant information.
-Instead, when reading the file [`tramlines.txt`](../data/tramlines.txt), we simultaneously build a **time dictionary**, where
+Instead, from the file [`tramlines.txt`](../data/tramlines.txt), we also build a **time dictionary**, where
 
   - keys are stop names
   - values are dictionaries from stop names to numbers of minutes
@@ -132,7 +144,7 @@ To summarize, the general idea with these data structures and functions is to **
 In particular,
 
 - the location of each stop is given only once, in the stop dictionary,
-- the time between two stops is given only once, in the time dictionary.
+- the time between any two stops is given only once, in the time dictionary.
 
 Moreover,
 
@@ -176,7 +188,7 @@ The lines should be sorted in their numeric order, that is, '2' before '10'.
 The lines should be sorted in their numeric order, that is, '2' before '10'.
 Notice that each line is assumed to serve in both directions - the direction listed explicitly for it, and the opposite direction.
 
-`time_between_stops(somedicts, line, stop1, stop2)` calculates the time from `stop1` to `stop2` along the given `line`. This is obtained as the sum of all distances between the stops. If the stops are not along the same line, an error message is printed.
+`time_between_stops(somedicts, line, stop1, stop2)` calculates the time from `stop1` to `stop2` along the given `line`. This is obtained as the sum of all distances between adjacent stops. If the stops are not along the same line, an error message is printed.
 
 `distance_between_stops(somedicts, stop1, stop2)` calculates the geographic distance between any two stops, based on their latitude and longitude.
 The distance is hence not dependent on the tram lines.
@@ -200,6 +212,18 @@ Following kinds of input are interpreted:
 - any other input results in the message "sorry, try again" and a new prompt
 - the prompt is `> `.
 
+The main challenge is to deal correctly with stop names that consist of more than one word.
+A hint for this is to locate the positions of keywords such as "and", which can appear between stop names, and consider slices starting or ending at them.
+The simplest method is the standard `index()` method of strings.
+Also the regular expression library `re` could be used, but is probably more complicated to learn unless you already know it from before.
+
+For the purpose of testing, and more generally to cleanly separate input and output from processing, the `dialogue()` function should be divided into two separate functions:
+
+- `answer_query(tramdict, query)`, which takes the query string and returns the answer as a value (list or integer or float, or `False` if the query cannot be interpreted);
+
+- `dialogue(jsonfile)` itself, which reads the file into a dictionary, loops by asking for input, and for each input prints the value returned by `answer_query()`, except for input `quit` (terminating the loop) and for uninterpreted input (asking the user to try again).
+
+
 
 ### The main function
 
@@ -209,10 +233,22 @@ At the end of your file, make a conditional call of the `dialogue()` function wi
         dialogue()
 
 
-### Tests
+### Tests (TO BE COMPLETED)
 
-You should create your own tests.
-More about this later.
+You should create your own tests by using the `unittest` standard library.
+The file [`test_tramdata.py`](./test_tramdata.py) helps you to get started.
+Copy this file and add your own tests.
+The file already tests if all stops associated with lines in `linedict` also exist in `stopdict`.
+You should add at least the following tests:
+
+- that all tram lines listed in the original text file ``tramlines.txt`` are included in ``linedict``,
+- that the list of stops for each tramline is the same in ``tramlines.txt`` and ``linedict``,
+- that all distances are "feasible", meaning less than 20 km (test this test with a smaller number to see it fail!),
+- that the time from *a* to *b* is always the same as the time from *b* to *a* along the same line.
+
+A bit trickier problem is to test the dialogue.
+You should test that the answer printed for any query (as written by the user) is the same as the expected answer.
+What you test then is that queries are parsed and interpreted correctly.
 
 
 ## Submission
@@ -224,9 +260,22 @@ You may only - ever - share it with
 - the teachers of the course
 
 The submission is via Canvas, where you post a link to your repository.
-Lab1 solution should be the file `tramdata.py` in that repository, in the main branch.
-We may fetch the file at any point after the submission deadline, so make sure that it remains correct at all times!
-You can use other branches for experimentation.
+Your Lab1 solution must be in two files in that repository, in the main branch:
+
+- `tramdata.py`
+- `test_tramdata.py`
+
+They must be usable in the following ways:
+
+- `python3 tramdata.py init` to produce the file `tramnetwork.json`,
+- `python3 tramdata.py` to start the query dialogue,
+- `import tramdata` from another Python file or the Python shell, without starting the dialogue or printing anything,
+- `python3 test_tramdata.py` to run your tests.
+
+We will test all these functionalities.
+We will also run some tests of our own.
+We may fetch the files at any point after the submission deadline, so make sure that they remains correct at all times!
+You can use other branches for your private experimentation.
 
 
 
