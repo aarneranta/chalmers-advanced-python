@@ -4,6 +4,7 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
+DRAFT, TO BE COMPLETED BY 18 November 2021
 
 ## Purpose
 
