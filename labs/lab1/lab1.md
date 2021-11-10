@@ -4,7 +4,12 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
-*Preliminary version, to be finalized 9 November*
+Version 1.0, 9 November 2021
+
+Work that satisfies the specification in this version will be
+considered valid, even if we have to make changes after Version 1.0. So feel
+confident to start you work, but keep an eye on possible changes: we
+will not add tasks, but may have to explain some things more clearly.
 
 
 ## Purpose
@@ -57,6 +62,15 @@ Python course:
 - testing and the `unittest` library
 
 - version control and Git
+
+
+### Testing
+
+You should create your own tests by using the `unittest` standard library.
+The file [`test_tramdata.py`](./test_tramdata.py) helps you to get started.
+Copy this file and add your own tests at the same time as you are
+writing each of the functions.
+The file is a part of the solution you have to submit.
 
 
 ## Task
@@ -177,6 +191,19 @@ built:
         }
     }
 
+
+### Tests for dictionary building
+
+The file `test_tramdata-py` already tests if all stops associated with lines in `linedict` also exist in `stopdict`.
+You should add at least the following tests:
+
+- that all tram lines listed in the original text file ``tramlines.txt`` are included in ``linedict``,
+- that the list of stops for each tramline is the same in ``tramlines.txt`` and ``linedict``,
+- that all distances are "feasible", meaning less than 20 km (test this test with a smaller number to see it fail!),
+- that the time from *a* to *b* is always the same as the time from *b* to *a* along the same line.
+
+
+
 ### Query functions
 
 The following functions may use any of the three kinds of dictionaries - it is your task to decide which ones.
@@ -224,31 +251,25 @@ For the purpose of testing, and more generally to cleanly separate input and out
 - `dialogue(jsonfile)` itself, which reads the file into a dictionary, loops by asking for input, and for each input prints the value returned by `answer_query()`, except for input `quit` (terminating the loop) and for uninterpreted input (asking the user to try again).
 
 
+### Tests for the dialogue
+
+Testing a complete dialogue is trickier than ordinary, value-returning functions. 
+But you can easily test `answer_query()`.
+What you should test, then, is that the answer printed for any query
+(in a format written by the user) is the same as the expected answer.
+What you really test then is that queries are parsed and interpreted correctly.
+
+
+
 
 ### The main function
 
-At the end of your file, make a conditional call of the `dialogue()` function with the provided data files:
+At the end of your file, make a conditional call under
 
     if __name__ == '__main__':
-        dialogue()
 
+calling `build_tram_network()` if the argument `init` is present, `dialogue()` otherwise.
 
-### Tests (TO BE COMPLETED)
-
-You should create your own tests by using the `unittest` standard library.
-The file [`test_tramdata.py`](./test_tramdata.py) helps you to get started.
-Copy this file and add your own tests.
-The file already tests if all stops associated with lines in `linedict` also exist in `stopdict`.
-You should add at least the following tests:
-
-- that all tram lines listed in the original text file ``tramlines.txt`` are included in ``linedict``,
-- that the list of stops for each tramline is the same in ``tramlines.txt`` and ``linedict``,
-- that all distances are "feasible", meaning less than 20 km (test this test with a smaller number to see it fail!),
-- that the time from *a* to *b* is always the same as the time from *b* to *a* along the same line.
-
-A bit trickier problem is to test the dialogue.
-You should test that the answer printed for any query (as written by the user) is the same as the expected answer.
-What you test then is that queries are parsed and interpreted correctly.
 
 
 ## Submission
@@ -276,6 +297,10 @@ We will test all these functionalities.
 We will also run some tests of our own.
 We may fetch the files at any point after the submission deadline, so make sure that they remains correct at all times!
 You can use other branches for your private experimentation.
+
+The same GitHub repository will be extended with your Lab 2 and 3
+solutions later.
+
 
 
 
