@@ -29,7 +29,7 @@ The main learning outcomes are:
 
 The class `Graph` can be initialized in three ways:
 
-- from nothing (the default)
+- from `None` (the default)
 
 or optionally from either
 
@@ -39,7 +39,7 @@ or optionally from either
 The ``__init__()`` function also takes optional
 
 - boolean stating if the graph is **directed**; its default is `False`
-- dictionary of **vertex values**, default `{}`
+- value dictionary, assigning values to vertices; its default is `None`
 
 The class builds internally a data structure that supports different graph operations.
 This data structure is kept hidden, and we leave it to everyone to choose among the various equivalent representations.
@@ -157,7 +157,7 @@ It stores internally
 - a list (dictionary) of stops and their positions (of class ``TramStop``)
 - a list (dictionary) of lines and their stops (of class ``TramLine``)
 - edges, which are transitions between consecutive stops 
-- weights, which are the transition times 
+- weights, which are the transition times between adjacent stops
 
 Most of the public methods are getters:
 
@@ -209,5 +209,13 @@ Draw a UML diagram (details TODO)
 
 Use `hypothesis` for testing the graph algorithms (details TODO)
 
-Submit the files `graphs.py` and `trams.py` via the same GitHub repository as in Lab 1.
+Submit the files
+
+- `graphs.py`
+- `trams.py`
+- `test_graphs.py`
+- `test_trams.py`
+
+via the same Git repository as in Lab 1.
+Do this by reporting in Canvas that your lab is ready to be graded.
 
