@@ -4,7 +4,7 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
-DRAFT, TO BE COMPLETED BY 18 November 2021
+DRAFT, TO BE FINALIZED 18 November 2021
 
 ## Purpose
 
@@ -17,37 +17,35 @@ The main learning outcomes are:
 - Python's data model for classes
 - class definitions with private instance variables, public methods, and "hidden" methods
 - inheritance between classes
-- representations of undirected, directed, and weighted graphs
+- representations of graphs
 - Dijkstra's shortest path algorithm with different cost functions
 - visualization of graphs and paths in them, the ``graphviz`` library
 - property-based testing with randomized input data, the ``hypothesis`` library
+
+
+### Bonus points
+
+If you implement graphs and Dijkstra's algorithms from scratch, you can get 4 bonus points on top of the normal 10 points.
+But if you want to save work, you can use the ['networkx`] library.
+This will require some code to be written, but less than in the implementation from scratch.
+Details will be given below.
+
 
 
 ## The task: file `graphs.py`
 
 ### The Graph class
 
-The class `Graph` can be initialized in three ways:
+The class `Graph` can be initialized in two ways:
 
 - from `None` (the default)
-
-or optionally from either
-
-- from an adjacency dictionary
 - from a list of edges
-
-The ``__init__()`` function also takes optional
-
-- boolean stating if the graph is **directed**; its default is `False`
-- value dictionary, assigning values to vertices; its default is `None`
 
 The class builds internally a data structure that supports different graph operations.
 This data structure is kept hidden, and we leave it to everyone to choose among the various equivalent representations.
 The public methods to be implemented are:
 
-- `neighbours(vertex)` (same as `successors(vertex)` for directed graphs)
-- `predecessors(vertex)` (same as `neighbours(vertex)` for undirected graphs)
-- `successors(vertex)` (same as `neighbours(vertex)` for undirected graphs)
+- `neighbors(vertex)`
 - `vertices()`
 - `edges()` (only given in one direction for undirected graphs)
 - `__len__()`, the number of vertices
@@ -55,32 +53,118 @@ The public methods to be implemented are:
 - `add_edge(vertex, vertex)` 
 - `remove_vertex(vertex)` (also removing the edges with this vertex)
 - `remove_edge(vertex, vertex)`
-- `is_directed()`
 - `get_vertex_value(vertex)`
 - `set_vertex_value(vertex)`
+
+If you have read an earlier draft of this document, you may notice that we have simplified the specification a bit:
+
+- we only deal with undirected graphs
+- we have fewer arguments in initialization 
+
+
+#### Baseline solution, no bonus points
+
+The simplest way to implement graphs is by inheriting from `networkx.Graph`:
+```
+    class Graph(nx.Graph):
+        def __init__(self, start=None):
+            super().__init__(start)
+```
+The internal representation is inherited from `nx.Graph`, so you don't need to define any hidden variables.
+
+Some of the public methods also exist in `nx.Graph` with exactly the same names.
+They need not be defined in your class, since they are inherited.
+Some other methods have different names, so that to implement the desired API, you have to write, for example,
+```
+        def vertices(self):
+            return self.nodes()
+```
+The trickiest part is perhaps the values of vertices.
+In `networkx`,  they are stored in dictionaries associated with the vertices themselves.
+Here is a minimal example suggesting how you could do to set and get values of nodes:
+```
+    >>> G = nx.Graph()
+    >>> G.add_node(9)
+    >>> G.nodes[9]['location'] = 234
+    >>> G.nodes[9]
+    {'location': 234}
+```
+
+#### Native implementation, gives bonus points
+
+If you write a native implementation without using `networkx` (or any other libraries), you need to
+
+- design an internal representation, stored in private instance variables (such as `_adjacencylist`),
+- define all the public methods as specified above.
+
+
+#### Testing your graph implementation
+
+We recommend the use of `hypothesis` in the way specified in the lecture notes, Section 5.9.
+
+A particularly powerful way of testing is available for your native implementation if you also implement the one using `networkx`.
+Then you can systematically compare the results of all the public methods.
+
 
 
 ### The WeightedGraph class
 
-`WeightedGraph` is a subclass of `Graph`, which stores **edge weights** - which can be objects of any type.
-It stores these weights internally (e.g. in a dictionary) and supports two public methods:
+`WeightedGraph` is a subclass of `Graph`, which stores **edge weights**.
+These weights can be objects of any type.
+The class stores weights internally (e.g. in a dictionary) and supports two public methods:
 
 - `get_weight(vertex, vertex)`
 - `set_weight(vertex, vertex, weight)`
+
+If you have chosen the `networkx` implementation of graphs, you can implement these methods by using the representation of weights that is already available:
+```
+    >>> G = nx.Graph()
+    >>> G.add_edge(1,2)
+    >>> G[1][2]['weight'] = 8
+    >>> G[1][2]['weight']
+    8
+```
+If you use a native implementation, the simplest solution is probably to have a separate dictionary.
 
 
 ### The shortest path algorithm
 
 The function
-
-  dijkstra(graph, source, cost=lambda u,v: 1, step=lambda e: e)
-
+```
+    dijkstra(graph, source, cost=lambda u,v: 1)
+```
 computes the shortest path from `source` vertex to all other vertices, as a dictionary.
 What is shortest is calculated by the minimum sum of ``cost`` function applied to each step on the path.
 For example, if `graph` is a `WeightedGraph`, its ``get_weight()`` method can be used.
-The ``step`` function defines what information about each step on the shortest path is shown.
+
+
+#### Baseline: Networkx implementation
+
+The [`networkx` implementation](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.shortest_paths.generic.shortest_path.html#networkx.algorithms.shortest_paths.generic.shortest_path) of Dijkstra's algorithm is the function
+```
+    shortest_path(graph, source=None, target=None, weight=None, method='dijkstra')
+```
+which you can all in your own `dijkstra` function.
+The you
+
+- pass the `graph` and `source` arguments to `nx.shortest_path`,
+- leave out the `target`, which causes the function to produce a dictionary for all targets,
+- convert the `cost` function to a `weight` attribute,
+- leave out the `method`, so that the default is used.
+
+The tricky part is the conversion of `cost`, which is a function, to a `weight`, which is an attribute of edges.
+The following helper function can be used for this purpose:
+```
+    def costs2attributes(G, cost, attr='weight'):
+        for a, b in G.edges():
+            G[a][b][attr] = cost(a, b)
+```
+
+#### Bonus: native implementation
+
 A suggested implementation of `dijkstra` follows the pseudocode in
 [this Wikipedia article](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm).
+Make sure to return a dictionary, where the keys are all target vertices reachable from the source, and their values are paths from the source to the target (i.e. lists of vertices to follow).
 
 
 ### Visualization
@@ -126,14 +210,14 @@ It has to store
 
 - the name of the stop
 - its position (latitude and longitude)
-- the list of lines that serve the stop (not in Lab 1)
+- the list of lines that serve the stop (not explicit in Lab 1)
 
 Its ``__init__()`` method needs the name as a required argument, whereas the position and line list are optional.
 The public methods should enable
 
+- getting the name of the line
 - getting and setting the position
-- getting the list of lines
-- adding lines to the list
+- getting the list of lines and adding lines to the list
 
 This time, we leave it to you to decide what methods exactly there are.
 
@@ -143,7 +227,7 @@ This time, we leave it to you to decide what methods exactly there are.
 The class ``TramLine`` reflects exactly the line dictionary of Lab 1.
 Thus it should store internally, and make publicly available,
 
-- the name (usually number) of the line
+- the name of the line (in Gothenburg usually a number, but do not assume this)
 - the list of stops in order, in one direction
 
 The detailed design is left to you.
@@ -158,6 +242,8 @@ It stores internally
 - a list (dictionary) of lines and their stops (of class ``TramLine``)
 - edges, which are transitions between consecutive stops 
 - weights, which are the transition times between adjacent stops
+
+Notice that you need not store geographical distances between stops, because they can be computed from the positions of stops.
 
 Most of the public methods are getters:
 
@@ -180,17 +266,22 @@ This function will be needed in Lab 3 where we want to focus on a subset of line
 
 The JSON file `tramnetwork.json` produced in Lab 1 contains all information needed for building an instance of `TramNetwork`.
 The function
-
+```
     readTramNetwork(tramfile=TRAM_FILE)
-
-should do this, defaulting to that JSON file.
+```
+should do this, defaulting to `tramnetwork.json`, which should however be given via the variable `TRAM_FILE`.
 It should return an object of class ``TramNetwork`.
 
 
-### A demo
+### Testing trams.py
+
+TODO
+
+
+## A demo
 
 You can paste the following code to your `trams.py` file to demonstrate and test it:
-
+```
     def demo():
         G = readTramNetwork()
         a, b = input('from,to ').split(',')
@@ -198,16 +289,16 @@ You can paste the following code to your `trams.py` file to demonstrate and test
 
     if __name__ == '__main__':
         demo()
-
+```
 When you run the code, it asks you to enter two tram stop names separated by a comma (no spaces between).
 Then displays the whole tram network, with the shortest path (as the number of stops) coloured.
 
 
 ### Testing and documentation
 
-Draw a UML diagram (details TODO)
-
-Use `hypothesis` for testing the graph algorithms (details TODO)
+Draw a UML diagram covering the classes `TramNetwork`, `TramLine`, `TramStop`,  `WeightedGraph`,  and `Graph`.
+You can do this by drawing on a paper and photographing the result, or by using a drawing tool.
+The results should be submitted as a PDF file in your Git repository.
 
 Submit the files
 
@@ -215,7 +306,9 @@ Submit the files
 - `trams.py`
 - `test_graphs.py`
 - `test_trams.py`
+- `tram_uml.pdf`
 
 via the same Git repository as in Lab 1.
 Do this by reporting in Canvas that your lab is ready to be graded.
 
+Also indicate in the message to Canvas if you have done a native implementation or used `networkx`.
