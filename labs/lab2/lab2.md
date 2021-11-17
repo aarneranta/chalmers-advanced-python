@@ -31,6 +31,32 @@ This will require some code to be written, but less than in the implementation f
 Details will be given below.
 
 
+## The task: overview
+
+You are expected to submit two Python files,
+
+- `graphs.py` implementing general graphs and graph algorithms,
+- `trams.py` implementing transport networks by using concepts from `graphs.py`.
+
+The following UML diagram shows the classes that you are expected to implement in these files.
+
+![tram-uml](../images/tram-classes.png)
+
+The underscored variables right after the class names are just a hint that need not be followed.
+In fact, the baseline (non-bonus) implementation of `Graph` does not need them at all.
+The important thing is that the public methods are implemented with the names given here.
+
+In addition to the classes, you will have to implement the following functions:
+```
+    # in graphs.py
+    dijkstra(graph, source, cost=lambda u,v: 1)
+	visualize(graph, view='dot', name='mygraph', nodecolors={}, engine='dot')
+
+    # in trams.py
+    readTramNetwork(file='tramnetwork.json)
+```
+Last but not least, you will have to write tests using `unittest` and `hypothesis` libraries.
+
 
 ## The task: file `graphs.py`
 
@@ -304,11 +330,7 @@ When you run the code, it asks you to enter two tram stop names separated by a c
 Then displays the whole tram network, with the shortest path (as the number of stops) coloured.
 
 
-### Testing and documentation
-
-Draw a UML diagram covering the classes `TramNetwork`, `TramLine`, `TramStop`,  `WeightedGraph`,  and `Graph`.
-You can do this by drawing on a paper and photographing the result, or by using a drawing tool.
-The results should be submitted as a PDF file in your Git repository.
+### Submission
 
 Submit the files
 
@@ -316,7 +338,6 @@ Submit the files
 - `trams.py`
 - `test_graphs.py`
 - `test_trams.py`
-- `tram_uml.pdf`
 
 via the same Git repository as in Lab 1.
 Do this by reporting in Canvas that your lab is ready to be graded.
