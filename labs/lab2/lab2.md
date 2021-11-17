@@ -50,7 +50,7 @@ In addition to the classes, you will have to implement the following functions:
 ```
     # in graphs.py
     dijkstra(graph, source, cost=lambda u,v: 1)
-	visualize(graph, view='dot', name='mygraph', nodecolors={}, engine='dot')
+    visualize(graph, view='dot', name='mygraph', nodecolors={}, engine='dot')
 
     # in trams.py
     readTramNetwork(file='tramnetwork.json)
@@ -122,14 +122,6 @@ If you write a native implementation without using `networkx` (or any other libr
 
 - design an internal representation, stored in private instance variables (such as `_adjacencylist`),
 - define all the public methods as specified above.
-
-
-#### Testing your graph implementation
-
-We recommend the use of `hypothesis` in the way specified in the lecture notes, Section 5.9.
-
-A particularly powerful way of testing is available for your native implementation if you also implement the one using `networkx`.
-Then you can systematically compare the results of all the public methods.
 
 
 
@@ -218,6 +210,17 @@ You can append the following code to your file to demonstrate this:
     if __name__ == '__main__':
         demo()
 ```
+
+### Testing your graph implementation
+
+We recommend the use of `hypothesis` in the way specified in the lecture notes, Section 5.9.
+
+A particularly powerful way of testing is available for your native implementation if you also implement the one using `networkx`.
+Then you can systematically compare the results of all the public methods.
+You can in particular do this for your shortest path algorithm.
+
+We may collect more testing hints here even after publishing the lab.
+
 
 
 ## The task: file `trams.py`
@@ -311,7 +314,10 @@ It should return an object of class ``TramNetwork`.
 
 ### Testing trams.py
 
-TODO
+Some of the tests from Lab 1 are also relevant here, now performed on the `TramNetwork` class and its methods.
+You can try to generate data for them from the stop and line lists by using `hypothesis`.
+
+We may collect more testing hints here even after publishing the lab.
 
 
 ## A demo
