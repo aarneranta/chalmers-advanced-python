@@ -144,8 +144,8 @@ The [`networkx` implementation](https://networkx.org/documentation/stable/refere
 ```
     shortest_path(graph, source=None, target=None, weight=None, method='dijkstra')
 ```
-which you can all in your own `dijkstra` function.
-The you
+which you can call in your own `dijkstra` function.
+To do so, you
 
 - pass the `graph` and `source` arguments to `nx.shortest_path`,
 - leave out the `target`, which causes the function to produce a dictionary for all targets,
@@ -164,20 +164,20 @@ The following helper function can be used for this purpose:
 
 A suggested implementation of `dijkstra` follows the pseudocode in
 [this Wikipedia article](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm).
-Make sure to return a dictionary, where the keys are all target vertices reachable from the source, and their values are paths from the source to the target (i.e. lists of vertices to follow).
+Make sure to return a dictionary, where the keys are all target vertices reachable from the source, and their values are paths from the source to the target (i.e. lists of vertices in the order that the shortest path traverses them).
 
 
 ### Visualization
 
 A very simple visualization function is expected in Lab2; we will make it more sophisticated in Lab3.
 The function
-
-    visualize(graph, view='dot', name='mygraph', nodecolors={})
-
+```
+    visualize(graph, view='dot', name='mygraph', nodecolors=None)
+```
 uses the `graphviz` library, whose documentation can be found [here](https://graphviz.readthedocs.io/en/stable/api.html).
 The first intended use of `nodecolors` is to show the nodes along the shortest path in a different colour.
 You can append the following code to your file to demonstrate this:
-
+```
     def view_shortest(G, source, target, cost=lambda u,v: 1):
         path = dijkstra(G, source, cost)[target]['path']
         print(path)
@@ -191,6 +191,7 @@ You can append the following code to your file to demonstrate this:
 
     if __name__ == '__main__':
         demo()
+```
 
 
 ## The task: file `trams.py`
@@ -201,6 +202,14 @@ This file needs to import from two other files of your own
 - ``tramdata.py`` from Lab 1
 
 as well as from the standard libraries ``sys`` and ``json``.
+The `sys` library is needed if you have your lab1 solution in a different directory.
+Then you need to tell Python where to find the file `tramdata.py`:
+```
+    import sys
+    sys.path.append('../lab1/')
+	import tramdata as td
+```
+
 
 
 ### The TramStop class
@@ -238,9 +247,10 @@ The detailed design is left to you.
 The class ``TramNetwork`` is a ``WeightedGraph`` (i.e. inherits from it).
 It stores internally
 
-- a list (dictionary) of stops and their positions (of class ``TramStop``)
-- a list (dictionary) of lines and their stops (of class ``TramLine``)
-- edges, which are transitions between consecutive stops 
+- a dictionary of stops and their positions (objects of class ``TramStop``)
+- a dictionary of lines and their stops (objects of class ``TramLine``)
+- vertices, which are all the stops
+- edges, which are transitions between consecutive stops on some line 
 - weights, which are the transition times between adjacent stops
 
 Notice that you need not store geographical distances between stops, because they can be computed from the positions of stops.
