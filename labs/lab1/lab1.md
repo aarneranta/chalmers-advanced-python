@@ -4,6 +4,10 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
+Version 1.2, 18 November
+
+Added a hint about the command-line argument `init`.
+
 Version 1.1, 12 November
 
 We now provide an alternative, easier way to define geographical distance.
@@ -278,6 +282,15 @@ At the end of your file, make a conditional call under
     if __name__ == '__main__':
 
 calling `build_tram_network()` if the argument `init` is present, `dialogue()` otherwise.
+**Hint**: You can check the presence of this argument by using `sys.argv`:
+```
+    if __name__ == '__main__':
+        if sys.argv[1:] == ['init']:
+            build_tram_network()
+		else:
+            dialogue()			
+```
+You also need to import `sys`.			
 
 
 
