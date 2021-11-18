@@ -4,7 +4,12 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
-DRAFT, TO BE FINALIZED 18 November 2021
+Version 1.0, 18 November 2021
+
+Work that satisfies the specification in this version will be
+considered valid, even if we have to make changes after Version 1.0. So feel
+confident to start you work, but keep an eye on possible changes: we
+will not add tasks, but may have to explain some things more clearly.
 
 ## Purpose
 
