@@ -222,6 +222,12 @@ A particularly powerful way of testing is available for your native implementati
 Then you can systematically compare the results of all the public methods.
 You can in particular do this for your shortest path algorithm.
 
+Here are some other things to test:
+
+- if (a, b) is in edges(), both a and b are in vertices()
+- if (a, b) is an edge, so is also (b, a)
+- the shortest path from a to b is the reverse of the shortest path from b to a
+
 We may collect more testing hints here even after publishing the lab.
 
 
