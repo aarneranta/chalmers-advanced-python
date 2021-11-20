@@ -4,6 +4,12 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
+Version 1.1, 20 November 2021
+
+Left out the method of removing a tram line, since it will probably not be needed in Lab 3.
+The paragraph about it has simply been deleted from this document.
+
+
 Version 1.0, 18 November 2021
 
 Work that satisfies the specification in this version will be
@@ -307,12 +313,6 @@ Most of the public methods are getters:
 - list the stops along a line
 - list all stops
 - list all lines
-
-However, there is one setter method, which is a bit more tricky:
-
-- remove a line, together with all stops that are only served by that line
-
-This function will be needed in Lab 3 where we want to focus on a subset of lines.
 
 
 ### Reading a TramNetwork
