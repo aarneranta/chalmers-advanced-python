@@ -4,7 +4,18 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
-DRAFT, TO BE FINALIZED 18 November 2021
+Version 1.1, 20 November 2021
+
+Left out the method of removing a tram line, since it will probably not be needed in Lab 3.
+The paragraph about it has simply been deleted from this document.
+
+
+Version 1.0, 18 November 2021
+
+Work that satisfies the specification in this version will be
+considered valid, even if we have to make changes after Version 1.0. So feel
+confident to start you work, but keep an eye on possible changes: we
+will not add tasks, but may have to explain some things more clearly.
 
 ## Purpose
 
@@ -187,12 +198,15 @@ Make sure to return a dictionary, where the keys are all target vertices reachab
 
 ### Visualization
 
-A very simple visualization function is expected in Lab2; we will make it more sophisticated in Lab3.
+A very simple visualization function is expected in Lab 2; we will make it more sophisticated in Lab3.
 The function
 ```
     visualize(graph, view='dot', name='mygraph', nodecolors=None)
 ```
 uses the `graphviz` library, whose documentation can be found [here](https://graphviz.readthedocs.io/en/stable/api.html).
+Many examples can be found in the lecture notes, sections 5.1 and 5.2, with a description of an algorithm in section 5.7.
+The description is simple but sufficient for this function, except for how to use `nodecolors`, which you should look up in the library documentation.
+
 The first intended use of `nodecolors` is to show the nodes along the shortest path in a different colour.
 You can append the following code to your file to demonstrate this:
 ```
@@ -218,6 +232,12 @@ We recommend the use of `hypothesis` in the way specified in the lecture notes, 
 A particularly powerful way of testing is available for your native implementation if you also implement the one using `networkx`.
 Then you can systematically compare the results of all the public methods.
 You can in particular do this for your shortest path algorithm.
+
+Here are some other things to test:
+
+- if (a, b) is in edges(), both a and b are in vertices()
+- if (a, b) is an edge, so is also (b, a)
+- the shortest path from a to b is the reverse of the shortest path from b to a
 
 We may collect more testing hints here even after publishing the lab.
 
@@ -294,12 +314,6 @@ Most of the public methods are getters:
 - list all stops
 - list all lines
 
-However, there is one setter method, which is a bit more tricky:
-
-- remove a line, together with all stops that are only served by that line
-
-This function will be needed in Lab 3 where we want to focus on a subset of lines.
-
 
 ### Reading a TramNetwork
 
@@ -316,6 +330,9 @@ It should return an object of class ``TramNetwork`.
 
 Some of the tests from Lab 1 are also relevant here, now performed on the `TramNetwork` class and its methods.
 You can try to generate data for them from the stop and line lists by using `hypothesis`.
+
+Another thing to test is the connectedness of the tram network.
+This could be done simply by just depth-first or breadth-first search, as explained in lecture notes Section 5.5.
 
 We may collect more testing hints here even after publishing the lab.
 
