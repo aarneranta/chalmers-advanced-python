@@ -4,6 +4,12 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
+Version 1.2, 1 December 2021
+
+Modified the test about edge symmetry (`(a, b)` implies `(b, a)`): now about neighbors instead.
+Also added a comment on the shortest path test, and on the internal representation in `TramNetwork`.
+
+
 Version 1.1, 20 November 2021
 
 Left out the method of removing a tram line, since it will probably not be needed in Lab 3.
@@ -235,9 +241,9 @@ You can in particular do this for your shortest path algorithm.
 
 Here are some other things to test:
 
-- if (a, b) is in edges(), both a and b are in vertices()
-- if (a, b) is an edge, so is also (b, a)
-- the shortest path from a to b is the reverse of the shortest path from b to a
+- if `(a, b)` is in `edges()`, both `a` and `b` are in `vertices()`
+- if `a` has `b` as its neighbour, then `b` has `a` as its neighbour
+- the shortest path from `a` to `b` is the reverse of the shortest path from `b` to `a` (but notice that this can fail in situations where there are several shortest paths)
 
 We may collect more testing hints here even after publishing the lab.
 
@@ -296,12 +302,15 @@ The detailed design is left to you.
 The class ``TramNetwork`` is a ``WeightedGraph`` (i.e. inherits from it).
 It stores internally
 
-- a dictionary of stops and their positions (objects of class ``TramStop``)
-- a dictionary of lines and their stops (objects of class ``TramLine``)
+- stops and their positions (objects of class ``TramStop``)
+- lines and their stops (objects of class ``TramLine``)
 - vertices, which are all the stops
 - edges, which are transitions between consecutive stops on some line 
 - weights, which are the transition times between adjacent stops
 
+The simplest way to store the stops and lines is at dictionaries, where the stop or line name is the key and the corresponding object is the value.
+(This comes with some redundancy, because the names are stored both in the keys and in the values.
+But it is more scalable, in cases where stops in different positions can have the same names: then the keys should be some unique identifiers, but the values can still be TramStop objects.)
 Notice that you need not store geographical distances between stops, because they can be computed from the positions of stops.
 
 Most of the public methods are getters:
