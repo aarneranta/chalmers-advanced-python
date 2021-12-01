@@ -139,3 +139,7 @@ cython_debug/
 
 # VS code configs
 .vscode/
+
+# Graph previews
+*.gv
+*.gv.pdf
