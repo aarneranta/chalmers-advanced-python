@@ -30,8 +30,6 @@ def transfer(account1,account2,amount):
         print("OK")
     else:
         print("not enough money")
-    
-
 
 # Questions 2-3 ##############################################################
 
@@ -45,16 +43,25 @@ class RecTree:
         return self._root, self._subtrees
 
     def edges(self):
-        pass
-
+        if not self._subtrees:
+            return []
+        (r,ts) = self.parts()
+        edges = [(r,t._root) for t in ts]
+        for t in ts:
+            edges += t.edges()
+        return edges
+        
     def to_tree(self):
-        pass
+        t = Tree(self._root)
+        for (a,b) in self.edges():
+            t.add_edge(a,b)
+        return t
 
     def to_valtree(self):
         pass
 
-def atom(l):
-    pass 
+def atom(r):
+    return RecTree(r, [])
 
 extree1 = RecTree(
     1, 
