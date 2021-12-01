@@ -6,20 +6,31 @@ from trees import *
 # Question 1 #################################################################
 class Account:
         # an account has a number and a balance
+        def __init__(self, number, balance=0):
+            self._number = number
+            self._balance = balance
+
+        def get_number(self):
+            return self._number
 
         def get_balance(self):
             # return the actual balance
-            pass 
+            return self._balance
 
         def set_balance(self, b):
             # change the balance to b
-            pass
+            self._balance = b
     
 def transfer(account1,account2,amount):
-    # transfer amount from account1 to account2
-    # report "OK" if successful, i.e. account1 has the required amount
-    # "not enough money" otherwise
-    pass
+    balance1 = account1.get_balance()
+    if balance1 >= amount:
+        # transfer
+        account1.set_balance(balance1 - amount)
+        account2.set_balance(account2.get_balance() + amount)
+        print("OK")
+    else:
+        print("not enough money")
+    
 
 
 # Questions 2-3 ##############################################################
