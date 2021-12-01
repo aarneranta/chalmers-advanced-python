@@ -273,7 +273,7 @@ It has to store
 Its ``__init__()`` method needs the name as a required argument, whereas the position and line list are optional.
 The public methods should enable
 
-- getting the name of the line
+- getting the name of the stop
 - getting and setting the position
 - getting the list of lines and adding lines to the list
 
