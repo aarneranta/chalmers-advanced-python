@@ -5,6 +5,9 @@ Advanced Python Course, Chalmers DAT515, 2021
 by Aarne Ranta
 
 
+DRAFT, to be finalized 7 December
+
+
 ## Purpose
 
 The purpose is to build a web application replicating some functionalities of apps such as [Västtrafik](https://www.vasttrafik.se/reseplanering/reseplaneraren/).
