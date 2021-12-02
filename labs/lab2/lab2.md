@@ -37,7 +37,7 @@ The main learning outcomes are:
 ### Bonus points
 
 If you implement graphs and Dijkstra's algorithms from scratch, you can get 4 bonus points on top of the normal 10 points.
-But if you want to save work, you can use the ['networkx`] library.
+But if you want to save work, you can use the [`networkx`](https://networkx.org/) library.
 This will require some code to be written, but less than in the implementation from scratch.
 Details will be given below.
 
