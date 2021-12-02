@@ -58,7 +58,19 @@ class RecTree:
         return t
 
     def to_valtree(self):
-        pass
+        path = "1"
+        vt = ValueTree(int(path))
+        vt.set_value(int(path), self._root)
+
+        def to_valtree_h(ts, vt, path):
+            for (i,t) in enumerate(ts):
+                new_path = path + str(i + 1)
+                vt.add_edge(int(path), int(new_path))
+                vt.set_value(int(new_path), t._root)
+                to_valtree_h(t._subtrees, vt, new_path)
+
+        to_valtree_h(self._subtrees, vt, path)
+        return vt    
 
 def atom(r):
     return RecTree(r, [])
@@ -68,26 +80,45 @@ extree1 = RecTree(
     [RecTree(11, [atom(111), atom(112)]), atom(12)]
     )
 
-extree2 = RecTree('+', [atom('2'), atom('2')])
+extree2 = RecTree(
+    '+', 
+    [
+        RecTree(
+            10, 
+            [
+                atom('2')]
+            ), 
+        atom('2')
+    ]
+)
 
 # Question 4 #################################################################
 class Fun():
-    pass
+    def __init__(self,fun):
+        self._fun = fun
+    
+    def __mul__(self, other):
+        return Fun(lambda x: self._fun(other(x)))
+
+    def __call__(self, *args, **kwargs):
+        return self._fun(args[0])
 
 ##############################################################################
 
 # for free
 if __name__ == '__main__': 
-    visualize(extree1.to_tree())
-    #visualize_valtree(extree2.to_valtree())
+    # visualize(extree1.to_tree())
+
+    # TODO: implement visualization for ValueGraphs, so that values are shown
+    # instead of node IDs
+    # visualize(extree2.to_valtree()) 
 
     # TODO: convert to test
-    #f = Fun(lambda x: x+1)
-    #g = Fun(lambda x: 3*x)
-    #print(9, f(8))
-    #print(24, g(8))
-    #print(27, (g*f)(8)) #
-    #print(30, (g*f*f)(8)) #
-    #print(81, (g*g*f)(8)) #
-    #print(28, (f*g*f)(8))
-
+    f = Fun(lambda x: x+1)
+    g = Fun(lambda x: 3*x)
+    print(9, f(8))
+    print(24, g(8))
+    print(27, (g*f)(8)) #
+    print(30, (g*f*f)(8)) #
+    print(81, (g*g*f)(8)) #
+    print(28, (f*g*f)(8))
