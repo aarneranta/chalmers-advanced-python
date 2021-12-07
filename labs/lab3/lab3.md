@@ -15,14 +15,19 @@ Your application will
 
 - display the complete map of tram lines
 - highlight shortest paths in terms of time and geographical distance
-- display a partial map with only a list of chosen lines
+- bonus part 1: make the calculations more precise by taking changes into account
+- bonus part 2: show actual departures from any stops by clicking at it on the map
+
 
 Here is an example screenshot:
 
 ![shortest-path](../images/app-shortest.png)
 
 Unlike the official app, ours will not have access to the actual timetables, but just to the distances and times as defined in Labs 1 and 2.
-This is of course a severe simplification - but, on the other hand, our app will be usable for any transport system that can be represented by the class `TramNetwork`.
+This is of course a severe simplification - but, on the other hand,
+our app will be usable for any transport system that can be
+represented by the class `TramNetwork`.
+In addition, the bonus part will give access to actual traffic information from Västtrafik.
 
 Another difference from the official app is that we only run ours in a safe `localhost` environment.
 Thereby we do not have to cope with security issues, and it will also be much easier for all groups to finish the project.
@@ -30,70 +35,108 @@ Thereby we do not have to cope with security issues, and it will also be much ea
 The learning outcomes include:
 
 - visualization with more details on positions and colours
-- simple front-end construction with HTML, as well as external CSS and JavaScript
-- putting everything together by using a webb application framework
+- simple front-end construction with HTML
+- putting everything together by using a web application framework, Django
 - more details of `graphviz` library, various libraries belonging to the `flask` framework
 - virtual environments (`venv`)
 
 
+The basic lab gives 10 points and each bonus part 4 points.
+Thus the maximum is 18 points.
+
+
 ## The task
 
-We will follow a standard line of work for the `flask` network.
-There are several tutorials available, for instance, the one by [Miguel Grinberg](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world), whose chapters 1 to 3 cover most of the things we need.
+We will follow a standard line of work for the `django` network.
+There are several tutorials available, for instance,
+
+- [Django Girls Tutorial](https://tutorial.djangogirls.org/en/)
+- [Official Django Tutorial](https://docs.djangoproject.com/en/3.2/intro/tutorial01/)
+
 
 
 ### The virtual environment
 
 1. Create a `lab3` directory in your GitHub repository for the course.
-2. Follow [the tutorial](https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-i-hello-world) to build a **virtual environment** (`venv`) for your application.
-3. Activate the environment and install `flask` and other libraries that you need.
+2. Follow [the tutorial](https://tutorial.djangogirls.org/en/installation/#virtualenv) to build a **virtual environment** (`venv`) for your application.
+3. Activate the environment and install `django` and other libraries that you need (in this case, `graphviz`)
 
-It is advisable to follow the tutorial, chapters 1 to 3, exactly before you start with your own project.
+
+**Notice**. In Step 3, you can install the latest version of Django, 3.2, instead of 2.4 as in the Django Girls Tutorial.
+
+
+It is advisable to follow the tutorial exactly before you start with your own project.
+We will do this during Lecture 9 and also have an exercise on it.
 In this way, you can make sure that everything works as required.
 But do not include this experiment in your course GitHub repository!
 
 
-### Python files
+### Files to write
 
-Directly the `app` directory, you need to create the following files:
-
-- `__init__.py`, standard
-- `forms.py`, standard
-- `routes.py`, standard
-- `graphs.py`, a copy from Lab 2, with import paths set to `app` 
-- `trams.py`, a copy from Lab 2, with import paths set to `app` 
-- `tramnet.py`, a new file, where most of the work happens
-- directory `static`, where you just copy
-  - `auto.css` from [./static/]
-  - `auto.js` from [./static/]
-  - `tramnetwork.json` as created in Lab 1
-
-- directory `templates`, where you put
-  - `base.html` copied from [./templates/], inherited by most other pages
-  - `route.html` copied from [./templates/], for searching for a route
-  - `lines.html` which you create yourself, for just showing the network or restricting it to certain lines
-  - `index.html` which you create yourself and where you can put whatever you want, but it must give links to `route.html` and `lines.html` 
-
-Most part of the actual work will happen in ``tramnet.py``, which we will describe in a separate section.
+The final structure will look as follows, in my case.
+Most of these files are created automatically (unmarked in the diagram).
+Some of these have to be edited slightly (marked `?`).
+Some have to be written by you (marked `??`).
+Some can be copied from [here](./files/) (marked `!`).
+```
+lab3
+├── db.sqlite3
+├── manage.py
+├── mysite
+│   ├── __init__.py
+│   ├── settings.py ?
+│   ├── urls.py
+│   └── wsgi.py
+├── myvenv
+│   └── ...
+├── requirements.txt ?
+├── static
+│   ├── gbg_trams.json ??
+│   ├── shortest_path.svg
+│   └── tram-url.json ??
+└── tram
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── forms.py ?
+    ├── migrations
+    │   └── __init__.py
+    ├── models.py ?
+	├── templates ??
+    │  └── tram
+    │      ├── find_route.html !
+    │      ├── home.html !
+	│      ├── images
+    │      │   ├── gbg_tramnet.svg
+    │      │   └── shortest_path.svg -> ../../../../static/
+	│      ├── route_detail.html !
+    │      └── static
+    ├── tests.py
+    ├── urls.py ?
+    ├── utils
+    │   ├── __init__.py
+    │   ├── graphs.py ?? 
+    │   ├── trams.py ??
+    │   └── tramviz.py ??
+    └── views.py !
+```
+Most part of the actual work will happen in ``tramviz.py``, which we will describe in a separate section.
 However, you may actually spend much of your time just to make this all work so that you can see the app in action in your web browser.
 
 
-### Changes to `trams.py`
+### The file `tram/utils/graphs.py`
 
-The imports of Lab 2 files are now from their app versions:
+The simplest solution is just to copy your Lab 2 file here.
 
-    import json
-    from app import graphs as g
-    from urllib.request import urlopen
 
-In `readTramNetwork()`, the JSON file is read from a URL, pointing to the `static` subdirectory of the app.
-The URL that can be used is
+### The file `tram/utils/trams.py`
 
-    http://127.0.0.1:5000/static/gbg_trams.json
-
-Instead of `open` on a file, the content is loaded by
-
-    urlopen(url-of-tramfile).read().decode('utf8')
+The import from `graphs` is now to its local version, marked by prefixing ``.`` (without a slash):
+```
+    from .graphs import WeightedGraph, dijkstra
+```
+In addition, you need to modify `readTramNetwork()` in a way that works in Django.
+TODO
 
 In order to position the stops well on the map, we need to know the extreme points of the network - that is, the minimum and maximum latitude and longitude.
 To this end, we add a function (or a class method in `TramNetwork`)
@@ -102,9 +145,10 @@ To this end, we add a function (or a class method in `TramNetwork`)
         # code to compute the extreme positions
         return minlon, minlat, maxlon, maxlat
 
-(TODO: The following is a bit complicated and might be given as extra.)
 
-In Lab2 shortest path, we have ignored the effect of changing from one line to the other.
+#### Bonus part 1
+
+In Lab2 shortest path, we ignored the effect of changing from one line to the other.
 This effect is that major factor that can make "shortest time" and "shortest distance" differ.
 Its implementation requires that we recognize when a change must be made and add a suitable number of minutes or meters to the cost.
 
@@ -117,22 +161,18 @@ One way to do this with the existing algorithms is simply to build a new graph f
 - a special change distance and change time is added between vertices that have the same stop but different times - for instance, 20 metres and 10 minutes, respectively.
 
 
-### The file `tramnet.py`
+
+### The file `tramviz.py`
 
 This is the file that makes most of the work in the app.
-It imports three modules, the first two copied to app with modified paths:
+You can start from the [example file](../../examples/tramviz.py).
 
-   from app import graphs as g
-   from app import trams as t
-   import graphviz
+The function used in the app is
 
-Two functions are used in the app:
-
-- `shortest(dep, dest)`, displaying the shortest path on the map
-- `focused(lines)`, to display only the listed lines
+- `show_shortest(dep, dest)`, displaying the shortest path on the map
 
 A baseline implementation could use `graphs.visualize` from Lab 2.
-But here we want more:
+But here we want more (some of it already given in the example file):
 
 - the stops should be put into positions that correspond to their longitude and latitude;
 - there should be separate, coloured edges for each tramline that serves the same edge;
@@ -146,6 +186,8 @@ This, however, is easy to implement: as the last steps of visualization, use
 
     dot.format = 'svg'
     return dot.pipe().decode('utf-8')
+
+TODO: more details on how to use this in Django.
 
 The most complex part of this file - and the whole Lab 3 - is to make sure that the positions and colours come out right.
 Here is a possible sequence of steps to follow:
@@ -170,14 +212,46 @@ which works fine for me (the engine 'fdp' is needed to preserve absolute positio
 
 
 
-### Autocompletion
+### Bonus part 2: links to actual traffic information
 
-The route finding page helps users with autocompletion of tram stop names:
+This bonus part can be submitted even if you have not done Bonus part 1.
 
-![autocompletion](../images/find-auto.png)
+The challenge is to find the URLs corresponding to each stop name.
+They are given as numerical codes, for instance, Nordstan is
+```
+https://www.vasttrafik.se/reseplanering/hallplatser/9021014004945000/
+```
+and its timetable is in
+```
+https://avgangstavla.vasttrafik.se/?source=vasttrafikse-stopareadetailspage&stopAreaGid=9021014004945000
+```
+The full list of stop identifiers can be found in
+```
+https://www.vasttrafik.se/reseplanering/hallplatslista/
+```
+The algorithm is as follows:
 
-We provide ready-made Javascript and CSS files, given in the [static](./static) directory.
-These files are copied and slightly modified from [W3Schools](https://www.w3schools.com/howto/howto_js_autocomplete.asp).
-Since this kind of communication is not directly covered in Grinberg's tutorial, we also provide the HTML template file [route.html](./templates/route.html).
+1. Investigate where and how Gids are given in the HTML document.
+2. Extract the Gids of all tram stops from the document.
+3. Create URLs for every stop.
+4. Include the URLs in the generated map.
+
+The standard library for parsing HTML is
+```
+https://docs.python.org/3/library/html.parser.html
+```
+A slightly more convenient third party library can also be used:
+```
+https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+```
+
+
+## Submission
+
+Via a GitHub link in Canvas, as usual.
+
+Indicate in your Canvas message whether you claim bonus points for Bonus task 1 or 2 or both.
+
+
 
 
