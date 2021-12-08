@@ -5,14 +5,18 @@ Advanced Python Course, Chalmers DAT515, 2021
 by Aarne Ranta
 
 
-DRAFT, 7 December
+Version 1.0, 8 December 2021
 
 NOTICE: if you have already started working in Flask, in accordance
-with the earlier draft, you can continue with this.
+with the earlier draft, you can continue with this specification.
 The directories `static` and `templates` belong the the Flask version.
-But we will have to make some changes in this file, to define the bonus parts in the same way as in this Django version.
-If you have not started yet, we strongly recommend building the Django version in `lab3.md`.
 
+If you have not started yet, we strongly recommend building the Django
+version as specified in `lab3.md`.
+The instructions there are much more detailed.
+
+The task, including the bonus parts, is exactly the same in the Flask
+and Django versions.
 
 ## Purpose
 
@@ -21,7 +25,9 @@ Your application will
 
 - display the complete map of tram lines
 - highlight shortest paths in terms of time and geographical distance
-- bonus part: show actual departures from any stops by clicking at it on the map
+- bonus part 1: make the calculations more precise by taking changes into account
+- bonus part 2: show actual departures from any stops by clicking at it on the map
+
 
 Here is an example screenshot:
 
@@ -39,10 +45,14 @@ Thereby we do not have to cope with security issues, and it will also be much ea
 The learning outcomes include:
 
 - visualization with more details on positions and colours
-- simple front-end construction with HTML, as well as external CSS and JavaScript
-- putting everything together by using a webb application framework
+- simple front-end construction with HTML
+- putting everything together by using a web application framework, Django
 - more details of `graphviz` library, various libraries belonging to the `flask` framework
 - virtual environments (`venv`)
+
+
+The basic lab gives 10 points and each bonus part 4 points.
+Thus the maximum is 18 points.
 
 
 ## The task
@@ -111,9 +121,37 @@ To this end, we add a function (or a class method in `TramNetwork`)
         # code to compute the extreme positions
         return minlon, minlat, maxlon, maxlat
 
-(TODO: The following is a bit complicated and might be given as extra.)
 
-In Lab2 shortest path, we have ignored the effect of changing from one line to the other.
+### The file `tramviz.py`
+
+This file can be modified from [the Django version file](files/tramviz.py).
+You have to change the imports and the file paths read and generated to match Flask conventions.
+```
+   from app import graphs
+   from app import trams
+```
+The function imported to the app is still
+
+- `show_shortest(dep, dest)`, displaying the shortest path on the map
+
+
+
+### Autocompletion
+
+(Optional, since the Django version does not require this)
+
+The route finding page helps users with autocompletion of tram stop names:
+
+![autocompletion](../images/find-auto.png)
+
+We provide ready-made Javascript and CSS files, given in the [static](./static) directory.
+These files are copied and slightly modified from [W3Schools](https://www.w3schools.com/howto/howto_js_autocomplete.asp).
+Since this kind of communication is not directly covered in Grinberg's tutorial, we also provide the HTML template file [route.html](./templates/route.html).
+
+
+## Bonus part 1
+
+In Lab2 shortest path, we ignored the effect of changing from one line to the other.
 This effect is that major factor that can make "shortest time" and "shortest distance" differ.
 Its implementation requires that we recognize when a change must be made and add a suitable number of minutes or meters to the cost.
 
@@ -126,66 +164,43 @@ One way to do this with the existing algorithms is simply to build a new graph f
 - a special change distance and change time is added between vertices that have the same stop but different times - for instance, 20 metres and 10 minutes, respectively.
 
 
-### The file `tramviz.py`
+## Bonus part 2: links to actual traffic information
 
-This is the file that makes most of the work in the app.
-It imports three modules, the first two copied to app with modified paths:
+This bonus part can be submitted even if you have not done Bonus part 1.
 
-   from app import graphs as g
-   from app import trams as t
-   import graphviz
+The challenge is to find the URLs corresponding to each stop name.
+They are given as numerical codes, for instance, Nordstan is
+```
+https://www.vasttrafik.se/reseplanering/hallplatser/9021014004945000/
+```
+and its timetable is in
+```
+https://avgangstavla.vasttrafik.se/?source=vasttrafikse-stopareadetailspage&stopAreaGid=9021014004945000
+```
+The full list of stop identifiers can be found in
+```
+https://www.vasttrafik.se/reseplanering/hallplatslista/
+```
+The algorithm is as follows:
 
-The function imported to the app is
+1. Investigate where and how Gids are given in the HTML document.
+2. Extract the Gids of all tram stops from the document.
+3. Create URLs for every stop.
+4. Include the URLs in the generated map.
 
-- `show_shortest(dep, dest)`, displaying the shortest path on the map
-
-A baseline implementation could use `graphs.visualize` from Lab 2.
-But here we want more:
-
-- the stops should be put into positions that correspond to their longitude and latitude;
-- there should be separate, coloured edges for each tramline that serves the same edge;
-- two possibly different shortest paths should be shown: the temporally and geographically shortest.
-
-Moreover, there is a technical difference:
-
-- the map should be generated in the SVG format (Scalable Vector Graphics) and piped directly to the app.
-
-This, however, is easy to implement: as the last steps of visualization, use
-
-    dot.format = 'svg'
-    return dot.pipe().decode('utf-8')
-
-The most complex part of this file - and the whole Lab 3 - is to make sure that the positions and colours come out right.
-Here is a possible sequence of steps to follow:
-
-- use `graphs.extreme_positions()` to compute the corners, the width, and the height of the map in geographic degrees;
-- calculate `x` coordinates from *longitudes* by subtracting the minimal longitude from the actual longitude, and multiplying with a suitable constant (500 works well for me);
-- calculate `y` coordinates similarly from latitudes;
-- create a canvas of suitable size for the map, by for instance
-
-    dot = graphviz.Graph(engine='fdp', graph_attr={'size': '12,12'})
-
-which works fine for me (the engine 'fdp' is needed to preserve absolute positions);
-- compute the shortest paths, with respect to both distance and time;
-- print the nodes of the map, displaying the name of each tram stop and colouring it in three of different colours depending on if it appears on the shortest time path, shortest distance path, or both (see the picture at the beginning of this document, using yellow, cyan, and lightgreen, respectively);
-- draw edges corresponding to each line with their colors - the following color map is an approximation of what is actually used
-
-    {1: 'gray', 2: 'yellow', 3: 'blue', 4: 'green', 5: 'red',
-     6: 'orange', 7: 'brown', 8: 'purple', 9: 'blue',
-     10: 'lightgreen', 11: 'black', 13: 'pink'}
-
-- print the listing of the quickest path and its duration, and the shortest (if different) and its length.
+The standard library for parsing HTML is
+```
+https://docs.python.org/3/library/html.parser.html
+```
+A slightly more convenient third party library can also be used:
+```
+https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+```
 
 
+## Submission
 
-### Autocompletion
+Via a GitHub link in Canvas, as usual.
 
-The route finding page helps users with autocompletion of tram stop names:
-
-![autocompletion](../images/find-auto.png)
-
-We provide ready-made Javascript and CSS files, given in the [static](./static) directory.
-These files are copied and slightly modified from [W3Schools](https://www.w3schools.com/howto/howto_js_autocomplete.asp).
-Since this kind of communication is not directly covered in Grinberg's tutorial, we also provide the HTML template file [route.html](./templates/route.html).
-
+Indicate in your Canvas message whether you claim bonus points for Bonus task 1 or 2 or both.
 
