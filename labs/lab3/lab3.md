@@ -121,25 +121,22 @@ The following steps must be taken at the first time
 $ mkdir lab3
 $ cd lab3
 $ python3 -m venv myvenv
-$ ls
 $ source myvenv/bin/activate
 $ pip install django
 $ pip install graphviz
-$ ls
+$ pip install networkx              (if you used networkx in lab2)
 $ django-admin startproject mysite .
-$ ls
-  manage.py	mysite		myvenv		notes.md
 ```
-At later times, only the `activate` step is needed.
-
+At later times (every time you resume working on the project), only the `activate` step is needed.
 
 ## Change default settings
 
-In the generated `mysite/settings.py`, you need to change
+In the generated `mysite/settings.py`, you need to change `ALLOWED_HOSTS` to
 ```
 ALLOWED_HOSTS = ['127.0.0.1']
 ```
-and added to the end
+and add to the end
+
 ```
 import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
@@ -152,28 +149,24 @@ $ mkdir static
 
 ## Create database and test run
 
-These steps are needed at the first time
+These steps are needed at the first time:
+
 ```
 $ python manage.py migrate
 $ python manage.py runserver
   Starting development server at http://127.0.0.1:8000/
 ```
 
+The last command will start a server. Follow the URL to check if the installation succeeded.
+
 ## Create the tram app
 
 ```
 $ python manage.py startapp tram
-$ ls
-  db.sqlite3	mysite		notes.md
-  manage.py	myvenv		tram
-
-$ ls tram
-  __init__.py	apps.py		models.py	views.py
-  admin.py	migrations	tests.py
 ```
 Then add the line
 ```
- 'tram.apps.TramConfig',
+'tram.apps.TramConfig',
 ```
 to the end of `mysite/settings.py`.
 
@@ -191,6 +184,9 @@ class Route(models.Model):
     def __str__(self):
         return self.dep + '-' + self.dest
 ```
+
+In `settings.py`, add `tram` to the list of `INSTALLED_APPS`
+
 Then you have to migrate it to the database:
 ```
 $ python manage.py makemigrations tram
@@ -266,7 +262,7 @@ The templates reside in a sub-sub-sub-directory, which has to be created first:
 $ mkdir tram/templates
 $ mkdir tram/templates/tram
 ```
-Copy the HTML files mentioned in ``tram/views.py``, so that
+Copy the HTML files mentioned in ``tram/views.py`` from the `files` folder to the newly created `tram/templates/tram`, so that
 ```
 $ ls tram/templates/tram/
   find_route.html	home.html
@@ -275,7 +271,7 @@ Also create the `images` subdirectory:
 ```
 $ mkdir tram/templates/tram/images
 ```
-Then copy the Wikipedia tram network image `wikipedia_gbg_tramnet.svg` there so that you can view the pages by running the server again,
+Then copy the Wikipedia tram network image `wikipedia_gbg_tramnet.svg` (also under `files`) there so that you can view the pages by running the server again,
 ```
 $ python manage.py runserver
 ```
