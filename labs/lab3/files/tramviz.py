@@ -10,6 +10,10 @@ from django.conf import settings
 # to be defined in Bonus task 1, but already included as mock-up
 from .trams import specialize_stops_to_lines, specialized_geo_distance, specialized_transition_time
 
+SHORTEST_PATH_SVG = os.path.join(settings.BASE_DIR,
+                        'tram/templates/tram/images/shortest_path.svg')
+
+
 # assign colors to lines, indexed by line number; not quite accurate
 gbg_linecolors = {
     1: 'gray', 2: 'yellow', 3: 'blue', 4: 'green', 5: 'red',
@@ -66,7 +70,7 @@ def network_graphviz(network, colors=None, positions=None):
 
     dot.format = 'svg'
     s = dot.pipe().decode('utf-8')
-    path = os.path.join(settings.BASE_DIR, 'static/shortest_path.svg')
+    path = SHORTEST_PATH_SVG
     with open(path, 'w') as file:
         file.write(s)
 
