@@ -42,18 +42,19 @@ def stop_url(stop):
 
 
 # You don't probably need to change this
-def network_graphviz(network, colors=None, positions=None):
+
+def network_graphviz(network, outfile, colors=None, positions=scaled_position):
     dot = graphviz.Graph(engine='fdp', graph_attr={'size': '12,12'})
 
     for stop in network.all_stops():
         
         x, y = network.stop_position(stop)
         if positions:
-            x, y = positions((x, y))
+            x, y = positions(network)((x, y))
         pos_x, pos_y = str(x), str(y)
         
         if colors:
-            col = colors(stop)
+            col = colors(stop) # set this to white to create gbg_tramnet.svg
         else:
             col = 'white'
             
@@ -70,17 +71,20 @@ def network_graphviz(network, colors=None, positions=None):
 
     dot.format = 'svg'
     s = dot.pipe().decode('utf-8')
-    path = SHORTEST_PATH_SVG
-    with open(path, 'w') as file:
+    with open(outfile, 'w') as file:
         file.write(s)
 
 
 def show_shortest(dep, dest):
     # TODO: uncomment this when it works with your own code
-    # network = trams.readTramNetwork()
+    network = readTramNetwork()
 
     # TODO: replace this mock-up with actual computation using dijkstra
     timepath = 'The quickest route from ' + dep + ' to ' + dest
     geopath = 'The shortest route from ' + dep + ' to ' + dest
+
+    # TODO: run this with the shortest-path colors to update the svg image
+    # network_graphviz(network, SHORTEST_PATH_SVG, colors=...):
     
     return timepath, geopath
+
