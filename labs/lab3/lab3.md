@@ -96,11 +96,11 @@ lab3
     ├── migrations
     │   └── __init__.py
     ├── models.py ?
-	├── templates ?
-    │  └── tram ?
+    ├── templates ?
+    │   └── tram ?
     │      ├── find_route.html !!
     │      ├── home.html !!
-	│      ├── images
+    │      ├── images
     │      │   ├── gbg_tramnet.svg ?!
     │      │   ├── wikipedia_gbg_tramnet.svg !!
     │      │   └── shortest_path.svg ?!
@@ -112,7 +112,7 @@ lab3
     │   ├── graphs.py ?? 
     │   ├── trams.py ??
     │   └── tramviz.py ??
-    └── views.py !
+    └── views.py !!
 ```
 
 
@@ -131,7 +131,7 @@ The following steps must be taken at the first time:
   pip install django
   pip install graphviz
   pip install networkx 
-  ``` 
+``` 
 6. run `django-admin startproject mysite .`
 
 At later times (every time you resume working on the project), only the `activate` step (4) is needed.
@@ -317,10 +317,14 @@ Now that you have created the utility files, you can replace the simplified `tra
 
 Now it is "just" your part of the work that remains.
 Most of this work is to be done in the files in `tram/utils`.
-Links in `home.html` and `show_route.html` should also be changed to your local files when you are
-able to generate them.
+They contain `TODO` comments that instruct you what to do.
+
+Links in `home.html` and `show_route.html` should also be changed to
+your local files when you are able to generate them.
+This is likewise explained in comments in these files.
+
 How to create your own static picture `gbg_tramnet.svg` is explained
-in `tramviz.py`: just set the color uniformly to white and make a
+in `tramviz.py`: just set the color uniformly to white and make any
 search.
 
 You can of course also makes the HTML files look nicer if you have time!

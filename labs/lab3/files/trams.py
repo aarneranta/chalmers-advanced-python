@@ -12,6 +12,15 @@ from django.conf import settings
 TRAM_FILE = os.path.join(settings.BASE_DIR, 'static/tramnetwork.json')
 
 
+# TODO: use your lab 2 class definition, but add one method
+# class TramNetwork(WeightedGraph):    
+    # def extreme_positions(self):
+        # stops = self._stopdict.values()
+        # minlat = min([s._position[0] for s in stops])
+        # etc
+        # return minlon, minlat, maxlon, maxlat
+
+
 def readTramNetwork():
     # TODO: your own trams.readTramNetwork()
     pass
