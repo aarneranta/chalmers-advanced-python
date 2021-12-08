@@ -120,21 +120,18 @@ lab3
 
 If you have already created the project with copies of the provided files, you can go down to the section "TODO: continue from here".
 
-The following steps must be taken at the first time:
-
-1. create, if necessary, a directory for lab 3: `mkdir lab3`
-2. move inside it: `cd lab3`
-3. create a Python virtual environment: `python3 -m venv myvenv` or `python -m venv myvenv` if Python 3 is the only version of Windows you have installed
-4. activate the virtual environment: `source myvenv/bin/activate` on Linux/Mac, `myenv/Scripts/activate.bat` on Windows
-5. install the necessary Python library (`networkx` is only necessary if you did the baseline version of lab 2):
-  ```
-  pip install django
-  pip install graphviz
-  pip install networkx 
-  ``` 
-6. run `django-admin startproject mysite .`
-
-At later times (every time you resume working on the project), only the `activate` step (4) is needed.
+The following steps must be taken at the first time
+```
+$ mkdir lab3
+$ cd lab3
+$ python3 -m venv myvenv
+$ source myvenv/bin/activate
+$ pip install django
+$ pip install graphviz
+$ pip install networkx              (if you used networkx in lab2)
+$ django-admin startproject mysite .
+```
+At later times (every time you resume working on the project), only the `activate` step is needed.
 
 ## Change default settings
 
