@@ -323,7 +323,13 @@ Now that you have created the utility files, you can replace the simplified `tra
 
 Now it is "just" your part of the work that remains.
 Most of this work is to be done in the files in `tram/utils`.
-But you can of course also makes the HTML files look nicer if you have time!
+Links in `home.html` and `show_route.html` should also be changed to your local files when you are
+able to generate them.
+How to create your own static picture `gbg_tramnet.svg` is explained
+in `tramviz.py`: just set the color uniformly to white and make a
+search.
+
+You can of course also makes the HTML files look nicer if you have time!
 
 
 ## Bonus part 1
