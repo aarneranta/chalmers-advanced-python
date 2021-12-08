@@ -172,9 +172,7 @@ Then add the line
 ```
 'tram.apps.TramConfig',
 ```
-to the end of `mysite/settings.py`
-
-and  add `tram` to the list of `INSTALLED_APPS` in the same file.
+to the end of the `INSTALLED_APPS` list in `settings.py`.
 
 ### Create a model
 
