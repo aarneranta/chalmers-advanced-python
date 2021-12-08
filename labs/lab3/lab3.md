@@ -172,8 +172,9 @@ Then add the line
 ```
 'tram.apps.TramConfig',
 ```
-to the end of `mysite/settings.py`.
+to the end of `mysite/settings.py`
 
+and  add `tram` to the list of `INSTALLED_APPS` in the same file.
 
 ### Create a model
 
@@ -188,8 +189,6 @@ class Route(models.Model):
     def __str__(self):
         return self.dep + '-' + self.dest
 ```
-
-In `settings.py`, add `tram` to the list of `INSTALLED_APPS`
 
 Then you have to migrate it to the database:
 ```
