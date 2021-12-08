@@ -12,8 +12,9 @@ Version 1.0, 7 December 2021
 
 NOTICE: if you have already started working in Flask, in accordance with the earlier draft, you can follow the specification in `flask-labd.md`.
 The directories `static` and `templates` belong the the Flask version.
-But we will have to make some changes in the spec, to define the bonus parts in the same way as in this Django version.
-
+The actual task, including bonus parts, is the same.
+But the instructions for Flask are less detailed, so we recommend the
+Django version in this document. 
 
 ## Purpose
 
