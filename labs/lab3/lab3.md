@@ -194,9 +194,6 @@ $ python manage.py makemigrations tram
 $ python manage.py migrate tram
 ```
 
-### (Admin and Deploy: skip)
-
-
 ### Update URL search patterns
 
 Edit the generated `mysite/urls.py` so that it looks as follows:
