@@ -118,7 +118,8 @@ lab3
 
 ## The Django workflow
 
-If you have already created the project with copies of the provided files, you can go down to the section "TODO: continue from here".
+If you have already created the project with copies of the provided
+files, you can go down to the section "Your TODO: continue from here".
 
 The following steps must be taken at the first time:
 
@@ -148,7 +149,7 @@ and add to the end
 import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 ```
-The `static` directory is needed for some files later, so create it now.
+The `static` directory is needed for some files later, so create it now:
 ```
 $ mkdir static
 ```
@@ -313,7 +314,7 @@ Copy the following given files into `tram/utils`:
 Now that you have created the utility files, you can replace the simplified `tram/views.py` with the one given in `files`.
 
 
-## TODO: continue from here
+## Your TODO: continue from here
 
 Now it is "just" your part of the work that remains.
 Most of this work is to be done in the files in `tram/utils`.

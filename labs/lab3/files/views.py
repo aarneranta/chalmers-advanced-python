@@ -16,7 +16,7 @@ def find_route(request):
             route = form.data
             timepath, geopath = show_shortest(route['dep'], route['dest'])
             return render(request, 'tram/show_route.html',
-                {'dest': form.instance.__str__(), 'timepath': timepath, 'geopath': geopath})
+                {'route': form.instance.__str__(), 'timepath': timepath, 'geopath': geopath})
     else:
         form = RouteForm()
     return render(request, 'tram/find_route.html', {'form': form})
