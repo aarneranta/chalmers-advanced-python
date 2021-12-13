@@ -33,9 +33,9 @@ Here is an example screenshot:
 
 In some more detail, here is how the three different screens should look:
 
-- [the home screen](examples/home.html)
-- [the route search form](examples/find_route.html)
-- [the search result](examples/show_route.html)
+- [the home screen](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/home.html)
+- [the route search form](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/find_route.html)
+- [the search result](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/show_route.html)
 
 The HTML code of each of these pages is already included in the template files in `files/`.
 Thus these examples show how the pages should look when you have filled in the templates with your program.
