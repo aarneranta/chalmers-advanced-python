@@ -41,7 +41,9 @@ def stop_url(stop):
     return google_url + '?' + attrs
 
 
-# You don't probably need to change this
+# You don't probably need to change this, if your TramNetwork class uses the same
+# method names and types and represents positions as ordered pairs.
+# If not, you will need to change the method call to correspond to your class.
 
 def network_graphviz(network, outfile, colors=None, positions=scaled_position):
     dot = graphviz.Graph(engine='fdp', graph_attr={'size': '12,12'})
@@ -79,7 +81,13 @@ def show_shortest(dep, dest):
     # TODO: uncomment this when it works with your own code
     network = readTramNetwork()
 
-    # TODO: replace this mock-up with actual computation using dijkstra
+    # TODO: replace this mock-up with actual computation using dijkstra.
+    # First you need to calculate the shortest and quickest paths, by using appropriate
+    # cost functions in dijkstra().
+    # Then you just need to use the lists of stops returned by dijkstra()
+    #
+    # If you do Bonus 1, you could also tell which tram lines you use and where changes
+    # happen. But since this was not mentioned in lab3.md, it is not compulsory.
     timepath = 'The quickest route from ' + dep + ' to ' + dest
     geopath = 'The shortest route from ' + dep + ' to ' + dest
 

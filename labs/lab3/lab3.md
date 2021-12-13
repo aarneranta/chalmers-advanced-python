@@ -31,6 +31,15 @@ Here is an example screenshot:
 
 ![shortest-path](../images/app-shortest.png)
 
+In some more detail, here is how the three different screens should look:
+
+- [the home screen](examples/home.html)
+- [the route search form](examples/find_route.html)
+- [the search result](examples/show_route.html)
+
+The HTML code of each of these pages is already included in the template files in `files/`.
+Thus these examples show how the pages should look when you have filled in the templates with your program.
+
 Unlike the official app, ours will not have access to the actual timetables, but just to the distances and times as defined in Labs 1 and 2.
 This is of course a severe simplification - but, on the other hand,
 our app will be usable for any transport system that can be
@@ -319,6 +328,19 @@ Now that you have created the utility files, you can replace the simplified `tra
 Now it is "just" your part of the work that remains.
 Most of this work is to be done in the files in `tram/utils`.
 They contain `TODO` comments that instruct you what to do.
+
+The file `files/tramviz.py` has some parts that should be modified to match the class definitions and method names in your own `trams.py` file from Lab 2.
+This concerns in particular the function `network_graphviz()`, which does work "out of the box" if you have used certain method names and data representations.
+But since these details were not specified in Lab 2, you will have to adapt the function to your own implemantation.
+
+As the picture in `examples/show_route.html` shows, we expect three different colours to be used:
+
+- green for stops on the shortest path
+- orange for stops on quickest path
+- cyan for stops that are on both paths
+
+You can also use some other colours if you prefer.
+Other stops should be left white.
 
 Links in `home.html` and `show_route.html` should also be changed to
 your local files when you are able to generate them.
