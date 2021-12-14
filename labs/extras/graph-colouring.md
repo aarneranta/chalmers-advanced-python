@@ -29,7 +29,6 @@ The underlying graph is more explicitly seen in this picture:
 
 ![Europe](files/colorgraph.png)
 
-
 ### For those interested (not covered in this lab)
 
 Another application is **register allocation** in compilers.
@@ -56,7 +55,7 @@ Here is the book's description of the two steps of the algorithm, **simplify** a
 
 ![simplify](files/simplify.png)
 
-![select](files/simplify.png)
+![select](files/select.png)
 
 As an example, let us go through the steps of achieving the colouring of the following graph with three colours:
 
