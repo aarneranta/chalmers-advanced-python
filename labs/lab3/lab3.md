@@ -405,9 +405,9 @@ https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 ## Submission
 
 Via a GitHub link in Canvas, as usual.
+You are recommended to use `.gitignore` in order not to store the virtual environment directory.
 
 Indicate in your Canvas message whether you claim bonus points for Bonus task 1 or 2 or both.
 
-
-
-
+In addition to inspecting your code, we will organize a Zoom meeting where you demonstrate your application to a teacher.
+These meetings will be scheduled in the first week of January, and a registration form will be published before the lab deadline.
