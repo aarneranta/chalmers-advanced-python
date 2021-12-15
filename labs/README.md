@@ -8,16 +8,16 @@ by Aarne Ranta
 The following table shows how many points can be gained from each lab:
 
 | Lab   | Basic part | Bonus 1 | Bonus 2 |
-| ---   | ---------- | ------- | ------- |
-| Lab 1 | 10         | 2       | -       |
-| Lab 2 | 10         | 4       | -       |
-| Lab 3 | 10         | 4       | 4       |
+| ----- | ---------- | ------- | ------- |
+| Lab 1 | **10**         | 2       | -       |
+| Lab 2 | **10**         | 4       | -       |
+| Lab 3 | **10**         | 4       | 4       |
 | extra-colouring  | 6         | 4       | -     |
 | extra-clustering | 6         | -       | -     |
 
 The minimum points for different grades are:
 
-- grade 3: 30, consisting of the basic parts of Labs 1,2,3
+- grade 3: 30, consisting of the basic parts of Labs 1,2,3 (in **boldface**)
 - grade 4: 40, must include all basic parts of Labs 1,2,3
 - grade 5: 50, must include all basic parts of Labs 1,2,3
 
