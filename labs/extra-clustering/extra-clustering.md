@@ -1,4 +1,4 @@
-# Extra Lab: Graph Colouring
+# Extra Lab: Clustering
 
 Advanced Python Course, Chalmers DAT515, 2021
 
