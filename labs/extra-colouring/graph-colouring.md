@@ -8,7 +8,8 @@ DRAFT, to be competed and finalized by 20 December
 
 *This is an extra lab, thus not compulsory.*
 *But it gives an opportunity to gain a higher grade.*
-*The limit of grade 5 is 50 points in total, of grade 4 it is 40 points.* 
+*It has Part 1, which gives 6 points, and Part 2, 4 points.*
+*The limit is 50 points in total for grade 5, 40 points for grade 4.* 
 *Thus, for instance, doing Part 1 of this lab is sufficient for grade 5, if you have done all bonus parts of the ordinary labs.*
 
 
