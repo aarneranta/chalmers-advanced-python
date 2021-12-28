@@ -4,7 +4,7 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
-DRAFT, to be competed and finalized by 20 December
+Version 1.0, 17 December 2021.
 
 *This is an extra lab, thus not compulsory.*
 *But it gives an opportunity to gain a higher grade.*
