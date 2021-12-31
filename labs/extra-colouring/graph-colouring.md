@@ -82,7 +82,7 @@ The result is
 ![select](files/colored.png)
 
 Steps 1 to 7 could be taken in a different order, depending on
-which of the possible vertices to remove next: the first one could be any of 2,4,5,6,7 which all have less than 2 neighbors.
+which of the possible vertices to remove next: the first one could be any of 2,4,5,6,7 which all have less than 3 neighbours.
 Steps 8 to 14 must be the exact reverse of 1 to 7, but there is some freedom in selecting colors at many of the steps.
 
 You should test your algorithm with the same example, plus many others.
