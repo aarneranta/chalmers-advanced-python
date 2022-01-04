@@ -38,7 +38,7 @@ As our first algorithm, we will cluster this graph using the **k-spanning tree**
 ![Europe](images/k-span.png)
 
 with the value k=1000.
-The method used is first to build a minimal spanning tree, then remove those 1000 edges that have the longes distance.
+The method used is first to build a minimal spanning tree, then remove those 999 edges that have the longest distance.
 
 As the second algorithm, we perform clustering with the **k-means** method and obtain the picture
 
