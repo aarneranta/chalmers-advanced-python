@@ -131,13 +131,13 @@ An input file in the expected format is
 [`tramlines.txt`](../data/tramlines.txt).
 It is a textual representation of timetables for each line, looking as
 follows:
-
+```
   1:
   Östra Sjukhuset           10:00
   Tingvallsvägen            10:01
   Kaggeledstorget           10:03
   Ättehögsgatan             10:03
-
+```
 Thus, for each tram line, there is a section starting with the line number
 and a colon.
 After that, the stops are given together with times.
