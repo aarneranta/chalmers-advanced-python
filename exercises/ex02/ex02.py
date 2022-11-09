@@ -92,11 +92,25 @@ def most_common_currency(data):
     return currencies[0][1]
 
 
-def least_population_difference(data):
-    pass
+def least_diff_in_pop(d):
+    pop_name_list = sorted(
+        [(d['population'],name) for (name, d) in d.items()])
+    c1 = pop_name_list[0][1]
+    c2 = pop_name_list[1][1]
+    min_diff = pop_name_list[1][0] - pop_name_list[0][0]
+    for (i, (pop, name)) in enumerate(pop_name_list[:-1]):
+        (next_pop, next_name) = pop_name_list[i + 1]
+        diff = next_pop - pop  
+        if diff < min_diff:
+            min_diff = diff
+            c1 = name
+            c2 = next_name
+    return c1, c2
 
-def countries_by_density(data):
-    pass
+def countries_by_density(d):
+    return sorted(
+        [(d['population'] / d['area'] ,name) for (name, d) in d.items()], 
+        reverse=True)
 
 def query_test():
     d = tsv2dict('countries.tsv', key='country')
