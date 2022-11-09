@@ -92,7 +92,7 @@ def most_common_currency(data):
     return currencies[0][1]
 
 
-def least_diff_in_pop(d):
+def least_population_difference(d):
     pop_name_list = sorted(
         [(d['population'],name) for (name, d) in d.items()])
     c1 = pop_name_list[0][1]
