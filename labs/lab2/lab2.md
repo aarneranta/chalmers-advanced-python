@@ -323,6 +323,8 @@ Most of the public methods are getters:
 - list all stops
 - list all lines
 
+Note that the `.extreme_position()` method should return the minimum and maximum latitude and longitude found among all stop position. This will be needed for correctly visualizing the tram network in lab 3.
+
 
 ### Reading a TramNetwork
 
