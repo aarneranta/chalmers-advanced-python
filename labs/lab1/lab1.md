@@ -101,8 +101,8 @@ Here is a part of the stop dictionary, showing just one stop:
 
     {
       'Majvallen': {
-        'lat': '57.6909343',
-	    'lon': '11.9354935'
+        'lat': 57.6909343,
+	'lon': 11.9354935
        }
     }
 
