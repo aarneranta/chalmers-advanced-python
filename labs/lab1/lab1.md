@@ -286,9 +286,9 @@ calling `build_tram_network()` if the argument `init` is present, `dialogue()` o
 ```
     if __name__ == '__main__':
         if sys.argv[1:] == ['init']:
-            build_tram_network()
+            build_tram_network("tramlines.txt", "tramstops.json")
         else:
-            dialogue()			
+            dialogue("tramnetwork.json")			
 ```
 You also need to import `sys`.			
 
