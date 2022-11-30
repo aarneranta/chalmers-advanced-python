@@ -4,6 +4,10 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
+WARNING 30 NOVEMBER 2022: some changes are being made in this lab. They
+will be in place by 6 December. Do not start your project while this
+warning is shown. The task will be slightly simpler than last year,
+but the functionality is the same.
 
 Version 1.1, 8 December 2021: simplified the file structure a bit,
 reflected in modifications in `files/tramviz.py, views.py`.

@@ -1,6 +1,6 @@
 # Points from labs and their parts
 
-Advanced Python Course, Chalmers DAT515, 2021
+Advanced Python Course, Chalmers DAT515, 2022
 
 by Aarne Ranta
 
@@ -24,9 +24,16 @@ The minimum points for different grades are:
 Thus there is only one way to gain grade 3, but several ways for the higher grades.
 
 In addition to the labs, you will have to pass the exam.
-But the exam does not affect your final grade.
+As specified in the course plan, the exam includes extra questions for
+the extra parts.
+Your final grade is the minimum of grade from the labs or the grade from the
+exam.
 
-Since the exam is individual, it is possible that one member or a group is passed but another one failed.
+But don't worry: the exam will be easy for those who have made the labs!
+Since the exam is individual, it is still possible that one member or
+a group is passed but another one failed.
+This is likely to happen only if you have let your partner do all the
+job instead of learning the contents yourself.
 Failed students can, as usual, take a re-exam later without resubmitting their labs.
 
 
