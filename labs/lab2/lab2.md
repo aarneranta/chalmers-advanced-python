@@ -399,7 +399,7 @@ You can paste the following code to your `trams.py` file to demonstrate and test
     def demo():
         G = readTramNetwork()
         a, b = input('from,to ').split(',')
-        gr.view_shortest(G, a, b)
+        view_shortest(G, a, b)
 
     if __name__ == '__main__':
         demo()
