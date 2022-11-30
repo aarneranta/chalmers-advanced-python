@@ -113,9 +113,9 @@ The public methods to be implemented are:
 - `remove_vertex(vertex)` (also removing the edges with this vertex)
 - `remove_edge(vertex, vertex)` (vertices not removed even if left unconnected)
 - `get_vertex_value(vertex)` 
-- `set_vertex_value(vertex)`
+- `set_vertex_value(vertex, value)`
 
-Yhe *vertex values* can initially be `None`, but they are useful for storing information such as the location of a tram stop.
+The *vertex values* can initially be `None`, but they are useful for storing information such as the location of a tram stop.
 
 If you have read an earlier draft of this document, you may notice that we have simplified the specification a bit:
 
