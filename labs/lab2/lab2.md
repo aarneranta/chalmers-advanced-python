@@ -4,6 +4,19 @@ Advanced Python Course, Chalmers DAT515, 2021
 
 by Aarne Ranta
 
+Version 1.3, 30 November 2022
+
+Updated UML diagram, more explanations of the following points (also read the full details in the text below):
+
+- about the values of vertices: they can be e.g. the locations of stops
+- about the weights of edges: they can be e.g. transition times between stops
+- about native `dijkstra()`: the pseudocode in Wikipedia does not return the paths, but doing that is required, and it is an easy modification of the pseudocode
+- about your test file: it is enough that it contains some tests that show that you know how to use Python's test libraries; `hypothesis` is just a recommendation, not a requirement
+- about `TramNetwork` class: for the methods listing lines and stops, it is enough to list their names (but listing complete objects is not wrong either)
+- about the final demo of `trams.py`: hint that if it works correctly, your code is probably right
+- about your Git repository: it should have subdirectories lab1/, lab2/, and lab3/
+
+
 Version 1.2, 1 December 2021
 
 Modified the test about edge symmetry (`(a, b)` implies `(b, a)`): now about neighbors instead.
@@ -70,9 +83,12 @@ In addition to the classes, you will have to implement the following functions:
     visualize(graph, view='dot', name='mygraph', nodecolors={}, engine='dot')
 
     # in trams.py
-    readTramNetwork(file='tramnetwork.json)
+    readTramNetwork(file='tramnetwork.json')
 ```
-Last but not least, you will have to write tests using `unittest` and `hypothesis` libraries.
+The functionalities of these classes and functions will be specified
+in detail below.
+
+Last but not least, you will have to write tests using either the `unittest` or `hypothesis` libraries, or both.
 
 
 ## The task: file `graphs.py`
@@ -95,9 +111,11 @@ The public methods to be implemented are:
 - `add_vertex(vertex)`
 - `add_edge(vertex, vertex)` 
 - `remove_vertex(vertex)` (also removing the edges with this vertex)
-- `remove_edge(vertex, vertex)`
-- `get_vertex_value(vertex)`
+- `remove_edge(vertex, vertex)` (vertices not removed even if left unconnected)
+- `get_vertex_value(vertex)` 
 - `set_vertex_value(vertex)`
+
+Yhe *vertex values* can initially be `None`, but they are useful for storing information such as the location of a tram stop.
 
 If you have read an earlier draft of this document, you may notice that we have simplified the specification a bit:
 
@@ -114,8 +132,9 @@ The simplest way to implement graphs is by inheriting from `networkx.Graph`:
             super().__init__(start)
 ```
 The internal representation is inherited from `nx.Graph`, so you don't need to define any hidden variables.
+(The start argument of `nx.Graph()` can be a list of edges, as required in this lab, but it can also be other things, such as an adjacency list.)
 
-Some of the public methods also exist in `nx.Graph` with exactly the same names.
+Some of the public methods required in this lab exist in `nx.Graph` with exactly the same names.
 They need not be defined in your class, since they are inherited.
 Some other methods have different names, so that to implement the desired API, you have to write, for example,
 ```
@@ -133,11 +152,12 @@ Here is a minimal example suggesting how you could do to set and get values of n
     {'location': 234}
 ```
 
+
 #### Native implementation, gives bonus points
 
 If you write a native implementation without using `networkx` (or any other libraries), you need to
 
-- design an internal representation, stored in private instance variables (such as `_adjacencylist`),
+- design an internal representation, stored in private instance variables (such as `_adjacencylist` and `_valuedict`),
 - define all the public methods as specified above.
 
 
@@ -146,6 +166,8 @@ If you write a native implementation without using `networkx` (or any other libr
 
 `WeightedGraph` is a subclass of `Graph`, which stores **edge weights**.
 These weights can be objects of any type.
+In the tram network, for instance, they can store transition times between adjacent stops.
+
 The class stores weights internally (e.g. in a dictionary) and supports two public methods:
 
 - `get_weight(vertex, vertex)`
@@ -159,7 +181,7 @@ If you have chosen the `networkx` implementation of graphs, you can implement th
     >>> G[1][2]['weight']
     8
 ```
-If you use a native implementation, the simplest solution is probably to have a separate dictionary.
+If you use a native implementation, the simplest solution is probably to have a separate dictionary whose keys are edges.
 
 
 ### The shortest path algorithm
@@ -169,8 +191,11 @@ The function
     dijkstra(graph, source, cost=lambda u,v: 1)
 ```
 computes the shortest path from `source` vertex to all other vertices, as a dictionary.
+It should return the paths as sorted lists of vertices, including the source and the target.
+
 What is shortest is calculated by the minimum sum of ``cost`` function applied to each step on the path.
 For example, if `graph` is a `WeightedGraph`, its ``get_weight()`` method can be used.
+But any function that takes two vertex arguments is possible, for instance, their geographical distance (which is calculated from vertex values rather than stored for each edge: this is to avoid redundancy).
 
 
 #### Baseline: Networkx implementation
@@ -183,7 +208,7 @@ which you can call in your own `dijkstra` function.
 To do so, you
 
 - pass the `graph` and `source` arguments to `nx.shortest_path`,
-- leave out the `target`, which causes the function to produce a dictionary for all targets,
+- leave out the `target`, thus causing the function to produce a dictionary for all targets,
 - convert the `cost` function to a `weight` attribute,
 - leave out the `method`, so that the default is used.
 
@@ -199,7 +224,12 @@ The following helper function can be used for this purpose:
 
 A suggested implementation of `dijkstra` follows the pseudocode in
 [this Wikipedia article](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm).
+
 Make sure to return a dictionary, where the keys are all target vertices reachable from the source, and their values are paths from the source to the target (i.e. lists of vertices in the order that the shortest path traverses them).
+
+Notice that the Wikipedia pseudocode algorithm does not return the paths.
+But they can be constructed inside the same algorithm when the `dist` dictionary is updated: this dictionary should not only contain the distances, but also the paths, and the path can be updated at the same time as the distance.
+(Notice also that the `networkx` function always returns the paths.)
 
 
 ### Visualization
@@ -212,6 +242,7 @@ The function
 uses the `graphviz` library, whose documentation can be found [here](https://graphviz.readthedocs.io/en/stable/api.html).
 Many examples can be found in the lecture notes, sections 5.1 and 5.2, with a description of an algorithm in section 5.7.
 The description is simple but sufficient for this function, except for how to use `nodecolors`, which you should look up in the library documentation.
+The slides for lecture 7 also give an example.
 
 The first intended use of `nodecolors` is to show the nodes along the shortest path in a different colour.
 You can append the following code to your file to demonstrate this:
@@ -231,6 +262,8 @@ You can append the following code to your file to demonstrate this:
         demo()
 ```
 
+
+
 ### Testing your graph implementation
 
 We recommend the use of `hypothesis` in the way specified in the lecture notes, Section 5.9.
@@ -245,7 +278,13 @@ Here are some other things to test:
 - if `a` has `b` as its neighbour, then `b` has `a` as its neighbour
 - the shortest path from `a` to `b` is the reverse of the shortest path from `b` to `a` (but notice that this can fail in situations where there are several shortest paths)
 
-We may collect more testing hints here even after publishing the lab.
+When grading your lab, we will just check that your test file `test_graphs.py` contains some reasonable tests and shows that you are able to use the test libraries; the use of `hypothesis` is not compulsory, but just a recommendation.
+However, we will run our own tests on your `graphs.py` file.
+If we then find errors, you may have to resubmit your lab.
+To prevent this from happening, we recommend that you take your own testing seriously!
+
+
+
 
 
 
@@ -264,7 +303,8 @@ Then you need to tell Python where to find the file `tramdata.py`:
     sys.path.append('../lab1/')
 	import tramdata as td
 ```
-
+*We assume that your Git repository has subdirectories for lab1/, lab2/, and lab3/.*
+If you have not yet done so, it is an easy task to restructure your repository: use `git mv` to move files in the correct directories after you have created them.
 
 
 ### The TramStop class
@@ -313,15 +353,19 @@ The simplest way to store the stops and lines is at dictionaries, where the stop
 But it is more scalable, in cases where stops in different positions can have the same names: then the keys should be some unique identifiers, but the values can still be TramStop objects.)
 Notice that you need not store geographical distances between stops, because they can be computed from the positions of stops.
 
+Using classes for tram stops and lines may sound a bit redundant as well: why not just use the dictionaries directly?
+This is in fact a possible solution.
+But using the classes helps make sure that each tram stop and line in fact does have all the necessary information, and it is therefore strongly recommended.
+
 Most of the public methods are getters:
 
 - the position of a stop
 - the transition time between two subsequent stops
 - the geographical distance between any two stops (from Lab 1!)
-- list the lines through a stop
-- list the stops along a line
-- list all stops
-- list all lines
+- list the lines through a stop (just the line numbers, or whole objects)
+- list the stops along a line (just the stop names, or whole objects)
+- list all stops (just the stop names, or whole objects)
+- list all lines (just the line numbers, or whole objects)
 
 Note that the `.extreme_position()` method should return the minimum and maximum latitude and longitude found among all stop position. This will be needed for correctly visualizing the tram network in lab 3.
 
@@ -345,7 +389,7 @@ You can try to generate data for them from the stop and line lists by using `hyp
 Another thing to test is the connectedness of the tram network.
 This could be done simply by just depth-first or breadth-first search, as explained in lecture notes Section 5.5.
 
-We may collect more testing hints here even after publishing the lab.
+The following demo is also a good test for yourself: if you see that it works flawlessly, you can be rather sure that all parts of your code work as they should.
 
 
 ## A demo
@@ -374,6 +418,7 @@ Submit the files
 - `test_trams.py`
 
 via the same Git repository as in Lab 1.
-Do this by reporting in Canvas that your lab is ready to be graded.
+Use separate subdirectories, lab1/ and lab2/, for the solutions of these two labs.
+Report in Canvas that your lab is ready to be graded.
 
 Also indicate in the message to Canvas if you have done a native implementation or used `networkx`.
