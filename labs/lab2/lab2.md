@@ -1,8 +1,14 @@
 # Lab2: Graphs and transport networks
 
-Advanced Python Course, Chalmers DAT515, 2021
+Advanced Python Course, Chalmers DAT515, 2022
 
 by Aarne Ranta
+
+Version 1.3.1, 1 December 2022
+
+- made it clear that the internal representation of stops and lines in
+  TramNetwork can be the dictionary from Lab 1, rather than TramStop
+  and TramLine objects
 
 Version 1.3, 30 November 2022
 
@@ -74,7 +80,12 @@ The following UML diagram shows the classes that you are expected to implement i
 
 The underscored variables right after the class names are just a hint that need not be followed.
 In fact, the baseline (non-bonus) implementation of `Graph` does not need them at all.
-The important thing is that the public methods are implemented with the names given here.
+The important thing is that the public methods are implemented with
+the names given here.
+
+As will be specified below, it is not necessary to use `TramLine` and
+`TramStop` dictionaries in `TramNetwork`, but one can just use the Lab
+1 dictionaries directly in `_linedict`, `_stopdict`, and `_timedict`.
 
 In addition to the classes, you will have to implement the following functions:
 ```
@@ -340,24 +351,37 @@ The detailed design is left to you.
 ### The TramNetwork class
 
 The class ``TramNetwork`` is a ``WeightedGraph`` (i.e. inherits from it).
-It stores internally
+It stores internally either (object-oriented way)
 
 - stops and their positions (objects of class ``TramStop``)
 - lines and their stops (objects of class ``TramLine``)
+
+or (simpler way)
+
+- the dictionaries for lines, stops, and times from Lab 1
+	
+Since these are internal implementation details, you can choose either
+of them.
+Whatever way you choose, you can build a `WeightedGraph` with
+	
 - vertices, which are all the stops
 - edges, which are transitions between consecutive stops on some line 
 - weights, which are the transition times between adjacent stops
 
-The simplest way to store the stops and lines is at dictionaries, where the stop or line name is the key and the corresponding object is the value.
+In the object-oriented method, the simplest way to store the stops and lines is at dictionaries, where the stop or line name is the key and the corresponding object is the value.
 (This comes with some redundancy, because the names are stored both in the keys and in the values.
 But it is more scalable, in cases where stops in different positions can have the same names: then the keys should be some unique identifiers, but the values can still be TramStop objects.)
-Notice that you need not store geographical distances between stops, because they can be computed from the positions of stops.
+Notice that you need not store geographical distances between stops,
+because they can be computed from the positions of stops.
+For this, you can use the geographical distance function from Lab 1.
 
-Using classes for tram stops and lines may sound a bit redundant as well: why not just use the dictionaries directly?
-This is in fact a possible solution.
-But using the classes helps make sure that each tram stop and line in fact does have all the necessary information, and it is therefore strongly recommended.
+The object-oriented way, which uses classes for tram stops and lines
+may sound a bit redundant compared with using the dictionaries directly.
+But it has the advantage that using the classes helps make sure that
+each tram stop and line in fact does have all the necessary
+information.
 
-Most of the public methods are getters:
+The public methods that we need are getters:
 
 - the position of a stop
 - the transition time between two subsequent stops
@@ -366,6 +390,9 @@ Most of the public methods are getters:
 - list the stops along a line (just the stop names, or whole objects)
 - list all stops (just the stop names, or whole objects)
 - list all lines (just the line numbers, or whole objects)
+
+If you use the names suggested in the UML diagram, some things in Lab3
+will be easier.
 
 Note that the `.extreme_position()` method should return the minimum and maximum latitude and longitude found among all stop position. This will be needed for correctly visualizing the tram network in lab 3.
 
