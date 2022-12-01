@@ -32,8 +32,8 @@ def p(ss):
 def attrs(dict):
     # forms an attribute list from a dictionary
     ats = []
-    for k in dict:
-        ats.append(str(k) + '=' + '"' + str(dict[k]) + '"')
+    for k, v in dict.items():
+        ats.append(str(k) + '=' + '"' + str(v) + '"')
     return ' '.join(ats)
 
 def a(url, s):
@@ -43,9 +43,10 @@ def a(url, s):
 
 def html(head, body):
     "Generates a complete HTML document from a head and a body lists of elements."
-    return linesintag('html',
+    return '<!DOCTYPE html>\n' + linesintag('html',
                       [linesintag('head', head),
-                       linesintag('body', body)])
+                       linesintag('body', body)],
+                      attrs='xmlns="http://www.w3.org/1999/xhtml"')
 
 
 def title(s):
