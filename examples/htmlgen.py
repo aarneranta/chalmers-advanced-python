@@ -1,13 +1,32 @@
 # a simple library for generating well-formatted HTML code
 
-def intag(tag, elems, attrs='', newline=False):
+def intag(tag, elems, attrs='', newlines=False):
     """
-    Creates a HTML element by wrapping a list of elements between a start and end tag, 
+    Creates a HTML element by wrapping a list of elements
+    between a start and end tag, 
     optionally adding newlines.
     """
-    a = ' ' if attrs else ''
-    n = '\n' if newline else ''
-    return '<'+tag+a+ attrs+'>' + n + '\n'.join(elems) + n + '</'+tag+'>'
+    attrs = ' ' + attrs if attrs else ''
+    new = '\n' if newlines else ''
+    start = '<' + tag + attrs + '>'
+    end = '</'+ tag + '>'
+    content = new.join(elems)
+    return new.join([start, content, end])
+
+
+def b(s):
+    "Generates a boldfaced text from a string."
+    return intag('b', [s])
+
+
+def linesintag(tag, elems, attrs=''):
+    "Builds element with intag with newlines always added."
+    return intag(tag, elems, attrs, newlines=True)
+
+
+def p(ss):
+    "Generates a paragraph from a list of strings."
+    return linesintag('p', ss)
 
 
 def attrs(dict):
@@ -17,18 +36,20 @@ def attrs(dict):
         ats.append(str(k) + '=' + '"' + str(dict[k]) + '"')
     return ' '.join(ats)
 
-def newintag(tag, elems, attrs=''):
-    "Builds element with intag with newlines always added."
-    return intag(tag, elems, attrs, newline=True)
+def a(url, s):
+    "Generates a hypertag from a URL and an element."
+    return intag('a', [s], attrs=attrs({'href': url}))
 
 
 def html(head, body):
     "Generates a complete HTML document from a head and a body lists of elements."
-    return '<!DOCTYPE html>\n' + newintag('html',[newintag('head', head), newintag('body', body)])
+    return linesintag('html',
+                      [linesintag('head', head),
+                       linesintag('body', body)])
 
 
 def title(s):
-    "Generates a title from a string."
+    "Generates a title (for a head) from a string."
     return intag('title', [s])
 
 
@@ -37,44 +58,53 @@ def h1(s):
     return intag('h1', [s])
 
 
-def p(s):
-    "Generates a paragraph from a list of strings."
-    return intag('p', [s])
-
-
-def a(url, s):
-    "Generates a hypertag from a URL and an element."
-    return intag('a', [s], attrs=attrs({'href': url}))
-
-
 def table(th, data):
     "Generates a table from a list of header names and a list of data lists."
-    return newintag(
-        'table', [
-        newintag('tr', [intag('th',[e]) for e in th])
-           ] + [
-        newintag('tr', [intag('td',[e]) for e in d]) for d in data]
-                        )
+    return linesintag(
+        'table',
+        [linesintag('tr', [intag('th',[e]) for e in th])] +
+        [linesintag('tr', [intag('td',[e]) for e in d]) for d in data],
+        attrs = attrs({'border': '1'}),
+        )
 
 
 # example table showing powers of numbers
 powertable = table (
-    ['x**' + str(n) for n in range(1,10)],
-    [[str(x**10) for n in range(1,10)] for x in range(1,101)]
+    ['x**' + str(n) for n in range(1,7)],
+    [[str(x**n) for n in range(1,7)] for x in range(1,101)]
     )
 
 
 # a simple document illustrating functions in this module
-doc = html(
+powerdoc = html(
         [title('Example')],
         [h1('First example'),
-         p('This is an example.'),
+         p(['This is an', b('example'), 'paragraph.']),
+         h1('Second example: a table'),
          powertable,
-         a('https://chalmers.instructure.com/courses/15902', 'course web page')
+         h1('Third example: a link'),
+         a('https://chalmers.instructure.com/courses/20986', 'course web page')
         ])
 
 
+# a document about Gbg trams
+import json
+
+TRAMDOC = 'tramnetwork.json'
+
+def tramdoc():
+    with open(TRAMDOC) as data:
+        tramdata = json.load(data)
+    lines = tramdata['lines'].items()
+    linetable = table (
+        ['line', 'stops'],
+        [[line, ', '.join(stops)] for line, stops in lines]
+        )
+    return html(['tramlines'], [linetable])
+
+
 if __name__ == '__main__':
-    print(doc)
+    print(powerdoc)
+#    print(tramdoc())
 
 
