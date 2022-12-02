@@ -4,10 +4,10 @@ Advanced Python Course, Chalmers DAT515, 2022
 
 by Aarne Ranta
 
-WARNING 30 NOVEMBER 2022: some changes are being made in this lab. They
-will be in place by 6 December. Do not start your project while this
-warning is shown. The task will be slightly simpler than last year,
-but the functionality is the same.
+Version 1.2, 2 December 2022: some changes have been made in the lab for this year.
+The functionality is similar to what it was last year, but the coding task a bit simpler.
+You can start your work now, or wait until the instruction film is posted on 5 December.
+(Some small fixes are still possible, but the requirements will not be changed any more this year.)
 
 Version 1.1, 8 December 2021: simplified the file structure a bit,
 reflected in modifications in `files/tramviz.py, views.py`.
@@ -191,6 +191,7 @@ The `static` directory is needed for some files later, so create it now:
 ```
 $ mkdir static
 ```
+You should also copy the file `tramnetwork.json` created in Lab 1 to this directory.
 
 
 ## Test run
@@ -435,13 +436,16 @@ The algorithm is as follows:
 1. Investigate where and how Gids are given in the HTML document.
 2. Extract the Gids of all tram stops from the document.
 3. Create URLs for every stop.
-4. Include the URLs in the generated map.
+4. Save the stop-URL dictionary as a JSON file
+5. Run `files/create_network_picture.py` making sure that `TRAM_URL_FILE` and `MY_TRAMNETWORK_JSON` point to your URL dictionary and tramnetwork file, respectively.
+6. Move the resulting file `my_gbg_tramnet.svg` to `tram/templates/tram/images/gbg_tramnet.svg`
+7. Make another search in your web application and click at some stop to see if the link has been updated.
 
 The standard library for parsing HTML is
 ```
 https://docs.python.org/3/library/html.parser.html
 ```
-A slightly more convenient third party library can also be used:
+A slightly more convenient third party library can also be used, in the way explained in Lecture 8.
 ```
 https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 ```
@@ -450,9 +454,12 @@ https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 ## Submission
 
 Via a GitHub link in Canvas, as usual.
+Use the subdirectory `lab3/`.
 You are recommended to use `.gitignore` in order not to store the virtual environment directory.
 
 Indicate in your Canvas message whether you claim bonus points for Bonus task 1 or 2 or both.
 
-In addition to inspecting your code, we will organize a Zoom meeting where you demonstrate your application to a teacher.
-These meetings will be scheduled in the first week of January, and a registration form will be published before the lab deadline.
+Before inspecting your code, we will organize peer reviewing sessions, where each group tests and reviews some other group's lab.
+The review report that you write will be added as a part of your submission.
+
+More details about peer reviewing and a schedule will be given before 9 December.
