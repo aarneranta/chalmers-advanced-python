@@ -2,6 +2,7 @@
 
 from .trams import readTramNetwork
 from .graphs import dijkstra
+from .color_tram_svg import color_svg_network
 import os
 from django.conf import settings
 
@@ -16,11 +17,23 @@ def show_shortest(dep, dest):
     #
     # If you do Bonus 1, you could also tell which tram lines you use and where changes
     # happen. But since this was not mentioned in lab3.md, it is not compulsory.
-    timepath = 'The quickest route from ' + dep + ' to ' + dest
-    geopath = 'The shortest route from ' + dep + ' to ' + dest
 
-    # TODO: run this with the shortest-path colors to update the svg image
-    # network_graphviz(network, SHORTEST_PATH_SVG, colors=...):
+    quickest = [dep, 'Chalmers', dest]
+    shortest = [dep, 'Chalmers', dest] 
     
+    timepath = 'Quickest: ' + ', '.join(quickest) + ', 5 minutes'
+    geopath = 'Shortest: ' + ', '.join(shortest) + ', 100 km'
+
+    def colors(v):
+        if v in shortest:
+            return 'cyan'
+        else:
+            return 'white'
+            
+
+    # this part should be left as it is:
+    # change the SVG image with your shortest path colors
+    color_svg_network(colormap=colors)
+    # return the path texts to be shown in the web page
     return timepath, geopath
 

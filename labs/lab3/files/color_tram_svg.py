@@ -33,7 +33,6 @@ def color_svg_network(
     for elem in root.iter():
         elem.tag = elem.tag[lns:]
         for k, v in elem.items():
-            print(k, v)
             if k[:lxns] == xns:
                 elem.set(k[lxns:], v)
 #                del elem[k]
