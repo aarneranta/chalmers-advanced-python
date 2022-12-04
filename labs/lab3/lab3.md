@@ -4,6 +4,8 @@ Advanced Python Course, Chalmers DAT515, 2022
 
 by Aarne Ranta
 
+Version 1.2.1, 4 December 2022: added some explanations without changing the task.
+
 Version 1.2, 2 December 2022: some changes have been made in the lab for this year.
 The functionality is similar to what it was last year, but the coding task a bit simpler.
 You can start your work now, or wait until the instruction film is posted on 5 December.
@@ -71,9 +73,9 @@ Thus the maximum is 18 points.
 We will follow a standard line of work for the `django` network.
 There are several tutorials available, for instance,
 
-- [Django Girls Tutorial](https://tutorial.djangogirls.org/en/)
-- [Official Django Tutorial](https://docs.djangoproject.com/en/3.2/intro/tutorial01/)
-- [w3schools Django Tutorial][https://www.w3schools.com/django/]
+- [Django Girls Tutorial](https://tutorial.djangogirls.org/en/), partly followed in this document
+- [w3schools Django Tutorial](https://www.w3schools.com/django/), more concise
+- [Official Django Tutorial](https://docs.djangoproject.com/en/3.2/intro/tutorial01/), more details and options
 
 You can look at these for more information, but this lab spec is aimed to be self-contained and sufficient for the lab.
 
@@ -247,6 +249,16 @@ $ python manage.py migrate tram
 ```
 You will see that your `db.sqlite3` file has contents now, but they are in a binary format that you cannot read.
 
+*Note*. In this lab, the application does not add data to the database, but its schema (the `Route` class) is used to structure the queries made via the route search forms.
+This is known as the *MVT Design Pattern* (Model-View-Template):
+
+- a model (in `tram/models.py`) is a class that defines a type of data
+- a view (to be added to `tram/views.py`) is a function that processes a user request and returns a template
+- a template (to be added to `tram/templates/tram`) is an HTML file that shows the data
+
+The database could also be manipulated in the *SQL* language, but Django generates SQL from Python, so that you don't need to learn SQL itself.
+
+
 ### Update URL search patterns
 
 Edit the generated `mysite/urls.py` so that it contains the following:
@@ -259,7 +271,9 @@ urlpatterns = [
     path('', include('tram.urls')),
 ]
 ```
-You have to create the file `tram/urls.py`:
+The `admin` URL is used for managing the website and requires a login. You can try and create users and passwords, but this is not needed in this lab.
+The second `path` includes the URLs given in our app.
+For this purpose, you have to create the file `tram/urls.py`:
 ```
 from django.urls import path
 from . import views
@@ -269,6 +283,11 @@ urlpatterns = [
     path('route/', views.find_route, name='find_route'),
     ]
 ```
+Each path has three arguments:
+
+- the path extending the hostname (seen in the URL field of the browser)
+- the "view", i.e. the function called when this URL is requested
+- the name of the template file (without the extension `.html`)
 
 
 ### Create views
@@ -437,9 +456,16 @@ The algorithm is as follows:
 2. Extract the Gids of all tram stops from the document.
 3. Create URLs for every stop.
 4. Save the stop-URL dictionary as a JSON file
-5. Run `files/create_network_picture.py` making sure that `TRAM_URL_FILE` and `MY_TRAMNETWORK_JSON` point to your URL dictionary and tramnetwork file, respectively.
-6. Move the resulting file `my_gbg_tramnet.svg` to `tram/templates/tram/images/gbg_tramnet.svg`
-7. Make another search in your web application and click at some stop to see if the link has been updated.
+
+After this, you need to update the SVG image by these URLs. The simplest way to do this is as follows:
+
+1. Run `files/create_network_picture.py` making sure that `TRAM_URL_FILE` and `MY_TRAMNETWORK_JSON` point to your URL dictionary and tramnetwork file, respectively.
+2. Move the resulting file `my_gbg_tramnet.svg` to `tram/templates/tram/images/gbg_tramnet.svg`
+
+Another possibility is process the file `gbg_tramnet.svg` directly.
+You can do this by following the model of `tram/utils/color_tram_svg.py`.
+
+After doing this, make another search in your web application and click at some stop to verify that the link has been updated.
 
 The standard library for parsing HTML is
 ```
