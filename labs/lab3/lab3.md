@@ -154,7 +154,7 @@ If not, the following steps must be taken at the first time:
    This will create the directory `myvenv` with lots of contents.
 5. activate the virtual environment: 
    ```
-   $ source myvenv/bin/activate`
+   $ source myvenv/bin/activate
    ``` 
    on Linux/Mac 
    ```
@@ -162,13 +162,16 @@ If not, the following steps must be taken at the first time:
    ``` 
    on Windows.
    You should now see the string `(myvenv)` prefixed to your command line prompt.
-7. install the necessary Python libraries (`networkx` is only necessary if you did the baseline version of lab 2):
+
+6. install the necessary Python libraries (`networkx` is only necessary if you did the baseline version of lab 2):
   ```
    $ pip install django
    $ pip install networkx 
    ```
-  (notice that you can now use just `python` to run Python, because you are in a special environment). 
-6. run
+  (notice that you can now use just `python` to run Python, because
+  you are in a special environment).
+  
+7. run
   ```
   django-admin startproject mysite .
   ```
@@ -202,7 +205,7 @@ This step is needed at the first time:
 ```
 # python manage.py migrate
 ```
-It creates a database (in the file `db.sqlite3`), which is a standard part of any Django project, even if we don't need it very much at this lab. Its initial version is empty.
+It creates a database (in the file `db.sqlite3`), which is a standard part of any Django project, even if we don't need it very much at this lab. 
 
 Now you can see a first version of your web site:
 ```
