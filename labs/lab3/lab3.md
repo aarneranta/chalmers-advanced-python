@@ -152,7 +152,7 @@ If not, the following steps must be taken at the first time:
    $ python -m venv myvenv
    ```
    This will create the directory `myvenv` with lots of contents.
-5. activate the virtual environment: 
+4. activate the virtual environment: 
    ```
    $ source myvenv/bin/activate
    ``` 
@@ -162,16 +162,14 @@ If not, the following steps must be taken at the first time:
    ``` 
    on Windows.
    You should now see the string `(myvenv)` prefixed to your command line prompt.
-
-6. install the necessary Python libraries (`networkx` is only necessary if you did the baseline version of lab 2):
+5. install the necessary Python libraries (`networkx` is only necessary if you did the baseline version of lab 2):
   ```
    $ pip install django
    $ pip install networkx 
    ```
   (notice that you can now use just `python` to run Python, because
   you are in a special environment).
-  
-7. run
+6. run
   ```
   django-admin startproject mysite .
   ```
