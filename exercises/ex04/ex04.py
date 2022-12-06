@@ -34,7 +34,7 @@ def transfer(account1,account2,amount):
 # Question 2
 
 import sys
-sys.numbering.append("../../examples")
+sys.path.append("../../examples")
 from trees import *
 
 class RecTree:
