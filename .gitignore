@@ -143,3 +143,5 @@ cython_debug/
 # Graph previews
 *.gv
 *.gv.pdf
+
+exercises/ex05/sub/

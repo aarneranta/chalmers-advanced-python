@@ -62,21 +62,19 @@ class RecTree:
 
     # conversion to the ValTree class of Lecture 6
     def to_valtree(self):
-        # not shown entirely during exercise class
-        # TODO: explain "live" during ex05
-        numbering = "1"
-        vt = ValueTree(int(numbering))
-        vt.set_value(int(numbering), self._root)
+        num = 1
+        vt = ValueTree(num)
+        vt.set_value(num, self._root)
 
-        def to_valtree_h(ts, vt, numbering):
-            for (i,t) in enumerate(ts):
-                new_numbering = numbering + str(i + 1)
-                vt.add_edge(int(numbering), int(new_numbering))
-                vt.set_value(int(new_numbering), t._root)
-                to_valtree_h(t._subtrees, vt, new_numbering)
+        def to_valsubtrees(num, ts):
+            for (i, t) in enumerate(ts):
+                nnum = int(str(num) + str(i + 1))
+                vt.add_edge(num, nnum)
+                vt.set_value(nnum, t._root)
+                to_valsubtrees(nnum, t._subtrees)
 
-        to_valtree_h(self._subtrees, vt, numbering)
-        return vt    
+        to_valsubtrees(num, self._subtrees)
+        return vt
 
 # a helper function to construct atomic trees
 def atom(r):
@@ -107,10 +105,9 @@ class Fun():
 
 if __name__ == '__main__':
     # for Q2-3
-    extree = RecTree(1, [RecTree(11, [atom(111), atom(112)]), atom(12)])
-    print(extree.parts()) 
-    visualize(extree.to_tree())
-
+    #extree = RecTree(1, [RecTree(11, [atom(111), atom(112)]), atom(12)])
+    #print(extree.parts()) 
+    #visualize(extree.to_tree())
     syntree = RecTree('+', [atom('2'), atom('2')]) 
     visualize_vals(syntree.to_valtree())
 
