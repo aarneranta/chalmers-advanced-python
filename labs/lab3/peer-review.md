@@ -66,7 +66,6 @@ The deadline for the registration to **at least two** peer-review sessions is De
 The deadline for the submission of your code is Dec 21st firm, but you can submit beforehand.
 
 ### Report and demonstration
-- (for us) Internal link for editing the pool: https://docs.google.com/forms/d/1X4otmBeSGdyG79hOVsPbfr5gi7TFnJRyRhYid16Zisw/edit
 - (for students) External link for scheduling: https://docs.google.com/forms/d/e/1FAIpQLSfFufMkUQC0-2XRZn0o7eBJn_6Yf7QRoucVJRIKaV_k6I9A8A/viewform?usp=sharing
 The demonstration are conducted during peer-review sessions which will be organized on:
 - Dec 22, 10-12
