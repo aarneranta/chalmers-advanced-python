@@ -201,7 +201,7 @@ You should also copy the file `tramnetwork.json` created in Lab 1 to this direct
 
 This step is needed at the first time:
 ```
-# python manage.py migrate
+python manage.py migrate
 ```
 It creates a database (in the file `db.sqlite3`), which is a standard part of any Django project, even if we don't need it very much at this lab. 
 
