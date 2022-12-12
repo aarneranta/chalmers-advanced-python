@@ -122,9 +122,9 @@ Thus the main part of the problem is to analyse and modify an SVG file so that i
 
 You code needs to read three files:
 
-- [`whitemap.svg`](file/whitemap.svg), a map of Europe with all countries white;
-- [`neighbors.json`](neighbors.json), a list of neighbour-neighbour pairs;
-- [`country_codes.json`](file/country_codes.json), a list of country codes and country names.
+- [`whitemap.svg`](files/whitemap.svg), a map of Europe with all countries white;
+- [`neighbors.json`](files/neighbors.json), a list of neighbour-neighbour pairs;
+- [`country_codes.json`](files/country_codes.json), a list of country codes and country names.
 
 and write one file:
 
