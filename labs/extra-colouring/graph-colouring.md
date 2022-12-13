@@ -1,6 +1,6 @@
 # Extra Lab 1: Graph Colouring
 
-Advanced Python Course, Chalmers DAT515, 2021
+Advanced Python Course, Chalmers DAT515, 2022
 
 by Aarne Ranta
 

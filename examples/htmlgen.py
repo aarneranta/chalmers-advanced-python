@@ -105,7 +105,7 @@ def tramdoc():
 
 
 if __name__ == '__main__':
-    print(powerdoc)
-#    print(tramdoc())
+#    print(powerdoc)
+    print(tramdoc())
 
 

@@ -14,9 +14,12 @@ doc = r.get(python_wikipedia_url, verify=False)
 soup = BeautifulSoup(doc.text, 'html.parser')
 
 for link in soup.find_all('a'):
-    print(link.text, link.get('href'))
+#    print(link.text, '\t', link.get('href'))
+#    print(link.get('href'), '\t', link.text)
+    pass
 
-# print(soup.prettify())
+# print(soup.text)
+print(soup.prettify())
 # print(soup.get_text())     
 
 
@@ -26,7 +29,7 @@ for link in soup.find_all('a'):
 
 #tram_url = 'https://www.vasttrafik.se/reseplanering/hallplatslista/'
 
-
+"""
 import urllib.parse
 
 url = 'https://www.google.com/search?q=Prinsgatan+Gothenburg'
@@ -40,7 +43,7 @@ def stop_url(stop):
 
 print(stop_url('Mölndals sjukhus'))
 # https://www.google.com/search?q=Gothenburg+M%C3%B6lndals+sjukhus
-
+"""
 
 """
 # some more examples, not covered in lecture
