@@ -17,11 +17,12 @@ countries = {
 
 print(len({countries[c]["continent"] for c in countries}))
 
-
-areas = {countries[c]["continent"]: 0 for c in countries}
-for c in countries:
-    areas[countries[c]["continent"]] += countries[c]["area"]
-print(sorted(areas.items(), key=lambda p: p[1], reverse=True))
+print(sorted(
+    {c["continent"]: sum(
+        [c1["area"] for c1 in countries.values() if c["continent"] == c1["continent"]]
+        ) for c in countries.values()}.items(), 
+    key=lambda p: p[1], 
+    reverse=True))
 
 q5 = {
     1: [2,3,4],
