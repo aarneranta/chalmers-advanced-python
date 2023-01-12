@@ -1,8 +1,11 @@
 # Extra Lab: Clustering
 
-Advanced Python Course, Chalmers DAT515, 2021
+Advanced Python Course, Chalmers DAT515, 2022
 
 by Aarne Ranta
+
+Version 1.1, 13 December 2022. Fixed some typos and a link, added a
+last section on Submission.
 
 Version 1.0, 17 December 2021.
 
@@ -103,13 +106,13 @@ Write a function
 
 - `k_spanning_tree(G, k = 1000)` returning a graph that consists of disconnected subtrees
 
-following the algorithm that is explained, for instance, in these [slides](https://www.csc2.ncsu.edu/faculty/nfsamato/practical-graph-mining-with-R/slides/pdf/Graph_Cluster_Analysis.pdf) (the same as we watched at lecture 11), pages 13-15.
+following the algorithm that is explained, for instance, in these [slides](https://web.iitd.ac.in/~bspanda/graphclustering.pdf), pages 14-17.
 
 The function can use another function from `networkx`, namely
 ```
     algorithms.tree.mst.minimum_spanning_edges()
 ```
-You function should return a new graph can be built from the *k* heaviest edges returned by this function.
+You function should return a new graph that is built by removing the *k-1* heaviest edges returned by this function.
 
 The algorithm used by default to find the edges of the minimum spanning tree is *Kruskal's algorithm*.
 You can read more about it in the [data structures course notes](https://chalmersgu-data-structure-courses.github.io/OpenDSA/Published/ChalmersGU-DSABook/html/Kruskal.html).
@@ -148,17 +151,18 @@ The function should read command-line arguments (from `sys.argv`) so that it sho
 ```
   $ python3 cluster_network.py <args>
 ```
-with the date read from the defaule OpenFlights files:
+with the data read from the defaule OpenFlights files:
 
 - `airports`: show all airports as points,
 - `routes`: show all routes as lines between airport points,
 - `span <int>`: show the routes resulting from `k_spanning_tree(k=<init>)`,
-- `means <int>`: show the coloured points resulting from `k_means(k=<init>)`,
+- `means <int>`: show the coloured points resulting from `k_means(k=<init>)`.
 
 
+## Submision
 
-
-
+In Canvas, giving a link to your Git repository, where the subdirectory
+`extra-clustering` contains the file `cluster_network.py`.
 
 
 

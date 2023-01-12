@@ -4,6 +4,8 @@ Advanced Python Course, Chalmers DAT515, 2022
 
 by Aarne Ranta
 
+Version 1.2.2  9 December 2022: added peer review instructions.
+
 Version 1.2.1, 4 December 2022: added some explanations without changing the task.
 
 Version 1.2, 2 December 2022: some changes have been made in the lab for this year.
@@ -201,7 +203,7 @@ You should also copy the file `tramnetwork.json` created in Lab 1 to this direct
 
 This step is needed at the first time:
 ```
-# python manage.py migrate
+python manage.py migrate
 ```
 It creates a database (in the file `db.sqlite3`), which is a standard part of any Django project, even if we don't need it very much at this lab. 
 
@@ -489,4 +491,4 @@ Indicate in your Canvas message whether you claim bonus points for Bonus task 1 
 Before inspecting your code, we will organize peer reviewing sessions, where each group tests and reviews some other group's lab.
 The review report that you write will be added as a part of your submission.
 
-More details about peer reviewing and a schedule will be given before 9 December.
+More details about peer reviewing and a schedule can be found [here](./peer-review.md).
