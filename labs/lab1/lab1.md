@@ -180,7 +180,7 @@ built:
 
     {
     "stops": {
-        "\u00d6stra Sjukhuset": {
+        "Östra Sjukhuset": {
             "lat": 57.7224618,
             "lon": 12.0478166
 			},  # and so on, the entire stop dict			
@@ -188,13 +188,13 @@ built:
       },
     "lines": {
         "1": [
-            "\u00d6stra Sjukhuset",
-            "Tingvallsv\u00e4gen",
+            "Östra Sjukhuset",
+            "Tingvallsvägen",
 			# and so on, all stops on line 1
 			],  # and so on, the entire line dict
 		},
     "times": {
-        "Tingvallsv\u00e4gen": {
+        "Tingvallsvägen": {
             "Kaggeledstorget": 2
             },  # and so on, the entire time dict
         }
