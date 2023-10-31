@@ -54,8 +54,7 @@ the back-end of a web application (Lab 3).
 An integral part of the lab is also a set of **tests**, which you will submit together with your solutions.
 These tests must be written by using the `unittest` standard library of Python.
 
-The solution will be submitted via Canvas as usual, but the code will be stored in a private Git repository on GitHub, as an exercise for working with *version control*.
-This will also help combine your Lab1 solution with the later labs.
+The solution will be submitted via [GitHub classroom](https://classroom.github.com/classrooms/148326473-dat515-dit515-2023-lp2) but graded on [Canvas](https://chalmers.instructure.com/courses/26551).
 
 Learning outcomes:
 
