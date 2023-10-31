@@ -294,18 +294,7 @@ You also need to import `sys`.
 
 
 ## Submission
-
-You should create a GitHub repository for this course and **make it private**.
-You may only - ever - share it with
-
-- your lab partner
-- the teachers of the course
-
-The submission is via Canvas, where you post a link to your repository.
-Your Lab1 solution must be in two files in that repository, in the main branch:
-
-- `tramdata.py`
-- `test_tramdata.py`
+For information on how to submit, see [the template repository](https://github.com/DAT515-DIT515/lab1_template/tree/main).
 
 They must be usable in the following ways:
 
@@ -313,17 +302,3 @@ They must be usable in the following ways:
 - `python3 tramdata.py` to start the query dialogue,
 - `import tramdata` from another Python file or the Python shell, without starting the dialogue or printing anything,
 - `python3 test_tramdata.py` to run your tests.
-
-We will test all these functionalities.
-We will also run some tests of our own.
-We may fetch the files at any point after the submission deadline, so make sure that they remains correct at all times!
-You can use other branches for your private experimentation.
-
-The same GitHub repository will be extended with your Lab 2 and 3
-solutions later.
-
-
-
-
-
-
