@@ -173,7 +173,7 @@ Moreover,
 
 - the text file that gives lines and their stops and times is read only once.
 
-`build_tram_network(somefiles)` puts everything together. It reads the two input files and writes a
+`build_tram_network(stopfile, linefile)` puts everything together. It reads the two input files and writes a
 third one, entitled `tramnetwork.json`.
 This JSON file represents a dictionary that contains the three dictionaries
 built:
@@ -215,18 +215,18 @@ You should add at least the following tests:
 
 ### Query functions
 
-The following functions may use any of the three kinds of dictionaries - it is your task to decide which ones.
+Each of the following functions uses one or more of the dictionaries you built.
 
-`lines_via_stop(somedicts, stop)` lists the lines that go via the given stop.
+`lines_via_stop(linedict, stop)` lists the lines that go via the given stop.
 The lines should be sorted in their numeric order, that is, '2' before '10'.
 
-`lines_between_stops(somedicts, stop1, stop2)` lists the lines that go from stop1 to stop2.
+`lines_between_stops(linedict, stop1, stop2)` lists the lines that go from stop1 to stop2.
 The lines should be sorted in their numeric order, that is, '2' before '10'.
 Notice that each line is assumed to serve in both directions - the direction listed explicitly for it, and the opposite direction.
 
-`time_between_stops(somedicts, line, stop1, stop2)` calculates the time from `stop1` to `stop2` along the given `line`. This is obtained as the sum of all distances between adjacent stops. If the stops are not along the same line, an error message is printed.
+`time_between_stops(linedict, timedict, line, stop1, stop2)` calculates the time from `stop1` to `stop2` along the given `line`. This is obtained as the sum of all distances between adjacent stops. If the stops are not along the same line, an error message is printed.
 
-`distance_between_stops(somedicts, stop1, stop2)` calculates the geographic distance between any two stops, based on their latitude and longitude.
+`distance_between_stops(stopdict, stop1, stop2)` calculates the geographic distance between any two stops, based on their latitude and longitude.
 The distance is hence not dependent on the tram lines.
 Use the formula from [this Wikipedia description](https://en.wikipedia.org/wiki/Geographical_distance#Spherical_Earth_projected_to_a_plane), and notice that the `math` library is needed in the Python code.
 
@@ -236,7 +236,7 @@ If you do it without the library, as in the original version, it will give you e
 
 ### The dialogue function
 
-The `dialogue(jsonfile)` function implements a dialogue about tram information.
+The `dialogue(tramfile)` function implements a dialogue about tram information.
 It starts by reading the data from the JSON file `tramnetwork.json`,
 which has been produced by your program.
 Then it takes user input and answers to any number of questions by using your query functions.
@@ -260,13 +260,13 @@ For the purpose of testing, and more generally to cleanly separate input and out
 
 - `answer_query(tramdict, query)`, which takes the query string and returns the answer as a value (list or integer or float, or `False` if the query cannot be interpreted);
 
-- `dialogue(jsonfile)` itself, which reads the file into a dictionary, loops by asking for input, and for each input prints the value returned by `answer_query()`, except for input `quit` (terminating the loop) and for uninterpreted input (asking the user to try again).
+- `dialogue(tramfile)` itself, which reads the file into a dictionary, loops by asking for input, and for each input prints the value returned by `answer_query(tramdict, query)`, except for input `quit` (terminating the loop) and for uninterpreted input (asking the user to try again).
 
 
 ### Tests for the dialogue
 
 Testing a complete dialogue is trickier than ordinary, value-returning functions. 
-But you can easily test `answer_query()`.
+But you can easily test `answer_query(tramdict, query)`.
 What you should test, then, is that the answer printed for any query
 (in a format written by the user) is the same as the expected answer.
 What you really test then is that queries are parsed and interpreted correctly.
