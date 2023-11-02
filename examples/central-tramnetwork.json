@@ -1,0 +1,792 @@
+{
+    "stops": {
+        "Olskrokstorget": {
+            "lat": 57.7146209,
+            "lon": 11.9987871
+        },
+        "Svingeln": {
+            "lat": 57.713358,
+            "lon": 11.9917409
+        },
+        "Ullevi Norra": {
+            "lat": 57.7081152,
+            "lon": 11.9861639
+        },
+        "Centralstationen": {
+            "lat": 57.7077849,
+            "lon": 11.9734427
+        },
+        "Brunnsparken": {
+            "lat": 57.7065955,
+            "lon": 11.9689358
+        },
+        "Stenpiren": {
+            "lat": 57.7056512,
+            "lon": 11.9574172
+        },
+        "J\u00e4rntorget": {
+            "lat": 57.6999652,
+            "lon": 11.952972
+        },
+        "Prinsgatan": {
+            "lat": 57.6964754,
+            "lon": 11.9513521
+        },
+        "Olivedalsgatan": {
+            "lat": 57.6918865,
+            "lon": 11.9536831
+        },
+        "Linn\u00e9platsen": {
+            "lat": 57.689966,
+            "lon": 11.9520518
+        },
+        "Almedal": {
+            "lat": 57.6867844,
+            "lon": 11.9974967
+        },
+        "Liseberg S\u00f6dra": {
+            "lat": 57.6945173,
+            "lon": 11.993695420809985
+        },
+        "Korsv\u00e4gen": {
+            "lat": 57.6968295,
+            "lon": 11.9868341
+        },
+        "Scandinavium": {
+            "lat": 57.7006276,
+            "lon": 11.9858582
+        },
+        "Ullevi S\u00f6dra": {
+            "lat": 57.7039541,
+            "lon": 11.9850022
+        },
+        "Domkyrkan": {
+            "lat": 57.7042356,
+            "lon": 11.9636653
+        },
+        "Gr\u00f6nsakstorget": {
+            "lat": 57.7025866,
+            "lon": 11.9639739
+        },
+        "Vasaplatsen": {
+            "lat": 57.6989398,
+            "lon": 11.9705111
+        },
+        "Vasa Viktoriagatan": {
+            "lat": 57.6985634,
+            "lon": 11.9653312
+        },
+        "Handelsh\u00f6gskolan": {
+            "lat": 57.6965303,
+            "lon": 11.9625825
+        },
+        "Brunnsgatan": {
+            "lat": 57.6936796,
+            "lon": 11.9591759
+        },
+        "Seminariegatan": {
+            "lat": 57.6920557,
+            "lon": 11.9571828
+        },
+        "Jaegerdorffsplatsen": {
+            "lat": 57.6914334,
+            "lon": 11.9150447
+        },
+        "Chapmans Torg": {
+            "lat": 57.6944764,
+            "lon": 11.9198652
+        },
+        "Kaptensgatan": {
+            "lat": 57.6971583,
+            "lon": 11.9276101
+        },
+        "Stigbergstorget": {
+            "lat": 57.6990303,
+            "lon": 11.9338896
+        },
+        "Masthuggstorget": {
+            "lat": 57.6995343,
+            "lon": 11.9447351
+        },
+        "Hagakyrkan": {
+            "lat": 57.6996013,
+            "lon": 11.9615964
+        },
+        "Valand": {
+            "lat": 57.7004651,
+            "lon": 11.9748851
+        },
+        "Kungsportsplatsen": {
+            "lat": 57.7039668,
+            "lon": 11.9697972
+        },
+        "Berzeliigatan": {
+            "lat": 57.6983047,
+            "lon": 11.9823431
+        },
+        "Welandergatan": {
+            "lat": 57.7060778,
+            "lon": 12.0239345
+        },
+        "T\u00f6pelsgatan": {
+            "lat": 57.7023397,
+            "lon": 12.0221389
+        },
+        "B\u00f6gatan": {
+            "lat": 57.700946,
+            "lon": 12.0160087
+        },
+        "Ekmanska": {
+            "lat": 57.6996668,
+            "lon": 12.0096351
+        },
+        "B\u00e4ckeliden": {
+            "lat": 57.6999206,
+            "lon": 12.0033203
+        },
+        "Sankt Sigfrids Plan": {
+            "lat": 57.6987301,
+            "lon": 11.9994709
+        },
+        "Liseberg Station": {
+            "lat": 57.6975588,
+            "lon": 11.9942205
+        },
+        "Lilla Bommen": {
+            "lat": 57.7092219,
+            "lon": 11.9667699
+        },
+        "Frihamnen": {
+            "lat": 57.7203255,
+            "lon": 11.9600773
+        },
+        "Hjalmar Brantingsplatsen": {
+            "lat": 57.7206077,
+            "lon": 11.9522789
+        },
+        "Chalmers": {
+            "lat": 57.6900225,
+            "lon": 11.9730927
+        },
+        "Wavrinskys Plats": {
+            "lat": 57.6888028,
+            "lon": 11.9684664
+        },
+        "Medicinaregatan": {
+            "lat": 57.6855827,
+            "lon": 11.9619508
+        },
+        "Sahlgrenska Huvudentr\u00e9": {
+            "lat": 57.6836795,
+            "lon": 11.9614653
+        },
+        "Nordstan": {
+            "lat": 57.7086397,
+            "lon": 11.969087498371342
+        },
+        "Kapellplatsen": {
+            "lat": 57.6927713,
+            "lon": 11.9735773
+        },
+        "Doktor Sydows Gata": {
+            "lat": 57.6793184,
+            "lon": 11.9776909
+        },
+        "Doktor Fries Torg": {
+            "lat": 57.6844804,
+            "lon": 11.9726716
+        },
+        "Majvallen": {
+            "lat": 57.6909343,
+            "lon": 11.9354935
+        },
+        "Fj\u00e4llgatan": {
+            "lat": 57.69443,
+            "lon": 11.9362336
+        }
+    },
+    "lines": {
+        "1": [
+            "Olskrokstorget",
+            "Svingeln",
+            "Ullevi Norra",
+            "Centralstationen",
+            "Brunnsparken",
+            "Stenpiren",
+            "J\u00e4rntorget",
+            "Prinsgatan",
+            "Olivedalsgatan",
+            "Linn\u00e9platsen"
+        ],
+        "2": [
+            "Almedal",
+            "Liseberg S\u00f6dra",
+            "Korsv\u00e4gen",
+            "Scandinavium",
+            "Ullevi S\u00f6dra",
+            "Centralstationen",
+            "Brunnsparken",
+            "Domkyrkan",
+            "Gr\u00f6nsakstorget",
+            "Vasaplatsen",
+            "Vasa Viktoriagatan",
+            "Handelsh\u00f6gskolan",
+            "Brunnsgatan",
+            "Seminariegatan",
+            "Olivedalsgatan",
+            "Linn\u00e9platsen"
+        ],
+        "3": [
+            "Jaegerdorffsplatsen",
+            "Chapmans Torg",
+            "Kaptensgatan",
+            "Stigbergstorget",
+            "Masthuggstorget",
+            "J\u00e4rntorget",
+            "Hagakyrkan",
+            "Vasa Viktoriagatan",
+            "Vasaplatsen",
+            "Valand",
+            "Kungsportsplatsen",
+            "Brunnsparken",
+            "Centralstationen",
+            "Ullevi Norra",
+            "Svingeln",
+            "Olskrokstorget"
+        ],
+        "4": [
+            "Almedal",
+            "Liseberg S\u00f6dra",
+            "Korsv\u00e4gen",
+            "Berzeliigatan",
+            "Valand",
+            "Kungsportsplatsen",
+            "Brunnsparken",
+            "Centralstationen"
+        ],
+        "5": [
+            "Welandergatan",
+            "T\u00f6pelsgatan",
+            "B\u00f6gatan",
+            "Ekmanska",
+            "B\u00e4ckeliden",
+            "Sankt Sigfrids Plan",
+            "Liseberg Station",
+            "Korsv\u00e4gen",
+            "Berzeliigatan",
+            "Valand",
+            "Kungsportsplatsen",
+            "Brunnsparken",
+            "Lilla Bommen",
+            "Frihamnen",
+            "Hjalmar Brantingsplatsen"
+        ],
+        "6": [
+            "Olskrokstorget",
+            "Svingeln",
+            "Ullevi Norra",
+            "Ullevi S\u00f6dra",
+            "Scandinavium",
+            "Korsv\u00e4gen",
+            "Chalmers",
+            "Wavrinskys Plats",
+            "Medicinaregatan",
+            "Sahlgrenska Huvudentr\u00e9",
+            "Linn\u00e9platsen",
+            "Olivedalsgatan",
+            "Prinsgatan",
+            "J\u00e4rntorget",
+            "Hagakyrkan",
+            "Gr\u00f6nsakstorget",
+            "Domkyrkan",
+            "Brunnsparken",
+            "Nordstan",
+            "Frihamnen",
+            "Hjalmar Brantingsplatsen"
+        ],
+        "7": [
+            "Centralstationen",
+            "Brunnsparken",
+            "Kungsportsplatsen",
+            "Valand",
+            "Vasaplatsen",
+            "Kapellplatsen",
+            "Chalmers",
+            "Wavrinskys Plats",
+            "Medicinaregatan",
+            "Sahlgrenska Huvudentr\u00e9"
+        ],
+        "8": [
+            "Olskrokstorget",
+            "Svingeln",
+            "Ullevi Norra",
+            "Ullevi S\u00f6dra",
+            "Scandinavium",
+            "Korsv\u00e4gen",
+            "Chalmers",
+            "Wavrinskys Plats",
+            "Medicinaregatan",
+            "Sahlgrenska Huvudentr\u00e9"
+        ],
+        "9": [
+            "Centralstationen",
+            "Brunnsparken",
+            "Stenpiren",
+            "J\u00e4rntorget",
+            "Masthuggstorget",
+            "Stigbergstorget",
+            "Kaptensgatan",
+            "Chapmans Torg",
+            "Jaegerdorffsplatsen"
+        ],
+        "10": [
+            "Doktor Sydows Gata",
+            "Doktor Fries Torg",
+            "Wavrinskys Plats",
+            "Chalmers",
+            "Kapellplatsen",
+            "Vasaplatsen",
+            "Valand",
+            "Kungsportsplatsen",
+            "Brunnsparken",
+            "Centralstationen",
+            "Lilla Bommen",
+            "Frihamnen",
+            "Hjalmar Brantingsplatsen"
+        ],
+        "11": [
+            "Majvallen",
+            "Fj\u00e4llgatan",
+            "Stigbergstorget",
+            "Masthuggstorget",
+            "J\u00e4rntorget",
+            "Hagakyrkan",
+            "Gr\u00f6nsakstorget",
+            "Domkyrkan",
+            "Brunnsparken",
+            "Centralstationen"
+        ],
+        "13": [
+            "Sahlgrenska Huvudentr\u00e9",
+            "Medicinaregatan",
+            "Wavrinskys Plats",
+            "Chalmers",
+            "Korsv\u00e4gen",
+            "Scandinavium",
+            "Ullevi S\u00f6dra",
+            "Centralstationen"
+        ]
+    },
+    "times": {
+        "\u00d6stra Sjukhuset": {},
+        "Tingvallsv\u00e4gen": {
+            "\u00d6stra Sjukhuset": 1
+        },
+        "Kaggeledstorget": {
+            "Tingvallsv\u00e4gen": 2
+        },
+        "\u00c4tteh\u00f6gsgatan": {
+            "Kaggeledstorget": 0
+        },
+        "Munkeb\u00e4ckstorget": {
+            "\u00c4tteh\u00f6gsgatan": 1
+        },
+        "H\u00e4rlanda": {
+            "Munkeb\u00e4ckstorget": 2
+        },
+        "Stockholmsgatan": {
+            "H\u00e4rlanda": 1
+        },
+        "Redbergsplatsen": {
+            "Stockholmsgatan": 2,
+            "Ejdergatan": 2
+        },
+        "Olskrokstorget": {
+            "Redbergsplatsen": 1
+        },
+        "Svingeln": {
+            "Olskrokstorget": 2
+        },
+        "Ullevi Norra": {
+            "Svingeln": 2
+        },
+        "Centralstationen": {
+            "Ullevi Norra": 1,
+            "Ullevi S\u00f6dra": 3
+        },
+        "Brunnsparken": {
+            "Centralstationen": 1,
+            "Kungsportsplatsen": 1
+        },
+        "Stenpiren": {
+            "Brunnsparken": 1
+        },
+        "J\u00e4rntorget": {
+            "Stenpiren": 2,
+            "Masthuggstorget": 2
+        },
+        "Prinsgatan": {
+            "J\u00e4rntorget": 1
+        },
+        "Olivedalsgatan": {
+            "Prinsgatan": 2,
+            "Seminariegatan": 1
+        },
+        "Linn\u00e9platsen": {
+            "Olivedalsgatan": 1,
+            "Sahlgrenska Huvudentr\u00e9": 1
+        },
+        "Botaniska Tr\u00e4dg\u00e5rden": {
+            "Linn\u00e9platsen": 2,
+            "Sahlgrenska Huvudentr\u00e9": 3
+        },
+        "Marklandsgatan": {
+            "Botaniska Tr\u00e4dg\u00e5rden": 3,
+            "Mariaplan": 4
+        },
+        "Axel Dahlstr\u00f6ms Torg": {
+            "Marklandsgatan": 1
+        },
+        "Lantmilsgatan": {
+            "Axel Dahlstr\u00f6ms Torg": 1
+        },
+        "Nymilsgatan": {
+            "Lantmilsgatan": 1
+        },
+        "Musikv\u00e4gen": {
+            "Nymilsgatan": 1
+        },
+        "Positivgatan": {
+            "Musikv\u00e4gen": 2
+        },
+        "Fr\u00f6lunda Torg Sp\u00e5rvagn": {
+            "Positivgatan": 1
+        },
+        "Briljantgatan": {
+            "Fr\u00f6lunda Torg Sp\u00e5rvagn": 2
+        },
+        "Smaragdgatan": {
+            "Briljantgatan": 1
+        },
+        "Opaltorget": {
+            "Smaragdgatan": 0
+        },
+        "M\u00f6lndals Innerstad": {},
+        "M\u00f6lndals sjukhus": {
+            "M\u00f6lndals Innerstad": 1
+        },
+        "Lackareb\u00e4ck": {
+            "M\u00f6lndals sjukhus": 2
+        },
+        "Kroksl\u00e4tts Fabriker": {
+            "Lackareb\u00e4ck": 1
+        },
+        "Kroksl\u00e4tts torg": {
+            "Kroksl\u00e4tts Fabriker": 1
+        },
+        "Lana": {
+            "Kroksl\u00e4tts torg": 1
+        },
+        "Varbergsgatan": {
+            "Lana": 1
+        },
+        "Elisedal": {
+            "Varbergsgatan": 1
+        },
+        "Almedal": {
+            "Elisedal": 1
+        },
+        "Liseberg S\u00f6dra": {
+            "Almedal": 2
+        },
+        "Korsv\u00e4gen": {
+            "Liseberg S\u00f6dra": 2,
+            "Liseberg Station": 2
+        },
+        "Scandinavium": {
+            "Korsv\u00e4gen": 1
+        },
+        "Ullevi S\u00f6dra": {
+            "Scandinavium": 2,
+            "Ullevi Norra": 2
+        },
+        "Domkyrkan": {
+            "Brunnsparken": 1
+        },
+        "Gr\u00f6nsakstorget": {
+            "Domkyrkan": 1,
+            "Hagakyrkan": 2
+        },
+        "Vasaplatsen": {
+            "Gr\u00f6nsakstorget": 2
+        },
+        "Vasa Viktoriagatan": {
+            "Vasaplatsen": 1,
+            "Hagakyrkan": 1
+        },
+        "Handelsh\u00f6gskolan": {
+            "Vasa Viktoriagatan": 1
+        },
+        "Brunnsgatan": {
+            "Handelsh\u00f6gskolan": 2
+        },
+        "Seminariegatan": {
+            "Brunnsgatan": 1
+        },
+        "Bokekullsgatan": {
+            "Marklandsgatan": 1
+        },
+        "H\u00f6gsbogatan": {
+            "Bokekullsgatan": 1
+        },
+        "Klintens V\u00e4g": {
+            "H\u00f6gsbogatan": 2
+        },
+        "Godhemsgatan": {
+            "Klintens V\u00e4g": 1
+        },
+        "Mariaplan": {
+            "Godhemsgatan": 2,
+            "Sannaplan": 1
+        },
+        "Ostindiegatan": {
+            "Mariaplan": 1
+        },
+        "Vagnhallen Majorna": {
+            "Ostindiegatan": 2
+        },
+        "Jaegerdorffsplatsen": {
+            "Vagnhallen Majorna": 1
+        },
+        "Chapmans Torg": {
+            "Jaegerdorffsplatsen": 1
+        },
+        "Kaptensgatan": {
+            "Chapmans Torg": 2
+        },
+        "Stigbergstorget": {
+            "Kaptensgatan": 2,
+            "Fj\u00e4llgatan": 2
+        },
+        "Masthuggstorget": {
+            "Stigbergstorget": 2
+        },
+        "Hagakyrkan": {
+            "J\u00e4rntorget": 3
+        },
+        "Valand": {
+            "Vasaplatsen": 1,
+            "Berzeliigatan": 2
+        },
+        "Kungsportsplatsen": {
+            "Valand": 2
+        },
+        "Solrosgatan": {
+            "H\u00e4rlanda": 2,
+            "Munkeb\u00e4ckstorget": 1
+        },
+        "Sanatoriegatan": {
+            "Solrosgatan": 1
+        },
+        "Virginsgatan": {
+            "Sanatoriegatan": 0
+        },
+        "Berzeliigatan": {
+            "Korsv\u00e4gen": 1
+        },
+        "Gamlestads Torg": {
+            "Centralstationen": 6,
+            "SKF": 1
+        },
+        "Hj\u00e4llbo": {
+            "Gamlestads Torg": 1
+        },
+        "Hammarkullen": {
+            "Hj\u00e4llbo": 3
+        },
+        "Stor\u00e5s": {
+            "Hammarkullen": 1
+        },
+        "Angered Centrum": {
+            "Stor\u00e5s": 3
+        },
+        "Welandergatan": {
+            "Virginsgatan": 2
+        },
+        "T\u00f6pelsgatan": {
+            "Welandergatan": 1
+        },
+        "B\u00f6gatan": {
+            "T\u00f6pelsgatan": 1
+        },
+        "Ekmanska": {
+            "B\u00f6gatan": 1
+        },
+        "B\u00e4ckeliden": {
+            "Ekmanska": 1
+        },
+        "Sankt Sigfrids Plan": {
+            "B\u00e4ckeliden": 1
+        },
+        "Liseberg Station": {
+            "Sankt Sigfrids Plan": 1
+        },
+        "Lilla Bommen": {
+            "Brunnsparken": 0,
+            "Centralstationen": 1
+        },
+        "Frihamnen": {
+            "Lilla Bommen": 4,
+            "Nordstan": 1
+        },
+        "Hjalmar Brantingsplatsen": {
+            "Frihamnen": 1
+        },
+        "V\u00e5gm\u00e4stareplatsen": {
+            "Hjalmar Brantingsplatsen": 1
+        },
+        "Wieselgrensplatsen": {
+            "V\u00e5gm\u00e4stareplatsen": 1
+        },
+        "Rambergsvallen": {
+            "Wieselgrensplatsen": 1
+        },
+        "Gropeg\u00e5rdsgatan": {
+            "Rambergsvallen": 2
+        },
+        "Eketr\u00e4gatan": {
+            "Gropeg\u00e5rdsgatan": 1
+        },
+        "S\u00e4l\u00f6fjordsgatan": {
+            "Eketr\u00e4gatan": 2
+        },
+        "V\u00e5rv\u00e4derstorget": {
+            "S\u00e4l\u00f6fjordsgatan": 1
+        },
+        "Mildv\u00e4dersgatan": {
+            "V\u00e5rv\u00e4derstorget": 1
+        },
+        "\u00d6nskev\u00e4dersgatan": {
+            "Mildv\u00e4dersgatan": 1
+        },
+        "Friskv\u00e4derstorget": {
+            "\u00d6nskev\u00e4dersgatan": 1
+        },
+        "V\u00e4derilsgatan": {
+            "Friskv\u00e4derstorget": 1
+        },
+        "Temperaturgatan": {
+            "V\u00e4derilsgatan": 2
+        },
+        "Varmfrontsgatan": {
+            "Temperaturgatan": 0
+        },
+        "Aprilgatan": {},
+        "Allhelgonakyrkan": {
+            "Aprilgatan": 1,
+            "Januarigatan": 1
+        },
+        "Kortedala Torg": {
+            "Allhelgonakyrkan": 1
+        },
+        "Runstavsgatan": {
+            "Kortedala Torg": 2
+        },
+        "Nym\u00e5negatan": {
+            "Runstavsgatan": 1
+        },
+        "Bev\u00e4ringsgatan": {
+            "Nym\u00e5negatan": 1
+        },
+        "Kviberg": {
+            "Bev\u00e4ringsgatan": 1
+        },
+        "Bellevue": {
+            "Kviberg": 1
+        },
+        "SKF": {
+            "Bellevue": 2
+        },
+        "Ejdergatan": {
+            "Gamlestads Torg": 2
+        },
+        "Chalmers": {
+            "Korsv\u00e4gen": 3,
+            "Kapellplatsen": 1
+        },
+        "Wavrinskys Plats": {
+            "Chalmers": 1,
+            "Doktor Fries Torg": 2
+        },
+        "Medicinaregatan": {
+            "Wavrinskys Plats": 2
+        },
+        "Sahlgrenska Huvudentr\u00e9": {
+            "Medicinaregatan": 2
+        },
+        "Nordstan": {
+            "Brunnsparken": 1
+        },
+        "Komettorget": {},
+        "Rymdtorget Sp\u00e5rvagn": {
+            "Komettorget": 2
+        },
+        "Teleskopgatan": {
+            "Rymdtorget Sp\u00e5rvagn": 1
+        },
+        "Galileis Gata": {
+            "Teleskopgatan": 1
+        },
+        "Januarigatan": {
+            "Galileis Gata": 1
+        },
+        "Kapellplatsen": {
+            "Vasaplatsen": 2
+        },
+        "Sannaplan": {
+            "Ostindiegatan": 1
+        },
+        "Sandarna": {
+            "Sannaplan": 1
+        },
+        "Kungssten": {
+            "Sandarna": 2,
+            "Nya Varvsall\u00e9n": 1
+        },
+        "Doktor Sydows Gata": {},
+        "Doktor Fries Torg": {
+            "Doktor Sydows Gata": 1
+        },
+        "Saltholmen": {},
+        "Roddf\u00f6reningen": {
+            "Saltholmen": 1
+        },
+        "L\u00e5ngedrag": {
+            "Roddf\u00f6reningen": 1
+        },
+        "Hinsholmen": {
+            "L\u00e5ngedrag": 1
+        },
+        "K\u00e4ringberget": {
+            "Hinsholmen": 2
+        },
+        "Tranered": {
+            "K\u00e4ringberget": 1
+        },
+        "Hagen": {
+            "Tranered": 1
+        },
+        "Nya Varvsall\u00e9n": {
+            "Hagen": 2
+        },
+        "Ekedal": {
+            "Godhemsgatan": 1
+        },
+        "Majvallen": {
+            "Ekedal": 1
+        },
+        "Fj\u00e4llgatan": {
+            "Majvallen": 1
+        }
+    }
+}
