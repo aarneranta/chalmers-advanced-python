@@ -1,8 +1,7 @@
 ## Question 1: directory structure
-import os # https://docs.python.org/3/library/os.html
 
 ## Question 2: graph representations
-adj_list = {0: [1, 2], 1: [0, 2], 2: [1, 0, 3], 3: [2]}
+adj_list = {0: [1, 3, 2], 1: [0, 2], 2: [1, 0, 3], 3: [2]}
 
 def adj2mat(adj):
     pass
@@ -29,7 +28,15 @@ def bfs(graph, current_node, visit_complete=[]):
                 visit_complete.append(neighbour)
                 queue.append(neighbour)
 
-def bfs():
+''' PSEUDOCODE FROM WIKIPEDIA
+    procedure DFS(G, v) is
+        label v as discovered
+        for all directed edges from v to w that are in G.adjacentEdges(v) do
+            if vertex w is not labeled as discovered then
+                recursively call DFS(G, w)
+'''
+
+def dfs():
     pass
 
 ## Question 5: multigraphs
