@@ -1,4 +1,5 @@
 ## Question 1: directory structure
+import os # https://docs.python.org/3/library/os.html
 
 ## Question 2: graph representations
 adj_list = {0: [1, 2], 1: [0, 2], 2: [1, 0, 3], 3: [2]}
