@@ -145,3 +145,4 @@ cython_debug/
 *.gv.pdf
 
 exercises/ex05/sub/
+exercises/*/_*
