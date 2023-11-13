@@ -444,8 +444,6 @@ Submit the files
 - `test_graphs.py`
 - `test_trams.py`
 
-via the same Git repository as in Lab 1.
-Use separate subdirectories, lab1/ and lab2/, for the solutions of these two labs.
-Report in Canvas that your lab is ready to be graded.
+via the dedicated GitHub Classrooms repository.
 
-Also indicate in the message to Canvas if you have done a native implementation or used `networkx`.
+Also indicate if you have done a native implementation or used `networkx`.
