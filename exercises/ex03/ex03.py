@@ -21,7 +21,7 @@ adj_list = {
     2: [1, 0, 3], 3: [2]}
 
 def adj2mat(adj):
-    n = len(adj.items())
+    n = max(list(adj.keys()) + [max(vals) for vals in adj.values()]) + 1
     mat = []
     for _ in range(n):
         mat.append([False] * n)
@@ -95,7 +95,7 @@ def dfs(graph, current_node, visit_complete=[]):
 # bonus: implement dfs iteratively
 
 ## Question 5: multigraphs
-multi_edgelist = [(0, 2), (1, 2), (2, 1)]
+multi_edgelist = [(0, 3), (1, 2), (2, 1)]
 
 def edges2adj(edges):
     adj = {}
@@ -107,13 +107,11 @@ def edges2adj(edges):
     return adj
 
 def multi_adj2mat(adj):
-    n = len(adj.items())
+    n = max(list(adj.keys()) + [max(vals) for vals in adj.values()]) + 1
     mat = []
     for _ in range(n):
         mat.append([0] * n)
-    print(mat)
-    for key in range(len(adj)):
-        vals = adj[key]
-        for val in range(len(vals)):
-            mat[key][val] += 1 
+    for (key, vals) in adj.items():
+        for val in vals:
+            mat[key][val] += 1
     return mat
