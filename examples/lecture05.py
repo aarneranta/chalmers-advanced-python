@@ -30,6 +30,7 @@ class Graph:
     def __str__(self):
         return str(self._adjlist)
 
+
 if __name__ == '__main__':
     G = Graph()
     print(G)
