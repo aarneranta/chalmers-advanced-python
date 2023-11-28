@@ -60,20 +60,19 @@ Section 3 is more open than the other sections, you can write general comments o
 
 ## Deadlines
 ### Registration
-The deadline for the registration to **at least two** peer-review sessions is Dec 16th firm.
+The deadline for the registration to **at least two** peer-review sessions is Dec 11th firm.
 
 ### Code 
-The deadline for the submission of your code is Dec 21st firm, but you can submit beforehand.
+The deadline for the submission of your code is Dec 13th firm, but you can submit beforehand.
 
 ### Report and demonstration
-- (for students) External link for scheduling: https://docs.google.com/forms/d/e/1FAIpQLSfFufMkUQC0-2XRZn0o7eBJn_6Yf7QRoucVJRIKaV_k6I9A8A/viewform?usp=sharing
+- (for students) External link for scheduling: forthcoming here
 The demonstration are conducted during peer-review sessions which will be organized on:
-- Dec 22, 10-12
-- Dec 22, 13-15
-- Jan 04, 10-12
-- Jan 04, 13-15
+- Dec 14, 13-15 and 15-17
+- Dec 15, 10-12, 13-15, and 15-17
 
-A room will be booked and communicated in a further version of the current document.
+
+The rooms are the same as booked in TimeEdit for "studentledd undervisning" and "laboration" at these times.
 You also have the possibility to conduct such session online via Zoom (using the screen sharing feature).
 
 The report must be written within 1 day (24 hours) after the peer-review session.
@@ -86,9 +85,9 @@ The same reviewing group is assigned for the resubmission, as for the TA.
 A group reviewing a resubmission can simply add an addendum to their initial report.
 The resubmission report must be written within 1 day (24 hours) after resubmission (as the structure should already be familiar to the reviewers).
 
-The bonus parts must be included in already in the first
+The bonus parts must be included already in the first
 submission. But if any of them fails, they can be completed in a
 resubmission. No new bonus parts can be added in the resubmission (in
-other words, the first deadline 21 December also applies to the bonus
+other words, the first deadline 13 December also applies to the bonus
 parts).
 
