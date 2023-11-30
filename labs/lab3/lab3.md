@@ -482,11 +482,8 @@ https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 
 ## Submission
 
-Via a GitHub link in Canvas, as usual.
-Use the subdirectory `lab3/`.
+Via GitHub Classroom as usual.
 You are recommended to use `.gitignore` in order not to store the virtual environment directory.
-
-Indicate in your Canvas message whether you claim bonus points for Bonus task 1 or 2 or both.
 
 Before inspecting your code, we will organize peer reviewing sessions, where each group tests and reviews some other group's lab.
 The review report that you write will be added as a part of your submission.
