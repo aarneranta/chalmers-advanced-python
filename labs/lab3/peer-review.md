@@ -88,7 +88,8 @@ A group reviewing a resubmission can simply add an addendum to their initial rep
 The resubmission report must be written **within 1 day (24 hours)** after resubmission (as the structure should already be familiar to the reviewers).
 
 We invite you to self-manage your resubmission on your private time, which includes a new demonstration.
-**The deadline for resubmitting the report/issue of lab 3 is Dec 5.**
+
+**The deadline for resubmitting the report/issue of lab 3 is Jan 5.**
 
 The bonus parts must be included already in the first
 submission. But if any of them fails, they can be completed in a
