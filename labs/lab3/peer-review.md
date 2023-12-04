@@ -29,7 +29,7 @@ The reviewing group must write a short report motivating their decision accordin
 The report must been submitted as an issue opened on the other group's repository.
 In order to open such an issue, you must first invite the other team as collaborators, as explained [here](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository).
 
-You must mention in this issue the name of which must include the names of the reviewing group (person 1 and person 2 if the group is a pair) and of the submitting group (person 3 and person 4 if the group is a pair) as `name1-surname1_name2-surname2_reporting_name3-surname3_name4-surname4.pdf`.
+You must mention in this issue the name of which must include the names of the reviewing group (person 1 and person 2 if the group is a pair) and of the submitting group (person 3 and person 4 if the group is a pair) as `name1-surname1_name2-surname2_reporting_name3-surname3_name4-surname4`.
 
 This is the template for the report/issue:
 
