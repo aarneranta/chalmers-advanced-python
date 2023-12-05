@@ -26,12 +26,12 @@ These points 3 (+ 2) points will be assessed during a live presentation (physica
 ## Report
 
 The reviewing group must write a short report motivating their decision according the criteria mentioned above.
-The report must been submitted as a PDF file on Canvas, the name of
-which must include the names of the reviewing group (person 1 and
-person 2 if the group is a pair) and of the submitting group (person 3
-and person 4 if the group is a pair) as `name1-surname1_name2-surname2_reporting_name3-surname3_name4-surname4.pdf`.
+The report must been submitted as an issue opened on the other group's repository.
+In order to open such an issue, you must first invite the other team as collaborators, as explained [here](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository).
 
-This is the template for the report:
+You must mention in this issue the name of which must include the names of the reviewing group (person 1 and person 2 if the group is a pair) and of the submitting group (person 3 and person 4 if the group is a pair) as `name1-surname1_name2-surname2_reporting_name3-surname3_name4-surname4`.
+
+This is the template for the report/issue:
 
 Section 1: Core assignment
 - Q1: Does the application run? --> yes/no
@@ -60,22 +60,24 @@ Section 3 is more open than the other sections, you can write general comments o
 
 ## Deadlines
 ### Registration
-The deadline for the registration to **at least two** peer-review sessions is Dec 11th firm.
+The deadline for the registration to _at least two_ peer-review sessions is **Dec 11** firm.
+
+Teaching assistants will assign you a peer group on **Dec 12**.
 
 ### Code 
-The deadline for the submission of your code is Dec 13th firm, but you can submit beforehand.
+The deadline for the submission of your code is **Dec 13** firm, but you can submit beforehand.
 
 ### Report and demonstration
 - (for students) External link for scheduling: forthcoming here
 The demonstration are conducted during peer-review sessions which will be organized on:
-- Dec 14, 13-15 and 15-17
-- Dec 15, 10-12, 13-15, and 15-17
+- **Dec 14**, 13-15 and 15-17
+- **Dec 15**, 10-12, 13-15, and 15-17
 
 
 The rooms are the same as booked in TimeEdit for "studentledd undervisning" and "laboration" at these times.
 You also have the possibility to conduct such session online via Zoom (using the screen sharing feature).
 
-The report must be written within 1 day (24 hours) after the peer-review session.
+The report must be written **within 1 day (24 hours)** after the peer-review session.
 
 ## Other considerations - resubmission
 
@@ -83,11 +85,15 @@ A TA is ultimately responsible for the validation of the submission, and also ha
 Note that a solution will have to be resubmitted if it doesn't pass the peer-review process (as prescribed in Section 1 of the report), a submitting group can apply for resubmission **once**.
 The same reviewing group is assigned for the resubmission, as for the TA.
 A group reviewing a resubmission can simply add an addendum to their initial report.
-The resubmission report must be written within 1 day (24 hours) after resubmission (as the structure should already be familiar to the reviewers).
+The resubmission report must be written **within 1 day (24 hours)** after resubmission (as the structure should already be familiar to the reviewers).
+
+We invite you to self-manage your resubmission on your private time, which includes a new demonstration.
+
+**The deadline for resubmitting the report/issue of lab 3 is Jan 5.**
 
 The bonus parts must be included already in the first
 submission. But if any of them fails, they can be completed in a
 resubmission. No new bonus parts can be added in the resubmission (in
-other words, the first deadline 13 December also applies to the bonus
+other words, the first deadline **Dec 13** also applies to the bonus
 parts).
 

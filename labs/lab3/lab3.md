@@ -155,14 +155,8 @@ If not, the following steps must be taken at the first time:
    ```
    This will create the directory `myvenv` with lots of contents.
 4. activate the virtual environment: 
-   ```
-   $ source myvenv/bin/activate
-   ``` 
-   on Linux/Mac 
-   ```
-   $ myvenv/Scripts/activate.bat
-   ``` 
-   on Windows.
+   - `$ source myvenv/bin/activate` on Linux/Mac 
+   - `$ myvenv/Scripts/activate.bat` or `$ myvenv/Scripts/activate.ps1` on Windows. Which of these two commands will work depends on what shell you are using. If unsure, try both
    You should now see the string `(myvenv)` prefixed to your command line prompt.
 5. install the necessary Python libraries (`networkx` is only necessary if you did the baseline version of lab 2):
   ```
