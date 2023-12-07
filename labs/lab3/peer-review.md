@@ -68,11 +68,20 @@ Teaching assistants will assign you a peer group on **Dec 12**.
 The deadline for the submission of your code is **Dec 13** firm, but you can submit beforehand.
 
 ### Report and demonstration
-- (for students) External link for scheduling: forthcoming here
+
+**External link for scheduling**: 
+
+https://docs.google.com/spreadsheets/d/1Jy4RNaheW5Dzd0aQ6tJ7JkCVXdjbSTVOjTTdR3155TY/edit?usp=sharing
+
 The demonstration are conducted during peer-review sessions which will be organized on:
 - **Dec 14**, 13-15 and 15-17
 - **Dec 15**, 10-12, 13-15, and 15-17
 
+We provide a spreadsheet to facilitate the pairing required for the demonstration, which includes an example on how to use it.
+The spreadsheet contains all relevant information for the pairing, such as whether you addressed _bonus_ parts, _when_ you are available and _how_ (physically or only on zoom), means of _contact_ and name of your _repository_.
+Please indicate when you have found a pair, a column is dedicated to that (_Registered_).
+
+Note that **you are ultimately responsible** for selecting a pair, conducting the demonstration and ensuring a seamless functioning of the process.
 
 The rooms are the same as booked in TimeEdit for "studentledd undervisning" and "laboration" at these times.
 You also have the possibility to conduct such session online via Zoom (using the screen sharing feature).
