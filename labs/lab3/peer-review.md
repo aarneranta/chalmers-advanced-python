@@ -67,7 +67,7 @@ Teaching assistants will assign you a peer group on **Dec 12**.
 ### Code 
 The deadline for the submission of your code is **Dec 13** firm, but you can submit beforehand.
 
-### Report and demonstration
+### Report, demonstration, and self-registration
 
 **External link for scheduling**: 
 
@@ -77,7 +77,7 @@ The demonstration are conducted during peer-review sessions which will be organi
 - **Dec 14**, 13-15 and 15-17
 - **Dec 15**, 10-12, 13-15, and 15-17
 
-We provide a spreadsheet to facilitate the pairing required for the demonstration, which includes an example on how to use it.
+We provide a spreadsheet to facilitate the pairing (**self-registration**) required for the demonstration, which includes an example on how to use it.
 The spreadsheet contains all relevant information for the pairing, such as whether you addressed _bonus_ parts, _when_ you are available and _how_ (physically or only on zoom), means of _contact_ and name of your _repository_.
 Please indicate when you have found a pair, a column is dedicated to that (_Registered_).
 
