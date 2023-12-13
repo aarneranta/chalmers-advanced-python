@@ -62,8 +62,6 @@ Section 3 is more open than the other sections, you can write general comments o
 ### Registration
 The deadline for the registration to _at least two_ peer-review sessions is **Dec 11** firm.
 
-Teaching assistants will assign you a peer group on **Dec 12**.
-
 ### Code 
 The deadline for the submission of your code is **Dec 13** firm, but you can submit beforehand.
 
