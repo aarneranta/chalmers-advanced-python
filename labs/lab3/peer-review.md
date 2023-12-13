@@ -61,6 +61,9 @@ Section 3 is more open than the other sections, you can write general comments o
 ## Deadlines
 ### Registration
 The deadline for the registration to _at least two_ peer-review sessions is **Dec 11** firm.
+That is, each group has to suggest at least two sessions during which they can be available in order to facilitate pairing with other groups (see below).
+
+Each group will have to perform only one demonstration during one session with one group. 
 
 ### Code 
 The deadline for the submission of your code is **Dec 13** firm, but you can submit beforehand.
