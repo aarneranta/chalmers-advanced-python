@@ -10,7 +10,7 @@ import trams
 import graphs
 
 MAP_FILE_URL = 'https://upload.wikimedia.org/wikipedia/commons/7/71/G%C3%B6teborgs_sp%C3%A5rv%C3%A4gsn%C3%A4t.svg'
-TRAM_FILE = '../labs/lab1/tramnetwork.json'
+TRAM_FILE = 'tramnetwork.json'
 OUT_FILE = 'routemap.svg'
 
 def color_xml_tree(tree, tomark):

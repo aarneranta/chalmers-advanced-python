@@ -7,9 +7,9 @@ def do_twice(f):
     return wrap
 
 @do_twice
+@do_twice
 def hello():
     print("hello")
-
 
 hello()
 

@@ -1,12 +1,20 @@
 # a simple library for generating well-formatted HTML code
 
-def intag(tag, elems, attrs='', newlines=False):
+def dict_attrs(dict):
+    # forms an attribute list from a dictionary
+    ats = []
+    for k, v in dict.items():
+        ats.append(str(k) + '=' + '"' + str(v) + '"')
+    return ' '.join(ats)
+
+
+def intag(tag, elems, attrs=None, newlines=False):
     """
     Creates a HTML element by wrapping a list of elements
     between a start and end tag, 
     optionally adding newlines.
     """
-    attrs = ' ' + attrs if attrs else ''
+    attrs = ' ' + dict_attrs(attrs) if attrs else ''
     new = '\n' if newlines else ''
     start = '<' + tag + attrs + '>'
     end = '</'+ tag + '>'
@@ -19,7 +27,7 @@ def b(s):
     return intag('b', [s])
 
 
-def linesintag(tag, elems, attrs=''):
+def linesintag(tag, elems, attrs=None):
     "Builds element with intag with newlines always added."
     return intag(tag, elems, attrs, newlines=True)
 
@@ -29,16 +37,9 @@ def p(ss):
     return linesintag('p', ss)
 
 
-def attrs(dict):
-    # forms an attribute list from a dictionary
-    ats = []
-    for k, v in dict.items():
-        ats.append(str(k) + '=' + '"' + str(v) + '"')
-    return ' '.join(ats)
-
 def a(url, s):
     "Generates a hypertag from a URL and an element."
-    return intag('a', [s], attrs=attrs({'href': url}))
+    return intag('a', [s], attrs={'href': url})
 
 
 def html(head, body):
@@ -46,7 +47,7 @@ def html(head, body):
     return '<!DOCTYPE html>\n' + linesintag('html',
                       [linesintag('head', head),
                        linesintag('body', body)],
-                      attrs='xmlns="http://www.w3.org/1999/xhtml"')
+                      attrs={'xmlns': "http://www.w3.org/1999/xhtml"})
 
 
 def title(s):
@@ -65,7 +66,7 @@ def table(th, data):
         'table',
         [linesintag('tr', [intag('th',[e]) for e in th])] +
         [linesintag('tr', [intag('td',[e]) for e in d]) for d in data],
-        attrs = attrs({'border': '1'}),
+        attrs = {'border': '1'}
         )
 
 
@@ -91,7 +92,7 @@ powerdoc = html(
 # a document about Gbg trams
 import json
 
-TRAMDOC = 'tramnetwork.json'
+TRAMDOC = 'tramnetwork.json'  # your Lab 1 generated JSON file
 
 def tramdoc():
     with open(TRAMDOC) as data:
