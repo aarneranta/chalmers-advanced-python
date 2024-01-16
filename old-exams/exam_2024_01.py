@@ -68,9 +68,12 @@ latitudes = {stop: tramnetwork['stops'][stop]['lat']
 #Answer:
 min([stop for stop in latitudes], key=lambda stop: latitudes[stop])
 
+# another working answer:
+sorted(latitudes.keys(),key=lambda x:latitudes[x])[0]
+
 
 # 4
-# 4 points to the added code, 1 point for each Answer orinting a result
+# 4 points to the added code, 1 point for each Answer orienting a result
 
 class Graph:
     def __init__(self):
