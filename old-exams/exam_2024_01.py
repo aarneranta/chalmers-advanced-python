@@ -1,4 +1,5 @@
 # 1
+# 1 point for each Value and each Type
 
 """
 [1, 2, 3].append(3)
@@ -15,6 +16,7 @@ Type: dict
 """
 
 # 2
+# 1 point for each Error and each Reason
 
 """
 {1//n for n in range(5)}
@@ -31,6 +33,7 @@ Reason: 2 is not in dict
 """
 
 # 3
+# 3 points for each Answer
 tramnetwork = {
     "stops": {
         "Östra Sjukhuset": {
@@ -67,6 +70,7 @@ min([stop for stop in latitudes], key=lambda stop: latitudes[stop])
 
 
 # 4
+# 4 points to the added code, 1 point for each Answer orinting a result
 
 class Graph:
     def __init__(self):
@@ -99,18 +103,21 @@ G = Graph()
 G.add_edge(1, 2)
 G.add_edge(2, 3)
 G.add_edge(2, 2)
-print(G.get_vertices())  # Answer: {1, 2}
-print(G.get_edges())     # Answer: {(2, 3), (1, 2), (2, 2)}
+print(G.get_vertices())  # Answer: {1, 2} ; important that 3 is not included
+print(G.get_edges())     # Answer: {(2, 3), (1, 2), (2, 2)} ; order does not matter
 
 
 # 5
+# 3 points for class, 2 points for def, 1 point for print result
 
 class NoSelfLoopsGraph(Graph):
     # your code, can just make super().add_edge() conditional:
     def add_edge(self, a, b):
         if a != b:
             super().add_edge(a, b)
-
+# important that no other methods are overwritten
+# not using super().add_edge() means one penalty point
+            
             
 def without_self_loops(G):
     # your code, can just loop over G's edges with NG.add_edge():
@@ -118,8 +125,9 @@ def without_self_loops(G):
     for (a, b) in G.get_edges():
         NG.add_edge(a, b)
     return NG
+# important that you get edges from G and rebuild the graph with NG.add_edge()
 
 
-print(without_self_loops(G).get_edges())  #Answer: {(2, 3), (1, 2)}
+print(without_self_loops(G).get_edges())  #Answer: {(2, 3), (1, 2)} ; order does not matter
 
     
