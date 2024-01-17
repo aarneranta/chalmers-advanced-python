@@ -63,6 +63,7 @@ tramnetwork = {
 # Answer:
 latitudes = {stop: tramnetwork['stops'][stop]['lat']
                 for stop in tramnetwork['stops']}
+latitudes = {stop_key:stop_dict["lat"] for stop_key,stop_dict in tramnetwork["stops"].items()}
 
 # the name of the southernmost tram stop
 #Answer:
