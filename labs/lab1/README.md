@@ -1,26 +1,8 @@
 # Lab 1: Information Extraction
 
-Advanced Python Course, Chalmers DAT515, 2021
+Advanced Python Course, Chalmers DAT516, 2024
 
 by Aarne Ranta
-
-Version 1.2, 18 November
-
-Added a hint about the command-line argument `init`.
-
-Version 1.1, 12 November
-
-We now provide an alternative, easier way to define geographical distance.
-Solving it in the original way is worth 2 extra points, which count toward a higher grade.
-This change is in a paragraph marked "New in version 1.1"
-
-Version 1.0, 9 November 2021
-
-Work that satisfies the specification in this version will be
-considered valid, even if we have to make changes after Version 1.0. So feel
-confident to start you work, but keep an eye on possible changes: we
-will not add tasks, but may have to explain some things more clearly.
-
 
 ## Purpose
 
@@ -230,8 +212,7 @@ Notice that each line is assumed to serve in both directions - the direction lis
 The distance is hence not dependent on the tram lines.
 Use the formula from [this Wikipedia description](https://en.wikipedia.org/wiki/Geographical_distance#Spherical_Earth_projected_to_a_plane), and notice that the `math` library is needed in the Python code.
 
-**New in version 1.1**. You can define this function easily by using the library [Haversine](https://pypi.org/project/haversine/).
-If you do it without the library, as in the original version, it will give you extra points.
+**Hint**: You can test this function by using the library [Haversine](https://pypi.org/project/haversine/).
 
 
 ### The dialogue function
@@ -294,7 +275,7 @@ You also need to import `sys`.
 
 
 ## Submission
-For information on how to submit, see [the template repository](https://github.com/DAT515-DIT515/lab1_template/tree/main).
+For information on how to submit, see the template repository (forthcoming).
 
 They must be usable in the following ways:
 
