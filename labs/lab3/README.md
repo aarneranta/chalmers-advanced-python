@@ -1,28 +1,9 @@
-# Lab3: A web application for tram network
+# Lab3: A web application for the tram network
 
-Advanced Python Course, Chalmers DAT515, 2022
+Advanced Python Course, Chalmers DAT516, 2024
 
 by Aarne Ranta
 
-Version 1.2.2  9 December 2022: added peer review instructions.
-
-Version 1.2.1, 4 December 2022: added some explanations without changing the task.
-
-Version 1.2, 2 December 2022: some changes have been made in the lab for this year.
-The functionality is similar to what it was last year, but the coding task a bit simpler.
-You can start your work now, or wait until the instruction film is posted on 5 December.
-(Some small fixes are still possible, but the requirements will not be changed any more this year.)
-
-Version 1.1, 8 December 2021: simplified the file structure a bit,
-reflected in modifications in `files/tramviz.py, views.py`.
-
-Version 1.0, 7 December 2021
-
-NOTICE: if you have already started working in Flask, in accordance with the earlier draft, you can follow the specification in `flask-labd.md`.
-The directories `static` and `templates` belong the the Flask version.
-The actual task, including bonus parts, is the same.
-But the instructions for Flask are less detailed, so we recommend the
-Django version in this document. 
 
 ## Purpose
 
@@ -31,8 +12,8 @@ Your application will
 
 - display the complete map of tram lines
 - highlight shortest paths in terms of time and geographical distance
-- bonus part 1: make the calculations more precise by taking changes into account
-- bonus part 2: show actual departures from any stops by clicking at it on the map
+- make the calculations more precise by taking changes into account
+- show actual departures from any stops by clicking at it on the map
 
 
 Here is an example screenshot:
@@ -64,10 +45,6 @@ The learning outcomes include:
 - putting everything together by using a web application framework, Django
 - more details of `graphviz` library, various libraries belonging to the `django` framework
 - virtual environments (`venv`)
-
-
-The basic lab gives 10 points and each bonus part 4 points.
-Thus the maximum is 18 points.
 
 
 ## The task
@@ -415,7 +392,7 @@ The default implementation copied from `files/tramviz.py` is a mock-up, which al
 You can of course also makes the HTML files look nicer if you have time!
 
 
-## Bonus part 1
+## Adding changes of lines
 
 In Lab2 shortest path, we ignored the effect of changing from one line to the other.
 This effect is that major factor that can make "shortest time" and "shortest distance" differ.
@@ -430,9 +407,7 @@ One way to do this with the existing algorithms is simply to build a new graph f
 - a special change distance and change time is added between vertices that have the same stop but different times - for instance, 20 metres and 10 minutes, respectively.
 
 
-## Bonus part 2: links to actual traffic information
-
-This bonus part can be submitted even if you have not done Bonus part 1.
+## Adding links to actual traffic information
 
 The challenge is to find the URLs corresponding to each stop name.
 They are given as numerical codes, for instance, Nordstan is
@@ -482,4 +457,5 @@ You are recommended to use `.gitignore` in order not to store the virtual enviro
 Before inspecting your code, we will organize peer reviewing sessions, where each group tests and reviews some other group's lab.
 The review report that you write will be added as a part of your submission.
 
-More details about peer reviewing and a schedule can be found [here](./peer-review.md).
+More details about peer reviewing and a schedule will be found
+[here](./peer-review.md) (to be updated before the task begins).
