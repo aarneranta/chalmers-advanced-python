@@ -1,46 +1,9 @@
 # Lab2: Graphs and transport networks
 
-Advanced Python Course, Chalmers DAT515, 2022
+Advanced Python Course, Chalmers DAT516, 2024
 
 by Aarne Ranta
 
-Version 1.3.1, 1 December 2022
-
-- made it clear that the internal representation of stops and lines in
-  TramNetwork can be the dictionary from Lab 1, rather than TramStop
-  and TramLine objects
-
-Version 1.3, 30 November 2022
-
-Updated UML diagram, more explanations of the following points (also read the full details in the text below):
-
-- about the values of vertices: they can be e.g. the locations of stops
-- about the weights of edges: they can be e.g. transition times between stops
-- about native `dijkstra()`: the pseudocode in Wikipedia does not return the paths, but doing that is required, and it is an easy modification of the pseudocode
-- about your test file: it is enough that it contains some tests that show that you know how to use Python's test libraries; `hypothesis` is just a recommendation, not a requirement
-- about `TramNetwork` class: for the methods listing lines and stops, it is enough to list their names (but listing complete objects is not wrong either)
-- about the final demo of `trams.py`: hint that if it works correctly, your code is probably right
-- about your Git repository: it should have subdirectories lab1/, lab2/, and lab3/
-
-
-Version 1.2, 1 December 2021
-
-Modified the test about edge symmetry (`(a, b)` implies `(b, a)`): now about neighbors instead.
-Also added a comment on the shortest path test, and on the internal representation in `TramNetwork`.
-
-
-Version 1.1, 20 November 2021
-
-Left out the method of removing a tram line, since it will probably not be needed in Lab 3.
-The paragraph about it has simply been deleted from this document.
-
-
-Version 1.0, 18 November 2021
-
-Work that satisfies the specification in this version will be
-considered valid, even if we have to make changes after Version 1.0. So feel
-confident to start you work, but keep an eye on possible changes: we
-will not add tasks, but may have to explain some things more clearly.
 
 ## Purpose
 
@@ -59,14 +22,6 @@ The main learning outcomes are:
 - property-based testing with randomized input data, the ``hypothesis`` library
 
 
-### Bonus points
-
-If you implement graphs and Dijkstra's algorithms from scratch, you can get 4 bonus points on top of the normal 10 points.
-But if you want to save work, you can use the [`networkx`](https://networkx.org/) library.
-This will require some code to be written, but less than in the implementation from scratch.
-Details will be given below.
-
-
 ## The task: overview
 
 You are expected to submit two Python files,
@@ -79,7 +34,7 @@ The following UML diagram shows the classes that you are expected to implement i
 ![tram-uml](../images/tram-classes.png)
 
 The underscored variables right after the class names are just a hint that need not be followed.
-In fact, the baseline (non-bonus) implementation of `Graph` does not need them at all.
+In fact, the implementation of `Graph` does not need them at all.
 The important thing is that the public methods are implemented with
 the names given here.
 
@@ -112,7 +67,8 @@ The class `Graph` can be initialized in two ways:
 - from a list of edges
 
 The class builds internally a data structure that supports different graph operations.
-This data structure is kept hidden, and we leave it to everyone to choose among the various equivalent representations.
+This data structure is kept hidden, and it is inherited from the Graph
+class of the networkx library.
 The public methods to be implemented are:
 
 - `neighbors(vertex)`
@@ -133,10 +89,7 @@ If you have read an earlier draft of this document, you may notice that we have 
 - we only deal with undirected graphs
 - we have fewer arguments in initialization 
 
-
-#### Baseline solution, no bonus points
-
-The simplest way to implement graphs is by inheriting from `networkx.Graph`:
+The implementation is by inheritance from `networkx.Graph`:
 ```
     class Graph(nx.Graph):
         def __init__(self, start=None):
@@ -164,14 +117,6 @@ Here is a minimal example suggesting how you could do to set and get values of n
 ```
 
 
-#### Native implementation, gives bonus points
-
-If you write a native implementation without using `networkx` (or any other libraries), you need to
-
-- design an internal representation, stored in private instance variables (such as `_adjacencylist` and `_valuedict`),
-- define all the public methods as specified above.
-
-
 
 ### The WeightedGraph class
 
@@ -184,7 +129,9 @@ The class stores weights internally (e.g. in a dictionary) and supports two publ
 - `get_weight(vertex, vertex)`
 - `set_weight(vertex, vertex, weight)`
 
-If you have chosen the `networkx` implementation of graphs, you can implement these methods by using the representation of weights that is already available:
+Since `Graph` is implemented by inheritance from  `networkx`, you can
+implement these methods by using the representation of weights that is
+already available there:
 ```
     >>> G = nx.Graph()
     >>> G.add_edge(1,2)
@@ -192,7 +139,6 @@ If you have chosen the `networkx` implementation of graphs, you can implement th
     >>> G[1][2]['weight']
     8
 ```
-If you use a native implementation, the simplest solution is probably to have a separate dictionary whose keys are edges.
 
 
 ### The shortest path algorithm
@@ -209,7 +155,7 @@ For example, if `graph` is a `WeightedGraph`, its ``get_weight()`` method can be
 But any function that takes two vertex arguments is possible, for instance, their geographical distance (which is calculated from vertex values rather than stored for each edge: this is to avoid redundancy).
 
 
-#### Baseline: Networkx implementation
+#### Using the Networkx implementation
 
 The [`networkx` implementation](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.shortest_paths.generic.shortest_path.html#networkx.algorithms.shortest_paths.generic.shortest_path) of Dijkstra's algorithm is the function
 ```
@@ -231,9 +177,9 @@ The following helper function can be used for this purpose:
             G[a][b][attr] = cost(a, b)
 ```
 
-#### Bonus: native implementation
+#### For comparison: a native implementation
 
-A suggested implementation of `dijkstra` follows the pseudocode in
+If you want to understand the details of `dijkstra`, you can follow the pseudocode in
 [this Wikipedia article](https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm).
 
 Make sure to return a dictionary, where the keys are all target vertices reachable from the source, and their values are paths from the source to the target (i.e. lists of vertices in the order that the shortest path traverses them).
@@ -279,22 +225,16 @@ You can append the following code to your file to demonstrate this:
 
 We recommend the use of `hypothesis` in the way specified in the lecture notes, Section 5.9.
 
-A particularly powerful way of testing is available for your native implementation if you also implement the one using `networkx`.
-Then you can systematically compare the results of all the public methods.
-You can in particular do this for your shortest path algorithm.
-
-Here are some other things to test:
+Here are some things to test:
 
 - if `(a, b)` is in `edges()`, both `a` and `b` are in `vertices()`
 - if `a` has `b` as its neighbour, then `b` has `a` as its neighbour
 - the shortest path from `a` to `b` is the reverse of the shortest path from `b` to `a` (but notice that this can fail in situations where there are several shortest paths)
 
 When grading your lab, we will just check that your test file `test_graphs.py` contains some reasonable tests and shows that you are able to use the test libraries; the use of `hypothesis` is not compulsory, but just a recommendation.
-However, we will run our own tests on your `graphs.py` file.
+However, we will also run our own tests on your `graphs.py` file.
 If we then find errors, you may have to resubmit your lab.
 To prevent this from happening, we recommend that you take your own testing seriously!
-
-
 
 
 
@@ -446,4 +386,3 @@ Submit the files
 
 via the dedicated GitHub Classrooms repository.
 
-Also indicate if you have done a native implementation or used `networkx`.
