@@ -210,9 +210,8 @@ Notice that each line is assumed to serve in both directions - the direction lis
 
 `distance_between_stops(stopdict, stop1, stop2)` calculates the geographic distance between any two stops, based on their latitude and longitude.
 The distance is hence not dependent on the tram lines.
-Use the formula from [this Wikipedia description](https://en.wikipedia.org/wiki/Geographical_distance#Spherical_Earth_projected_to_a_plane), and notice that the `math` library is needed in the Python code.
-
-**Hint**: You can test this function by using the library [Haversine](https://pypi.org/project/haversine/).
+You can implement this function by using the
+[Haversine](https://pypi.org/project/haversine/) library.
 
 
 ### The dialogue function
@@ -275,11 +274,13 @@ You also need to import `sys`.
 
 
 ## Submission
-For information on how to submit, see the template repository (forthcoming).
+For information on how to submit, see the [template repository](https://github.com/DAT516/dat516-lp2-classroom-lab1-information-extraction-lab1_template).
 
-They must be usable in the following ways:
+The files that you submit must be usable in the following ways:
 
 - `python3 tramdata.py init` to produce the file `tramnetwork.json`,
 - `python3 tramdata.py` to start the query dialogue,
 - `import tramdata` from another Python file or the Python shell, without starting the dialogue or printing anything,
 - `python3 test_tramdata.py` to run your tests.
+
+
