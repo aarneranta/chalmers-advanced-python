@@ -272,7 +272,7 @@ You also need to import `sys`.
 
 
 ## Submission
-For information on how to submit, see the [template repository](https://github.com/DAT516/dat516-lp2-classroom-lab1-information-extraction-lab1_template). The submission repository will be automatically cloned when you subscribe to the [Lab1 Github Classroom](https://classroom.github.com/a/OfI3pLUt) - please specify your lab group number in the repository name.
+For information on how to submit, see the [template repository](https://github.com/DAT516/dat516-lp2-classroom-lab1-information-extraction-lab1_template). The submission repository will be automatically cloned when you subscribe to the [Lab1 Github Classroom](https://classroom.github.com/a/OfI3pLUt) - please specify your lab group number in the repository name, for example group-1.
 You will be graded on [Canvas](https://chalmers.instructure.com/courses/31748).
 
 The files that you submit must be usable in the following ways:
