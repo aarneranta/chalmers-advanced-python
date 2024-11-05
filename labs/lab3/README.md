@@ -451,7 +451,7 @@ https://www.crummy.com/software/BeautifulSoup/bs4/doc/
 
 ## Submission
 
-Via GitHub Classroom as usual.
+Via GitHub Classroom [link](https://classroom.github.com/a/hnF26g57) as usual.
 You are recommended to use `.gitignore` in order not to store the virtual environment directory.
 
 Before inspecting your code, we will organize peer reviewing sessions, where each group tests and reviews some other group's lab.
