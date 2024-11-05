@@ -384,5 +384,5 @@ Submit the files
 - `test_graphs.py`
 - `test_trams.py`
 
-via the dedicated GitHub Classrooms repository.
+via the [Lab2 GitHub Classroom](https://classroom.github.com/a/nzzzyYrY) repository.
 
