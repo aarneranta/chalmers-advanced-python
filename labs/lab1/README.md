@@ -36,7 +36,7 @@ the back-end of a web application (Lab 3).
 An integral part of the lab is also a set of **tests**, which you will submit together with your solutions.
 These tests must be written by using the `unittest` standard library of Python.
 
-The solution will be submitted via [GitHub classroom](https://classroom.github.com/a/h4mG25CH) but graded on [Canvas](https://chalmers.instructure.com/courses/26551).
+The solution will be submitted via [GitHub classroom](https://classroom.github.com/a/OfI3pLUt) but graded on [Canvas](https://chalmers.instructure.com/courses/31748).
 
 Learning outcomes:
 
@@ -274,7 +274,7 @@ You also need to import `sys`.
 
 
 ## Submission
-For information on how to submit, see the [template repository](https://github.com/DAT516/dat516-lp2-classroom-lab1-information-extraction-lab1_template).
+For information on how to submit, see the [template repository](https://github.com/DAT516/dat516-lp2-classroom-lab1-information-extraction-lab1_template). The submission repository will be automatically cloned when you subscribe to the [Lab1 Github Classroom](https://classroom.github.com/a/OfI3pLUt) - please specify your lab group number it the repository name.
 
 The files that you submit must be usable in the following ways:
 
