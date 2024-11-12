@@ -1,9 +1,9 @@
 import json
 
-def build_tram_lines(lines):
+def build_tram_stops(jsonobject):
     pass
 
-def build_tram_stops(jsonobject):
+def build_tram_lines(lines):
     pass
 
 def build_tram_network(stopfile, linefile):
