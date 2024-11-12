@@ -4,14 +4,6 @@ TRAM_STOP_FILE = "./../data/tramstops.json"
 with open(TRAM_STOP_FILE, 'r') as fromFile:
     data = json.load(fromFile)
 
-
-
-def build_tram_lines(lines):
-    pass
-
-def build_tram_lines(lines):
-    pass
-
 def build_tram_stops(jsonobject):
     pass
 
