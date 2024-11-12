@@ -1,13 +1,12 @@
 import json
 
-TRAM_STOP_FILE = "/../data/tramstops.json"
-with open(TRAM_STOP_FILE, 'r') as file:
-     data = json.load(file)
-
 def build_tram_lines(lines):
     pass
 
 def build_tram_stops(jsonobject):
+    pass
+
+def build_tram_lines(lines):
     pass
 
 def build_tram_network(stopfile, linefile):
