@@ -1,0 +1,933 @@
+{
+    "\u00d6stra Sjukhuset": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7224618",
+            "12.0478166"
+        ]
+    },
+    "Tingvallsv\u00e4gen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7246437",
+            "12.0420754"
+        ]
+    },
+    "Kaggeledstorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7229358",
+            "12.0332892"
+        ]
+    },
+    "\u00c4tteh\u00f6gsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7200477",
+            "12.0285376"
+        ]
+    },
+    "Munkeb\u00e4ckstorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7185656",
+            "12.0263524"
+        ]
+    },
+    "H\u00e4rlanda": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7181065",
+            "12.0194426"
+        ]
+    },
+    "Stockholmsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7170564",
+            "12.0136038"
+        ]
+    },
+    "Redbergsplatsen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.716275",
+            "12.004907"
+        ]
+    },
+    "Olskrokstorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7146209",
+            "11.9987871"
+        ]
+    },
+    "Svingeln": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.713358",
+            "11.9917409"
+        ]
+    },
+    "Ullevi Norra": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7081152",
+            "11.9861639"
+        ]
+    },
+    "Centralstationen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7077849",
+            "11.9734427"
+        ]
+    },
+    "Brunnsparken": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7065955",
+            "11.9689358"
+        ]
+    },
+    "Stenpiren": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7056512",
+            "11.9574172"
+        ]
+    },
+    "J\u00e4rntorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6999652",
+            "11.952972"
+        ]
+    },
+    "Prinsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6964754",
+            "11.9513521"
+        ]
+    },
+    "Olivedalsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6918865",
+            "11.9536831"
+        ]
+    },
+    "Linn\u00e9platsen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.689966",
+            "11.9520518"
+        ]
+    },
+    "Botaniska Tr\u00e4dg\u00e5rden": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6812619",
+            "11.9455821"
+        ]
+    },
+    "Marklandsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.673267",
+            "11.9353621"
+        ]
+    },
+    "Axel Dahlstr\u00f6ms Torg": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.672288",
+            "11.9275696"
+        ]
+    },
+    "Lantmilsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6668601",
+            "11.924836"
+        ]
+    },
+    "Nymilsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6624705",
+            "11.9250789"
+        ]
+    },
+    "Musikv\u00e4gen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6590769",
+            "11.9206117"
+        ]
+    },
+    "Positivgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6566374",
+            "11.9175191"
+        ]
+    },
+    "Fr\u00f6lunda Torg Sp\u00e5rvagn": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6527643",
+            "11.9116376"
+        ]
+    },
+    "Briljantgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6486393",
+            "11.9035069"
+        ]
+    },
+    "Smaragdgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6454509",
+            "11.8993694"
+        ]
+    },
+    "Opaltorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6423342",
+            "11.9010554"
+        ]
+    },
+    "M\u00f6lndals Innerstad": {
+        "town": "M\u00f6lndal",
+        "position": [
+            "57.655591400000006",
+            "12.01855524009189"
+        ]
+    },
+    "M\u00f6lndals sjukhus": {
+        "town": "M\u00f6lndal",
+        "position": [
+            "57.6614548",
+            "12.0136632"
+        ]
+    },
+    "Lackareb\u00e4ck": {
+        "town": "M\u00f6lndal",
+        "position": [
+            "57.6663479",
+            "12.0114421"
+        ]
+    },
+    "Kroksl\u00e4tts Fabriker": {
+        "town": "M\u00f6lndal",
+        "position": [
+            "57.6717887",
+            "12.0100249"
+        ]
+    },
+    "Kroksl\u00e4tts torg": {
+        "town": "M\u00f6lndal",
+        "position": [
+            "57.6753924",
+            "12.0078652"
+        ]
+    },
+    "Lana": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.678333",
+            "12.0041666"
+        ]
+    },
+    "Varbergsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6795297",
+            "12.003115"
+        ]
+    },
+    "Elisedal": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6834394",
+            "12.0004416"
+        ]
+    },
+    "Almedal": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6867844",
+            "11.9974967"
+        ]
+    },
+    "Liseberg S\u00f6dra": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6945173",
+            "11.993695420809985"
+        ]
+    },
+    "Korsv\u00e4gen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6968295",
+            "11.9868341"
+        ]
+    },
+    "Scandinavium": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7006276",
+            "11.9858582"
+        ]
+    },
+    "Ullevi S\u00f6dra": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7039541",
+            "11.9850022"
+        ]
+    },
+    "Domkyrkan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7042356",
+            "11.9636653"
+        ]
+    },
+    "Gr\u00f6nsakstorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7025866",
+            "11.9639739"
+        ]
+    },
+    "Vasaplatsen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6989398",
+            "11.9705111"
+        ]
+    },
+    "Vasa Viktoriagatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6985634",
+            "11.9653312"
+        ]
+    },
+    "Handelsh\u00f6gskolan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6965303",
+            "11.9625825"
+        ]
+    },
+    "Brunnsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6936796",
+            "11.9591759"
+        ]
+    },
+    "Seminariegatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6920557",
+            "11.9571828"
+        ]
+    },
+    "Bokekullsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6771253",
+            "11.9327977"
+        ]
+    },
+    "H\u00f6gsbogatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6803596",
+            "11.9301317"
+        ]
+    },
+    "Klintens V\u00e4g": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6824461",
+            "11.9279843"
+        ]
+    },
+    "Godhemsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6854379",
+            "11.9264658"
+        ]
+    },
+    "Mariaplan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.686497",
+            "11.9202959"
+        ]
+    },
+    "Ostindiegatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6876154",
+            "11.9156284"
+        ]
+    },
+    "Vagnhallen Majorna": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6891689",
+            "11.9123386"
+        ]
+    },
+    "Jaegerdorffsplatsen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6914334",
+            "11.9150447"
+        ]
+    },
+    "Chapmans Torg": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6944764",
+            "11.9198652"
+        ]
+    },
+    "Kaptensgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6971583",
+            "11.9276101"
+        ]
+    },
+    "Stigbergstorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6990303",
+            "11.9338896"
+        ]
+    },
+    "Masthuggstorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6995343",
+            "11.9447351"
+        ]
+    },
+    "Hagakyrkan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6996013",
+            "11.9615964"
+        ]
+    },
+    "Valand": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7004651",
+            "11.9748851"
+        ]
+    },
+    "Kungsportsplatsen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7039668",
+            "11.9697972"
+        ]
+    },
+    "Solrosgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7162733",
+            "12.0250195"
+        ]
+    },
+    "Sanatoriegatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7132161",
+            "12.0240768"
+        ]
+    },
+    "Virginsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7107812",
+            "12.0235382"
+        ]
+    },
+    "Berzeliigatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6983047",
+            "11.9823431"
+        ]
+    },
+    "Gamlestads Torg": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7279636",
+            "12.0046485"
+        ]
+    },
+    "Hj\u00e4llbo": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7692649",
+            "12.0223749"
+        ]
+    },
+    "Hammarkullen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7800406",
+            "12.0366009"
+        ]
+    },
+    "Stor\u00e5s": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.785139",
+            "12.0462261"
+        ]
+    },
+    "Angered Centrum": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7960687",
+            "12.0495277"
+        ]
+    },
+    "Welandergatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7060778",
+            "12.0239345"
+        ]
+    },
+    "T\u00f6pelsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7023397",
+            "12.0221389"
+        ]
+    },
+    "B\u00f6gatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.700946",
+            "12.0160087"
+        ]
+    },
+    "Ekmanska": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6996668",
+            "12.0096351"
+        ]
+    },
+    "B\u00e4ckeliden": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6999206",
+            "12.0033203"
+        ]
+    },
+    "Sankt Sigfrids Plan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6987301",
+            "11.9994709"
+        ]
+    },
+    "Liseberg Station": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6975588",
+            "11.9942205"
+        ]
+    },
+    "Lilla Bommen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7092219",
+            "11.9667699"
+        ]
+    },
+    "Frihamnen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7203255",
+            "11.9600773"
+        ]
+    },
+    "Hjalmar Brantingsplatsen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7206077",
+            "11.9522789"
+        ]
+    },
+    "V\u00e5gm\u00e4stareplatsen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.720537",
+            "11.9451746"
+        ]
+    },
+    "Wieselgrensplatsen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7205998",
+            "11.9355948"
+        ]
+    },
+    "Rambergsvallen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.719347",
+            "11.9268104"
+        ]
+    },
+    "Gropeg\u00e5rdsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7183037",
+            "11.9191595"
+        ]
+    },
+    "Eketr\u00e4gatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7164903",
+            "11.9099118"
+        ]
+    },
+    "S\u00e4l\u00f6fjordsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7136356",
+            "11.9029025"
+        ]
+    },
+    "V\u00e5rv\u00e4derstorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7129196",
+            "11.8931411"
+        ]
+    },
+    "Mildv\u00e4dersgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7156823",
+            "11.890926"
+        ]
+    },
+    "\u00d6nskev\u00e4dersgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7201505",
+            "11.8930502"
+        ]
+    },
+    "Friskv\u00e4derstorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7235673",
+            "11.8931956"
+        ]
+    },
+    "V\u00e4derilsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7265488",
+            "11.8933485"
+        ]
+    },
+    "Temperaturgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.732569",
+            "11.8952913"
+        ]
+    },
+    "Varmfrontsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7368776",
+            "11.8966497"
+        ]
+    },
+    "Aprilgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7608913",
+            "12.0409994"
+        ]
+    },
+    "Allhelgonakyrkan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7574065",
+            "12.0374426"
+        ]
+    },
+    "Kortedala Torg": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.752779",
+            "12.0330403"
+        ]
+    },
+    "Runstavsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7479034",
+            "12.0303082"
+        ]
+    },
+    "Nym\u00e5negatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7427511",
+            "12.0298737"
+        ]
+    },
+    "Bev\u00e4ringsgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7399617",
+            "12.0286261"
+        ]
+    },
+    "Kviberg": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7367053",
+            "12.0265257"
+        ]
+    },
+    "Bellevue": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7325237",
+            "12.0246107"
+        ]
+    },
+    "SKF": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7291018",
+            "12.0132691"
+        ]
+    },
+    "Ejdergatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7210222",
+            "12.005952"
+        ]
+    },
+    "Chalmers": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6900225",
+            "11.9730927"
+        ]
+    },
+    "Wavrinskys Plats": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6888028",
+            "11.9684664"
+        ]
+    },
+    "Medicinaregatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6855827",
+            "11.9619508"
+        ]
+    },
+    "Sahlgrenska Huvudentr\u00e9": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6836795",
+            "11.9614653"
+        ]
+    },
+    "Nordstan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7086397",
+            "11.969087498371342"
+        ]
+    },
+    "Komettorget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7511423",
+            "12.0713114"
+        ]
+    },
+    "Rymdtorget Sp\u00e5rvagn": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7558013",
+            "12.0669195"
+        ]
+    },
+    "Teleskopgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7593",
+            "12.0597894"
+        ]
+    },
+    "Galileis Gata": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7605336",
+            "12.051446"
+        ]
+    },
+    "Januarigatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.7602447",
+            "12.0412135"
+        ]
+    },
+    "Kapellplatsen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6927713",
+            "11.9735773"
+        ]
+    },
+    "Sannaplan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6842394",
+            "11.9166553"
+        ]
+    },
+    "Sandarna": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6827594",
+            "11.9095056"
+        ]
+    },
+    "Kungssten": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6805281",
+            "11.9018248"
+        ]
+    },
+    "Doktor Sydows Gata": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6793184",
+            "11.9776909"
+        ]
+    },
+    "Doktor Fries Torg": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6844804",
+            "11.9726716"
+        ]
+    },
+    "Saltholmen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6606312",
+            "11.8455002"
+        ]
+    },
+    "Roddf\u00f6reningen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6640011",
+            "11.8516451"
+        ]
+    },
+    "L\u00e5ngedrag": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6682375",
+            "11.8535394"
+        ]
+    },
+    "Hinsholmen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6676904",
+            "11.8610197"
+        ]
+    },
+    "K\u00e4ringberget": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6692358",
+            "11.8710883"
+        ]
+    },
+    "Tranered": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6723198",
+            "11.8793541"
+        ]
+    },
+    "Hagen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6748357",
+            "11.8841485"
+        ]
+    },
+    "Nya Varvsall\u00e9n": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6780065",
+            "11.8950555"
+        ]
+    },
+    "Ekedal": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6871315",
+            "11.9290998"
+        ]
+    },
+    "Majvallen": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.6909343",
+            "11.9354935"
+        ]
+    },
+    "Fj\u00e4llgatan": {
+        "town": "G\u00f6teborg",
+        "position": [
+            "57.69443",
+            "11.9362336"
+        ]
+    }
+}
