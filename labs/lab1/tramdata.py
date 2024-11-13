@@ -10,10 +10,12 @@ with open(TRAM_STOP_FILE, 'r') as fromFile:
 
 with open ("labs/data/tramlines.txt", "r", encoding= "UTF-8") as file:
     lines = file.read().replace(":","").strip().split("\n\n")
+    
     lines = [line.split("\n") for line in lines]
-
     print(lines)
 
+    
+"""
 hej = []
 da = []
 
@@ -25,10 +27,39 @@ for line in lines:
         if x[-1].isdigit():
             da.append(int(x[-1]))
 
-timedict = {hej[i]: {hej[i+1]:int()} for i in range(len(hej) - 1)}
+
+timedict = {}
+i = 0
+for stop in hej:
+        if timedict[hej[i + 1]][stop] not in timedict[stop]:
+
+            timedict[stop] = {hej[i+1]: da[i+1] - da[i]}
+            i += 1
+        else:
+            i += 1
+  
+   
+value = da[i+1] - da[i]
+
+timedict = {hej[i]: {hej[i+1]: value} for i in range(len(hej) - 1)}
+"""
+"""
+while i <= len(hej):
+    for stop in hej:
+        if stop not in timedict:
+            timedict.update({stop})
+"""
 
 
-                
+
+        
+
+
+
+
+        
+
+            
 
 def build_tram_stops(jsonobject):
 
