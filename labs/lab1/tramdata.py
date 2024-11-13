@@ -1,4 +1,6 @@
-import json 
+import json
+
+
 
 TRAM_STOP_FILE = 'labs/data/tramstops.json'
 with open(TRAM_STOP_FILE, 'r') as fromFile:
@@ -6,7 +8,7 @@ with open(TRAM_STOP_FILE, 'r') as fromFile:
 
 
 
-with open ("labs/data/tramlines.txt", "r") as file:
+with open ("labs/data/tramlines.txt", "r", encoding= "UTF-8") as file:
     lines = file.read().replace(":","").strip().split("\n\n")
     lines = [line.split("\n") for line in lines]
 
@@ -23,33 +25,18 @@ for line in lines:
         if x[-1].isdigit():
             da.append(int(x[-1]))
 
-timedict = {hej[i]: {hej[i+1]: da[i+1] - da[i]} for i in range(len(hej) - 1)}
-
-"""
-while i <= len(hej):
-    for stop in hej:
-        if stop not in timedict:
-            timedict.update({stop})
-"""
-print(timedict)
+timedict = {hej[i]: {hej[i+1]:int()} for i in range(len(hej) - 1)}
 
 
-timedict = {}
-        
-        
-
-
-
-
-        
-
-            
+                
 
 def build_tram_stops(jsonobject):
 
     stopdict = {x: {"lat":jsonobject[x]['position'][0], "lon":jsonobject[x]['position'][1]} for x in jsonobject}
 
     return stopdict
+
+
 
 def build_tram_lines(lines):
 
