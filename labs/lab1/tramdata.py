@@ -4,16 +4,22 @@ TRAM_STOP_FILE = 'labs/data/tramstops.json'
 with open(TRAM_STOP_FILE, 'r') as fromFile:
     data = json.load(fromFile)
 
+
 with open ("labs/data/tramlines.txt", "r") as file:
-    tramlines = file.readlines()
+    lines = file.read().replace(":","").strip().split("\n\n")
 
-lines = []
-for line in tramlines:
-     lines.append(line[:].strip("\n"))
+    lines = [line[:-4] for line in lines]
+
+
+
+lines = [line.split("\n") for line in lines]
+
     
-print(lines)
 
-#print(json.dumps(data, indent=2, ensure_ascii=False))
+
+    
+        
+    
 #print(tramlines)
 def build_tram_stops(jsonobject):
 
@@ -21,10 +27,31 @@ def build_tram_stops(jsonobject):
 
     return stopdict
 
-#print(build_tram_stops(data))
+
 
 def build_tram_lines(lines):
-    pass
+
+    linedict = {}
+
+    for line in lines:
+        key = line[0]
+        values=[]
+        line.pop(0)
+        for x in line:
+            values.append(x[:-4].strip())  
+        linedict[key] = values
+            
+        
+  
+   
+    
+            
+        
+    return linedict
+
+
+print(build_tram_lines(lines)["9"])
+
 
 def build_tram_network(stopfile, linefile):
     pass
