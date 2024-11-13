@@ -15,7 +15,7 @@ with open ("labs/data/tramlines.txt", "r", encoding= "UTF-8") as file:
     print(lines)
 
     
-"""
+
 hej = []
 da = []
 
@@ -42,13 +42,12 @@ for stop in hej:
 value = da[i+1] - da[i]
 
 timedict = {hej[i]: {hej[i+1]: value} for i in range(len(hej) - 1)}
-"""
-"""
+
 while i <= len(hej):
     for stop in hej:
         if stop not in timedict:
             timedict.update({stop})
-"""
+
 
 
 
