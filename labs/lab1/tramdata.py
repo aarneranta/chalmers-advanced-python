@@ -2,7 +2,6 @@ import json
 from pprint import pprint
 
 
-
 TRAM_STOP_FILE = 'labs/data/tramstops.json'
 with open(TRAM_STOP_FILE, 'r') as fromFile:
     data = json.load(fromFile)
@@ -25,7 +24,6 @@ def build_tram_stops(jsonobject):
     return stopdict
 
 
-pprint(build_tram_stops(data))
 def build_tram_lines(lines):
 
     linedict = {}
