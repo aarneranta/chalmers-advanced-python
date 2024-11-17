@@ -35,12 +35,22 @@ def build_tram_lines(lines):
         for i in range(1, len(line) - 1):
             name, time = [item.strip() for item in line[i].split("  ") if item]
             next_name, next_time = [item.strip() for item in line[i+1].split("  ") if item]
+            time_diff = int(next_time) - int(time)
             values.append(name)
-            timedict[name] = {next_name: int(next_time) - int(time)}
+            if name not in timedict:
+                timedict[name] = {}
+            if next_name not in timedict[name]:
+                timedict[name][next_name] = time_diff
+            
+
+            
+
+
+            #timedict[name] = {next_name: int(next_time) - int(time)}
         linedict[key] = values
     
     return linedict, timedict
-
+pprint(build_tram_lines(lines))
 
 def build_tram_network(stopfile, linefile):
     pass
