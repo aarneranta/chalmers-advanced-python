@@ -39,18 +39,15 @@ def build_tram_lines(lines):
             values.append(name)
             if name not in timedict:
                 timedict[name] = {}
-            if next_name not in timedict[name]:
+            if next_name not in timedict:
+                timedict[next_name] = {}
+            if name not in timedict[next_name]:
                 timedict[name][next_name] = time_diff
-            
-
-            
-
-
-            #timedict[name] = {next_name: int(next_time) - int(time)}
+             #timedict[name] = {next_name: int(next_time) - int(time)}
         linedict[key] = values
     
     return linedict, timedict
-pprint(build_tram_lines(lines))
+
 
 def build_tram_network(stopfile, linefile):
     pass
