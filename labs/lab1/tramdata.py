@@ -1,4 +1,5 @@
 import json
+from pprint import pprint
 
 
 
@@ -10,53 +11,10 @@ with open(TRAM_STOP_FILE, 'r') as fromFile:
 
 with open ("labs/data/tramlines.txt", "r", encoding= "UTF-8") as file:
     lines = file.read().replace(":","").strip().split("\n\n")
-    
-    lines = [line.split("\n") for line in lines]
-    print(lines)
-
-    
-
-hej = []
-da = []
-
-
-for line in lines:
-    line.pop(0)
-    for x in line:
-        hej.append(x[:-4].strip())
-        if x[-1].isdigit():
-            da.append(int(x[-1]))
-
-
-timedict = {}
-i = 0
-for stop in hej:
-        if timedict[hej[i + 1]][stop] not in timedict[stop]:
-
-            timedict[stop] = {hej[i+1]: da[i+1] - da[i]}
-            i += 1
-        else:
-            i += 1
-  
    
-value = da[i+1] - da[i]
+    lines = [line.split("\n") for line in lines]
 
-timedict = {hej[i]: {hej[i+1]: value} for i in range(len(hej) - 1)}
-
-while i <= len(hej):
-    for stop in hej:
-        if stop not in timedict:
-            timedict.update({stop})
-
-
-
-
-        
-
-
-
-
-        
+    
 
             
 
@@ -67,24 +25,23 @@ def build_tram_stops(jsonobject):
     return stopdict
 
 
-
+pprint(build_tram_stops(data))
 def build_tram_lines(lines):
 
     linedict = {}
     timedict = {}
 
     for line in lines:
-        key = line[0]
         values=[]
-        line.pop(0)
-        for x in line:
-            values.append(x[:-4].strip())  
+        key = line[0]
+        for i in range(1, len(line) - 1):
+            name, time = [item.strip() for item in line[i].split("  ") if item]
+            next_name, next_time = [item.strip() for item in line[i+1].split("  ") if item]
+            values.append(name)
+            timedict[name] = {next_name: int(next_time) - int(time)}
         linedict[key] = values
-
-    return linedict
-
-
-
+    
+    return linedict, timedict
 
 
 def build_tram_network(stopfile, linefile):
