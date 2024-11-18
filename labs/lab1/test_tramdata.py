@@ -1,7 +1,7 @@
 import unittest
 from tramdata import *
 
-TRAM_FILE = 'labs/data/tramstops.json'
+TRAM_FILE = 'labs/data/tramnetwork.json'
 
 class TestTramData(unittest.TestCase):
 
