@@ -43,14 +43,20 @@ def build_tram_lines(lines):
                 timedict[next_name] = {}
             if name not in timedict[next_name]:
                 timedict[name][next_name] = time_diff
-             #timedict[name] = {next_name: int(next_time) - int(time)}
         linedict[key] = values
     
-    return linedict, timedict
+    return (linedict, timedict)
 
+pprint(build_tram_lines(lines))
 
 def build_tram_network(stopfile, linefile):
-    pass
+
+    outdict = {"stops": build_tram_stops(stopfile), "lines": build_tram_lines(linefile)[0], "times": build_tram_lines(linefile)[1]}
+
+    with open("labs/lab1/tramnetwork.json", "w") as file:
+        json.dump(outdict, file)
+
+build_tram_network(data, lines)
 
 def lines_via_stop(linedict, stop):
     pass
