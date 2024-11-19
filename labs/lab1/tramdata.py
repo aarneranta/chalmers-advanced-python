@@ -1,6 +1,6 @@
 import json
 from pprint import pprint
-
+import haversine as hs
 
 TRAM_STOP_FILE = "labs/data/tramstops.json"
 with open(TRAM_STOP_FILE, 'r') as fromFile:
@@ -40,6 +40,7 @@ def build_tram_lines(lines):
                 timedict[next_name] = {}
             if name not in timedict[next_name]:
                 timedict[name][next_name] = time_diff
+        values.append(next_name)
         linedict[key] = values
     
     return (linedict, timedict)
@@ -52,7 +53,7 @@ def build_tram_network(stopfile, linefile):
     with open("labs/data/tramnetwork.json", "w") as file:
         json.dump(outdict, file)
 
-
+build_tram_network(data, lines)
 def lines_via_stop(linedict, stop):
     pass
 
@@ -63,7 +64,14 @@ def time_between_stops(linedict, timedict, line, stop1, stop2):
     pass
 
 def distance_between_stops(stopdict, stop1, stop2):
+    print(stopdict[stop1].values())
+    
+    
+    
     pass
+distance_between_stops(build_tram_stops(data), "Gamlestads Torg", "Hammarkullen")
+#https://www.askpython.com/python/examples/find-distance-between-two-geo-locations
+
 
 def dialogue(tramfile):
     pass
