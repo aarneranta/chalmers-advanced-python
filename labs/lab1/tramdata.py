@@ -1,5 +1,6 @@
 import json
 from pprint import pprint
+from haversine import haversine
 
 
 TRAM_STOP_FILE = 'labs/data/tramstops.json'
@@ -94,22 +95,20 @@ def time_between_stops(linedict, timedict, line, stop1, stop2):
             
         elif stoplist[i] in timedict[stoplist[i+1]]:
             time += timedict[stoplist[i+1]][stoplist[i]]
-    print(time)
 
     return str(time)
        
 
    
-        
-
-
-
-
-time_between_stops(build_tram_lines(lines)[0],build_tram_lines(lines)[1], 7,  "Komettorget", "Komettorget")
-
-
+#time_between_stops(build_tram_lines(lines)[0],build_tram_lines(lines)[1], 11,  "Centralstationen", "Majvallen")
 def distance_between_stops(stopdict, stop1, stop2):
-    pass
+    location_1 = (float(stopdict[stop1]["lat"]),float(stopdict[stop1]["lon"]))
+    location_2 = (float(stopdict[stop2]["lat"]),float(stopdict[stop2]["lon"]))
+    
+    return haversine(location_1, location_2)
+
+#print(distance_between_stops(build_tram_stops(data), "Centralstationen", "Ullevi Norra"))
+
 
 def dialogue(tramfile):
     pass
