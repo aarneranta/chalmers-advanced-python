@@ -1,14 +1,18 @@
-import json 
+import json
+from pprint import pprint
+
 
 TRAM_STOP_FILE = "labs/data/tramstops.json"
 with open(TRAM_STOP_FILE, 'r') as fromFile:
     data = json.load(fromFile)
 
 
-with open ("labs/data/tramlines.txt", "r") as file:
+
+with open ("labs/data/tramlines.txt", "r", encoding= "UTF-8") as file:
     lines = file.read().replace(":","").strip().split("\n\n")
-    lines = [line[:-4] for line in lines]
     lines = [line.split("\n") for line in lines]
+
+    
 
 def build_tram_stops(jsonobject):
 
@@ -16,25 +20,38 @@ def build_tram_stops(jsonobject):
 
     return stopdict
 
+
 def build_tram_lines(lines):
 
     linedict = {}
+    timedict = {}
 
     for line in lines:
-        key = line[0]
         values=[]
-        line.pop(0)
-        for x in line:
-            values.append(x[:-4].strip())  
+        key = line[0]
+        for i in range(1, len(line) - 1):
+            name, time = [item.strip() for item in line[i].split("  ") if item]
+            next_name, next_time = [item.strip() for item in line[i+1].split("  ") if item]
+            time_diff = int(next_time) - int(time)
+            values.append(name)
+            if name not in timedict:
+                timedict[name] = {}
+            if next_name not in timedict:
+                timedict[next_name] = {}
+            if name not in timedict[next_name]:
+                timedict[name][next_name] = time_diff
         linedict[key] = values
-    return linedict
-
-
-
+    
+    return (linedict, timedict)
 
 
 def build_tram_network(stopfile, linefile):
-    pass
+
+    outdict = {"stops": build_tram_stops(stopfile), "lines": build_tram_lines(linefile)[0], "times": build_tram_lines(linefile)[1]}
+
+    with open("labs/data/tramnetwork.json", "w") as file:
+        json.dump(outdict, file)
+
 
 def lines_via_stop(linedict, stop):
     pass
