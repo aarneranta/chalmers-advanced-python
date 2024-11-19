@@ -16,7 +16,16 @@ class TestTramData(unittest.TestCase):
         for stop in stopset:
             self.assertIn(stop, self.stopdict, msg = stop + ' not in stopdict')
 
-    # add your own tests here
+    def test_all_stops_included(self):
+        pass
+    def test_stops_in_line(self):
+        pass
+    def test_distance_feasible(self):
+        pass
+    def test_times_beetween_stops(self):
+        pass
+
+    
 
 
 if __name__ == '__main__':
