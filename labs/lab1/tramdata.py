@@ -1,6 +1,7 @@
 import json
 from pprint import pprint
 import haversine as hs
+from haversine import Unit
 
 TRAM_STOP_FILE = "labs/data/tramstops.json"
 with open(TRAM_STOP_FILE, 'r') as fromFile:
@@ -64,11 +65,16 @@ def time_between_stops(linedict, timedict, line, stop1, stop2):
     pass
 
 def distance_between_stops(stopdict, stop1, stop2):
-    print(stopdict[stop1].values())
     
     
+    loc1, loc2 = [float(item)for item in list(stopdict[stop1].values())], [float(item)for item in list(stopdict[stop2].values())]
+
+    result = hs.haversine(loc1,loc2,unit=Unit.KILOMETERS)
+
+    print(f'Distance between stops {round(result, 1)} km')
     
-    pass
+    return result
+    
 distance_between_stops(build_tram_stops(data), "Gamlestads Torg", "Hammarkullen")
 #https://www.askpython.com/python/examples/find-distance-between-two-geo-locations
 
