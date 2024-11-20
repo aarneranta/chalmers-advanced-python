@@ -58,12 +58,11 @@ def lines_via_stop(linedict, stop):
 
     return [key for key in linedict if stop in linedict[key]]
 
-#print(lines_via_stop(build_tram_lines(lines)[0], "Chalmers"))
 
 def lines_between_stops(linedict, stop1, stop2):
 
     return [key for key in linedict if stop1 in linedict[key] and stop2 in linedict[key]]
-#print(lines_between_stops(build_tram_lines(lines)[0], "Korsvägen", "Chalmers"))
+
 def time_between_stops(linedict, timedict, line, stop1, stop2):
        
        
@@ -87,16 +86,11 @@ def time_between_stops(linedict, timedict, line, stop1, stop2):
     return time
        
 
-   
-#print(time_between_stops(build_tram_lines(lines)[0],build_tram_lines(lines)[1], 3,  "Stockholmsgatan", "Järntorget"))
 def distance_between_stops(stopdict, stop1, stop2):
     loc_1 = (float(stopdict[stop1]["lat"]),float(stopdict[stop1]["lon"]))
     loc_2 = (float(stopdict[stop2]["lat"]),float(stopdict[stop2]["lon"]))
     
     return haversine(loc_1, loc_2)
-
-#print(distance_between_stops(build_tram_stops(data), "Angered Centrum", "Saltholmen"))
-
 
 
 def answer_query(tramdict, query):
@@ -135,8 +129,6 @@ def answer_query(tramdict, query):
         elif len(query) == 5:
             return distance_between_stops(tramdict["stops"], query[2], query[4])
             
-
-    
     return "sorry, try again"
 
 
@@ -165,6 +157,3 @@ dialogue("labs/data/tramnetwork.json")
     
    
     
-   
-    
-#dialogue("labs/data/tramnetwork.json")
