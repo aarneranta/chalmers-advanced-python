@@ -56,25 +56,14 @@ def build_tram_network(stopfile, linefile):
 
 def lines_via_stop(linedict, stop):
 
-    stoplist = []
 
-    for key in linedict:
-        if stop in linedict[key]:
-            stoplist.append(key)
+    return [key for key in linedict if stop in linedict[key]]
 
-    return stoplist
-
-#print(lines_via_stop(build_tram_lines(lines)[0], "Valand"))
+#print(lines_via_stop(build_tram_lines(lines)[0], "Chalmers"))
 
 def lines_between_stops(linedict, stop1, stop2):
 
-    stoplist = []
-
-    for key in linedict:
-        if stop1 in linedict[key] and stop2 in linedict[key]:
-            stoplist.append(key)
-
-    return stoplist
+    return [key for key in linedict if stop1 in linedict[key] and stop2 in linedict[key]]
 #print(lines_between_stops(build_tram_lines(lines)[0], "Ullevi Norra", "Chalmers"))
 def time_between_stops(linedict, timedict, line, stop1, stop2):
        
@@ -100,15 +89,21 @@ def time_between_stops(linedict, timedict, line, stop1, stop2):
        
 
    
-#time_between_stops(build_tram_lines(lines)[0],build_tram_lines(lines)[1], 11,  "Centralstationen", "Majvallen")
+#print(time_between_stops(build_tram_lines(lines)[0],build_tram_lines(lines)[1], 8,  "Ullevi Norra", "Chalmers"))
 def distance_between_stops(stopdict, stop1, stop2):
-    location_1 = (float(stopdict[stop1]["lat"]),float(stopdict[stop1]["lon"]))
-    location_2 = (float(stopdict[stop2]["lat"]),float(stopdict[stop2]["lon"]))
+    loc_1 = (float(stopdict[stop1]["lat"]),float(stopdict[stop1]["lon"]))
+    loc_2 = (float(stopdict[stop2]["lat"]),float(stopdict[stop2]["lon"]))
     
-    return haversine(location_1, location_2)
+    return haversine(loc_1, loc_2)
 
-#print(distance_between_stops(build_tram_stops(data), "Centralstationen", "Ullevi Norra"))
+print(distance_between_stops(build_tram_stops(data), "Angered Centrum", "Saltholmen"))
 
 
 def dialogue(tramfile):
-    pass
+    tramdict = json.load(tramfile)
+    print("Choose your function:\n via <stop>\n between <stop1> and <stop2>\n time with <line> from <stop1>\n to <stop2> distance from <stop1> to <stop2>\n quit")
+    x = 1
+    print(x)
+
+
+dialogue("labs/data/tramnetwork")
