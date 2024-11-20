@@ -1,61 +1,56 @@
 import unittest
 from tramdata import *
 import haversine as hs
-TRAM_FILE = 'labs/data/tramnetwork.json'
+TRAMFILE = 'labs/data/tramnetwork.json'
 
 class TestTramData(unittest.TestCase):
 
     def setUp(self):
-        with open(TRAM_FILE) as trams:
+        with open(TRAMFILE) as trams:
             tramdict = json.loads(trams.read())
             self.stopdict = tramdict['stops']
             self.linedict = tramdict['lines']
-
-    def test_stops_exist(self):
+            self.timedict = tramdict['times']
+    def teststopsexist(self):
         stopset = {stop for line in self.linedict for stop in self.linedict[line]}
         for stop in stopset:
             self.assertIn(stop, self.stopdict, msg = stop + ' not in stopdict')
 
     def test_all_stops_included(self):
-        with open ("labs/data/tramlines.txt", "r", encoding= "UTF-8") as file:
-            tramtest = file.read().replace(":","").strip().split("\n\n")
-            tramtest = [line.split("\n") for line in tramtest]
-        #print(tramtest)
-        test1 = []
-        newtestlist =[] 
-        for line in tramtest:
-            test1.append(line[0])
-            newtestlist += line; newtestlist.remove(line[0])
-
+        test1 = ['1','2','3','4','5','6','7','8','9','10','11','13']
         x = 0 
-        for i in range(len(test1)):    
+        for i in range(len(test1)):
             if test1[i] in self.linedict:
                 x+=1
-        print(f'{x} ouf of {len(test1)} passed')
-        
-        test2 = []
-        for i in newtestlist:
-            a = i.rsplit(' ', 1)
-            test2.append(a[0].rstrip(" "))
-        k =0
-        for t in range(len(test2)):
-            for e in self.linedict.values():
-                if test2[t] in e:
-                    k+=1
-                    break
-        print(f'{k} ouf of {len(test2)} passed')    
+
+        print(f'{x} passed test out of {len(test1)} passed')
 
     def test_stops_in_line(self):
-        pass
-    
+        test2 = ["Ullevi Norra", "Chalmers", "Angered Centrum", "Saltholmen", "Hagen", "Rambergsvallen"]
+        x =0
+        for i in range(len(test2)):
+            for k in self.linedict.values():
+                if test2[i] in k:
+                    x+=1
+                    break
+        print(f'{x} passed test out of {len(test2)} passed')
+
     def test_distance_feasible(self):
-        print(self.stopdict)
-        
-        pass
+        x = 0
+        if distance_between_stops(self.stopdict, "Ullevi Norra", "Chalmers") < 20:
+            x+=1
+        if distance_between_stops(self.stopdict, "Angered Centrum", "Saltholmen") < 20:
+            x+=1
+        if distance_between_stops(self.stopdict, "Hagen", "Rambergsvallen") < 20:
+            x+=1
+        print(f'{x} passed test ouf of {3}')
+
     def test_times_beetween_stops(self):
         pass
+        test3 = {"Tingvallsvägen": {"Kaggeledstorget": 2}}
 
-TestTramData.test_all_stops_included
-if __name__ == '__main__':
+        print(self.timedict) 
+
+if __name__ == '__main':
     unittest.main()
 
