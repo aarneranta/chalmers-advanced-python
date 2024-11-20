@@ -98,19 +98,25 @@ def distance_between_stops(stopdict, stop1, stop2):
 
 #print(distance_between_stops(build_tram_stops(data), "Angered Centrum", "Saltholmen"))
 
-
 def dialogue(tramfile):
     with open(tramfile, "r") as file:
         tramdict = json.load(file)
     print("Choose option:\n via <stop>\n between <stop1> and <top2\n time with <line> from <stop1> to <top2>\n distance from <stop1> to <top2>\n quit")
     user_input = input("").split()
-    print(" ".join(user_input[:1]))
+    print(" ".join(user_input[1:]))
 
     if user_input[0] == "via":
-        print(user_input[1:])
+        print(lines_via_stop(tramdict["lines"], " ".join(user_input[1:])))
+    elif user_input[0] == "via":
+        print(lines_via_stop(tramdict["lines"], user_input[1]))
 
     if user_input[0] == "between":
-        pass
+        if user_input[2] == "and" and len(user_input) == 5:
+            
+            print(lines_between_stops(tramdict["lines"], user_input[1], " ".join(user_input[3:])))
+        elif len(user_input) == 5:
+            
+            print(lines_between_stops(tramdict["lines"], " ".join(user_input[1:3]), user_input[4]))
 
     if user_input[0] == "time":
         pass
