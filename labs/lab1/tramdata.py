@@ -56,7 +56,6 @@ def build_tram_network(stopfile, linefile):
 
 def lines_via_stop(linedict, stop):
 
-
     return [key for key in linedict if stop in linedict[key]]
 
 #print(lines_via_stop(build_tram_lines(lines)[0], "Chalmers"))
@@ -64,7 +63,7 @@ def lines_via_stop(linedict, stop):
 def lines_between_stops(linedict, stop1, stop2):
 
     return [key for key in linedict if stop1 in linedict[key] and stop2 in linedict[key]]
-#print(lines_between_stops(build_tram_lines(lines)[0], "Ullevi Norra", "Chalmers"))
+#print(lines_between_stops(build_tram_lines(lines)[0], "Korsvägen", "Chalmers"))
 def time_between_stops(linedict, timedict, line, stop1, stop2):
        
        
@@ -85,11 +84,11 @@ def time_between_stops(linedict, timedict, line, stop1, stop2):
         elif stoplist[i] in timedict[stoplist[i+1]]:
             time += timedict[stoplist[i+1]][stoplist[i]]
 
-    return str(time)
+    return time
        
 
    
-#print(time_between_stops(build_tram_lines(lines)[0],build_tram_lines(lines)[1], 8,  "Ullevi Norra", "Chalmers"))
+#print(time_between_stops(build_tram_lines(lines)[0],build_tram_lines(lines)[1], 3,  "Stockholmsgatan", "Järntorget"))
 def distance_between_stops(stopdict, stop1, stop2):
     loc_1 = (float(stopdict[stop1]["lat"]),float(stopdict[stop1]["lon"]))
     loc_2 = (float(stopdict[stop2]["lat"]),float(stopdict[stop2]["lon"]))
@@ -98,36 +97,74 @@ def distance_between_stops(stopdict, stop1, stop2):
 
 #print(distance_between_stops(build_tram_stops(data), "Angered Centrum", "Saltholmen"))
 
+
+
+def answer_query(tramdict, query):
+
+    if query[0] == "Via" and len(query) == 3:
+        return lines_via_stop(tramdict["lines"], " ".join(query[1:]))
+    elif query[0] == "Via":
+        return lines_via_stop(tramdict["lines"], query[1])
+
+    if query[0] == "Between":
+        if query[2] == "and" and len(query) == 5:
+            print(str(query[1]).title())
+            return lines_between_stops(tramdict["lines"], query[1], " ".join(query[3:]))
+        elif len(query) == 5:
+            return lines_between_stops(tramdict["lines"], " ".join(query[1:3]), query[4])
+        else:
+            return lines_between_stops(tramdict["lines"], query[1], query[3])
+    
+    if query[0] == "Time":
+        if len(query) == 9:
+            return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), " ".join(query[4:6]), " ".join(query[7:]))
+        elif len(query) == 8 and query[5] == "To":
+            return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), query[4], " ".join(query[6:]))
+        elif len(query) == 8:
+            return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), " ".join(query[4:6]), query[7])
+        elif len(query) == 7:
+            return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), query[4], query[6])
+        
+    if query[0] == "Distance":
+        if len(query) == 7:
+            return distance_between_stops(tramdict["stops"], " ".join(query[2:4]), " ".join(query[5:]))
+        elif len(query) == 6 and query[3] == "To":
+            return distance_between_stops(tramdict["stops"], query[2], " ".join(query[4:]))
+        elif len(query) == 6:
+            return distance_between_stops(tramdict["stops"], " ".join(query[2:4]), query[5])
+        elif len(query) == 5:
+            return distance_between_stops(tramdict["stops"], query[2], query[4])
+            
+
+    
+    return "sorry, try again"
+
+
 def dialogue(tramfile):
     with open(tramfile, "r") as file:
         tramdict = json.load(file)
-    print("Choose option:\n via <stop>\n between <stop1> and <top2\n time with <line> from <stop1> to <top2>\n distance from <stop1> to <top2>\n quit")
-    user_input = input("").split()
-    print(" ".join(user_input[1:]))
 
-    if user_input[0] == "via":
-        print(lines_via_stop(tramdict["lines"], " ".join(user_input[1:])))
-    elif user_input[0] == "via":
-        print(lines_via_stop(tramdict["lines"], user_input[1]))
 
-    if user_input[0] == "between":
-        if user_input[2] == "and" and len(user_input) == 5:
+    while True:
+        print("Choose option:\n via <stop>\n between <stop1> and <top2\n time with <line> from <stop1> to <top2>\n distance from <stop1> to <top2>\n quit")
+        query = input("").lower().title().split()
+        if query[0] == "Quit":
+            break
+        answer = print(answer_query(tramdict, query))
+        
+        if answer == "sorry, try again":
+            print(answer)
+        
+          
             
-            print(lines_between_stops(tramdict["lines"], user_input[1], " ".join(user_input[3:])))
-        elif len(user_input) == 5:
-            
-            print(lines_between_stops(tramdict["lines"], " ".join(user_input[1:3]), user_input[4]))
-
-    if user_input[0] == "time":
-        pass
-
-    if user_input[0] == "distance":
-        pass
-
-    if user_input[0] == "quit":
-        pass
+        
    
-    
-   
-    
+
 dialogue("labs/data/tramnetwork.json")
+
+    
+   
+    
+   
+    
+#dialogue("labs/data/tramnetwork.json")

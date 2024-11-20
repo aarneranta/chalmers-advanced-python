@@ -51,6 +51,6 @@ class TestTramData(unittest.TestCase):
 
         print(self.timedict) 
 
-if __name__ == '__main':
+if __name__ == '__main__':
     unittest.main()
 
