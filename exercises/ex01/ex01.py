@@ -1,5 +1,4 @@
 # Question 1
-
 def norway_pandemic():
     region = input("Hvor er du bosatt? ")
     if region[0] == "V" or region[1] == "V":
@@ -19,7 +18,6 @@ def norway_pandemic():
         print("Velkommen til Norge, men du må teste deg och sitte i karantene.")
 
 # Question 2
-
 def price(drinks):
     prices = [("kaffe", 30), ("öl", 50), ("kola", 25)]
     [n, name] = drinks.split()
@@ -40,7 +38,6 @@ def get_order():
     print("Det blir", total, "kronor")
 
 # Question 3
-
 def alter(s):
     if len(s) < 2:
         return s
@@ -60,7 +57,6 @@ def scrambles(s):
     return " ".join(scrambled_words)
 
 # Question 4
-
 edges = [(0,1), (1,2), (2,0), (2,3)]
 
 def edges2adjacency(edges):
