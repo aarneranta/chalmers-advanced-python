@@ -96,14 +96,32 @@ def distance_between_stops(stopdict, stop1, stop2):
     
     return haversine(loc_1, loc_2)
 
-print(distance_between_stops(build_tram_stops(data), "Angered Centrum", "Saltholmen"))
+#print(distance_between_stops(build_tram_stops(data), "Angered Centrum", "Saltholmen"))
 
 
 def dialogue(tramfile):
-    tramdict = json.load(tramfile)
-    print("Choose your function:\n via <stop>\n between <stop1> and <stop2>\n time with <line> from <stop1>\n to <stop2> distance from <stop1> to <stop2>\n quit")
-    x = 1
-    print(x)
+    with open(tramfile, "r") as file:
+        tramdict = json.load(file)
+    print("Choose option:\n via <stop>\n between <stop1> and <top2\n time with <line> from <stop1> to <top2>\n distance from <stop1> to <top2>\n quit")
+    user_input = input("").split()
+    print(" ".join(user_input[:1]))
 
+    if user_input[0] == "via":
+        print(user_input[1:])
 
-dialogue("labs/data/tramnetwork")
+    if user_input[0] == "between":
+        pass
+
+    if user_input[0] == "time":
+        pass
+
+    if user_input[0] == "distance":
+        pass
+
+    if user_input[0] == "quit":
+        pass
+   
+    
+   
+    
+dialogue("labs/data/tramnetwork.json")
