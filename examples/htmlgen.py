@@ -1,92 +1,61 @@
 # a simple library for generating well-formatted HTML code
 
-def dict_attrs(dict):
-    # forms an attribute list from a dictionary
-    ats = []
-    for k, v in dict.items():
-        ats.append(str(k) + '=' + '"' + str(v) + '"')
-    return ' '.join(ats)
-
-
-def intag(tag, elems, attrs=None, newlines=False):
+def intag(tag, elems, attrs=None, newlines=True):
     """
-    Creates a HTML element by wrapping a list of elements
-    between a start and end tag, 
+    Creates a HTML element by wrapping a given element
+    or a list of elements
+    between a start tag and matching end tag, 
     optionally adding newlines.
     """
-    attrs = ' ' + dict_attrs(attrs) if attrs else ''
-    new = '\n' if newlines else ''
+    attrs = f" {' '.join([f'{key}={value}' for key, value in attrs.items()])}" if attrs else ""
     start = '<' + tag + attrs + '>'
     end = '</'+ tag + '>'
-    content = new.join(elems)
-    return new.join([start, content, end])
+    sep = '\n' if newlines else ''
+    content = sep.join(map(str, elems)) if isinstance(elems, list) else str(elems)
+    return sep.join([start, content, end])
 
 
 def b(s):
     "Generates a boldfaced text from a string."
-    return intag('b', [s])
-
-
-def linesintag(tag, elems, attrs=None):
-    "Builds element with intag with newlines always added."
-    return intag(tag, elems, attrs, newlines=True)
+    return intag('b', s, newlines=False)
 
 
 def p(ss):
     "Generates a paragraph from a list of strings."
-    return linesintag('p', ss)
+    return intag('p', ss)
 
 
 def a(url, s):
     "Generates a hypertag from a URL and an element."
-    return intag('a', [s], attrs={'href': url})
+    return intag('a', [s], attrs={'href': url}, newlines=False)
 
 
 def html(head, body):
     "Generates a complete HTML document from a head and a body lists of elements."
-    return '<!DOCTYPE html>\n' + linesintag('html',
-                      [linesintag('head', head),
-                       linesintag('body', body)],
+    return '<!DOCTYPE html>\n' + intag('html',
+                      [intag('head', head),
+                       intag('body', body)],
                       attrs={'xmlns': "http://www.w3.org/1999/xhtml"})
 
 
 def title(s):
     "Generates a title (for a head) from a string."
-    return intag('title', [s])
+    return intag('title', s, newlines=False)
 
 
 def h1(s):
     "Generates a heading of level 1 from a string."
-    return intag('h1', [s])
+    return intag('h1', s, newlines=False)
 
 
-def table(th, data):
+def table(th, data, border=1):
     "Generates a table from a list of header names and a list of data lists."
-    return linesintag(
+    return intag(
         'table',
-        [linesintag('tr', [intag('th',[e]) for e in th])] +
-        [linesintag('tr', [intag('td',[e]) for e in d]) for d in data],
-        attrs = {'border': '1'}
+        [intag('tr', [intag('th', e, newlines=False) for e in th])] +
+        [intag('tr', [intag('td', e, newlines=False) for e in d]) for d in data],
+        attrs = {'border': str(border)}
         )
-
-
-# example table showing powers of numbers
-powertable = table (
-    ['x**' + str(n) for n in range(1,7)],
-    [[str(x**n) for n in range(1,7)] for x in range(1,101)]
-    )
-
-
-# a simple document illustrating functions in this module
-powerdoc = html(
-        [title('Example')],
-        [h1('First example'),
-         p(['This is an', b('example'), 'paragraph.']),
-         h1('Second example: a table'),
-         powertable,
-         h1('Third example: a link'),
-         a('https://chalmers.instructure.com/courses/20986', 'course web page')
-        ])
 
 
 # a document about Gbg trams
@@ -102,11 +71,13 @@ def tramdoc():
         ['line', 'stops'],
         [[line, ', '.join(stops)] for line, stops in lines]
         )
-    return html(['tramlines'], [linetable])
+    return html([h1('The Tram Lines of Gothenburg')],
+                [p(['For timetables, see ',
+                    a('https://www.vasttrafik.se/en/', 'Västtrafik')]),
+                 linetable])
 
 
 if __name__ == '__main__':
-#    print(powerdoc)
     print(tramdoc())
 
 
