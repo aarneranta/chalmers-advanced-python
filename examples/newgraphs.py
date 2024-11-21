@@ -77,6 +77,55 @@ class Graph:
         dot.render('_graph.gv', view=True)
 
 
+class WeightedGraph(Graph):
+    "Undirected graphs with weights for edges."
+
+    def __init__(self):
+        super().__init__()
+        self._weights = {}
+
+    def set_weight(self, a, b, w):
+        "Store weight for (a, b) where a <= b; swaps vertices if not given in this order."
+        a, b = sorted((a, b))
+        if b in self._adjacency[a]:
+            self._weights[(a, b)] = w
+
+    def get_weight(self, a, b):
+        a, b = sorted((a, b))
+        return self._weights.get((a, b), None)
+
+    def add_edge_with_weight(self, a, b, w):
+        self.add_edge(a, b)
+        self.set_weight(a, b, w)
+
+    def visualize(self):
+        dot = gv.Graph()
+        [dot.node(str(a)) for a in self.vertices()]
+        [dot.edge(str(a), str(b), label=str(self.get_weight(a, b)))
+            for a, b in self.edges()]
+        dot.render('_graph.gv', view=True)
+
+
+class DirectedGraph(Graph):
+
+    def add_edge(self, a, b):
+        self._adjacency.setdefault(a, set()).add(b)
+
+    def neighbors(self, a):
+        "return the set of all vertices to which there is an edge from a"
+        return self._adjacency[a]
+
+    def from_neighbors(self, a):
+        "return the set of all vertices from which there is an edge to a"
+        return {b for b, cs in self._adjacency.items() if a in cs}
+
+    def visualize(self):
+        dot = gv.Digraph()
+        [dot.node(str(a)) for a in self.vertices()]
+        [dot.edge(str(a), str(b)) for a, b in self.edges()]
+        dot.render('_graph.gv', view=True)
+
+
 if __name__ == '__mainz__':
     G = Graph()
     G.add_edge(1, 2)
@@ -107,8 +156,23 @@ if __name__ == '__main__':
     with open('tramnetwork.json') as file:
         data = json.load(file)
     timedict = data['times']
-    T = Graph()
-    [T.add_edge(a, b) for a, bs in timedict.items() for b in bs.keys()]
+    T = WeightedGraph()
+    [T.add_edge_with_weight(a, b, t)
+        for a, bs in timedict.items()
+            for b, t in bs.items()]
+    print(T.neighbors('Chalmers'))
+    T.visualize()
+
+    
+if __name__ == '__maind__':
+    import json
+    with open('tramnetwork.json') as file:
+        data = json.load(file)
+    timedict = data['times']
+    T = DirectedGraph()
+    [T.add_edge(a, b)
+        for a, bs in timedict.items()
+            for b in bs.keys()]
     print(T.neighbors('Chalmers'))
     T.visualize()
     
