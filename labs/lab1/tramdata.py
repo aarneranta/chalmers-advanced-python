@@ -6,9 +6,6 @@ TRAM_STOP_FILE = "labs/data/tramstops.json"
 with open(TRAM_STOP_FILE, 'r') as fromFile:
     data = json.load(fromFile)
 
-with open("labs/data/tramnetwork.json", "r") as jsonfile:
-    tramdict = json.load(jsonfile)
-
 
 with open ("labs/data/tramlines.txt", "r", encoding= "UTF-8") as file:
     lines = file.read().replace(":","").strip().split("\n\n")
@@ -64,9 +61,6 @@ def lines_between_stops(linedict, stop1, stop2):
 
     return [key for key in linedict if stop1 in linedict[key] and stop2 in linedict[key]]
 
-
-
-    return [key for key in linedict if stop1 in linedict[key] and stop2 in linedict[key]]
 #print(lines_between_stops(build_tram_lines(lines)[0], "Ullevi Norra", "Chalmers"))
 def time_between_stops(linedict, timedict, line, stop1, stop2):
        
@@ -90,20 +84,6 @@ def time_between_stops(linedict, timedict, line, stop1, stop2):
 
     return time
        
-
-    stoplist = linedict[str(line)][index_1:index_2]
-
-    time = 0
-    for i in range(len(stoplist) - 1):
-        if stoplist[i+1] in timedict[stoplist[i]]:
-            time += timedict[stoplist[i]][stoplist[i+1]]
-            
-        elif stoplist[i] in timedict[stoplist[i+1]]:
-            time += timedict[stoplist[i+1]][stoplist[i]]
-
-    return str(time)
-       
-
    
 #print(time_between_stops(build_tram_lines(lines)[0],build_tram_lines(lines)[1], 8,  "Ullevi Norra", "Chalmers"))
 def distance_between_stops(stopdict, stop1, stop2):
@@ -114,44 +94,49 @@ def distance_between_stops(stopdict, stop1, stop2):
 
 
 def answer_query(tramdict, query):
+    try:
+        query = query.lower().title().split()
+        if query[0] == "Via":
+            if len(query) == 3: 
+                return lines_via_stop(dict(tramdict["lines"]), " ".join(query[1:]))
+            elif query[0] == "Via":
+                return lines_via_stop(tramdict["lines"], query[1])
 
-    if query[0] == "Via":
-        if len(query) == 3: 
-            return lines_via_stop(dict(tramdict["lines"]), " ".join(query[1:]))
-        elif query[0] == "Via":
-            return lines_via_stop(tramdict["lines"], query[1])
-
-    if query[0] == "Between":
-        if len(query) == 5:
-            if query[3] == "And": 
-                return lines_between_stops(tramdict["lines"], " ".join(query[1:3]), query[4])   
-            elif query[2] == "And":
-                return lines_between_stops(tramdict["lines"], query[1], " ".join(query[3:]))
-        elif len(query) == 4:
-            return lines_between_stops(tramdict["lines"], query[1], query[3])
-    
-    if query[0] == "Time":
-        if len(query) == 9:
-            return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), " ".join(query[4:6]), " ".join(query[7:]))
-        elif len(query) == 8 and query[5] == "To":
-            return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), query[4], " ".join(query[6:]))
-        elif len(query) == 8:
-            return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), " ".join(query[4:6]), query[7])
-        elif len(query) == 7:
-            return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), query[4], query[6])
+        if query[0] == "Between":
+            if len(query) == 5:
+                if query[3] == "And": 
+                    return lines_between_stops(tramdict["lines"], " ".join(query[1:3]), query[4])   
+                elif query[2] == "And":
+                    return lines_between_stops(tramdict["lines"], query[1], " ".join(query[3:]))
+            elif len(query) == 4:
+                return lines_between_stops(tramdict["lines"], query[1], query[3])
         
-    if query[0] == "Distance":
-        if len(query) == 7:
-            return distance_between_stops(tramdict["stops"], " ".join(query[2:4]), " ".join(query[5:]))
-        elif len(query) == 6 and query[3] == "To":
-            return distance_between_stops(tramdict["stops"], query[2], " ".join(query[4:]))
-        elif len(query) == 6:
-            return distance_between_stops(tramdict["stops"], " ".join(query[2:4]), query[5])
-        elif len(query) == 5:
-            return distance_between_stops(tramdict["stops"], query[2], query[4])
+        if query[0] == "Time":
+            if len(query) == 9:
+                return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), " ".join(query[4:6]), " ".join(query[7:]))
+            elif len(query) == 8 and query[5] == "To":
+                return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), query[4], " ".join(query[6:]))
+            elif len(query) == 8:
+                return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), " ".join(query[4:6]), query[7])
+            elif len(query) == 7:
+                return time_between_stops(tramdict["lines"], tramdict["times"], int(query[2]), query[4], query[6])
             
-    return "sorry, try again"
-
+        if query[0] == "Distance":
+            if len(query) == 7:
+                return distance_between_stops(tramdict["stops"], " ".join(query[2:4]), " ".join(query[5:]))
+            elif len(query) == 6 and query[3] == "To":
+                return distance_between_stops(tramdict["stops"], query[2], " ".join(query[4:]))
+            elif len(query) == 6:
+                return distance_between_stops(tramdict["stops"], " ".join(query[2:4]), query[5])
+            elif len(query) == 5:
+                return distance_between_stops(tramdict["stops"], query[2], query[4])
+        
+        if query[0] == "Quit":
+            return "quit"
+        
+        return "sorry, try again"
+    except:
+        return "sorry, try that again"
 
 def dialogue(tramfile):
     with open(tramfile, "r") as file:
@@ -159,31 +144,26 @@ def dialogue(tramfile):
 
 
     while True:
-        try:
-            print("Choose option:\n via <stop>\n between <stop1> and <top2\n time with <line> from <stop1> to <top2>\n distance from <stop1> to <top2>\n quit")
-            query = input("").lower().title().split()
-            if query[0] == "Quit":
-                break
-            answer = answer_query(tramdict, query)
-
-            if answer:
-                print(answer)
-                print(bool(answer))
-            else: 
-                print("unknown arguments")
-                print(bool(answer))
-        except:
-            print("sorry, try that again")
+        print("Choose option:\n via <stop>\n between <stop1> and <top2\n time with <line> from <stop1> to <top2>\n distance from <stop1> to <top2>\n quit")
+        query = input("")
+        answer = answer_query(tramdict, query)
+        if answer == "quit":
+            break
+        if answer:
+            print(answer)
+        else: 
+            print("unknown arguments")
+ 
 
             
-        
-        
+
+#dialogue("labs/data/tramnetwork.json")
           
             
         
-   
 
-dialogue("labs/data/tramnetwork.json")
+
+
 
     
    

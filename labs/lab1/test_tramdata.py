@@ -11,6 +11,7 @@ class TestTramData(unittest.TestCase):
             self.stopdict = tramdict['stops']
             self.linedict = tramdict['lines']
             self.timedict = tramdict['times']
+            self.tramdict = tramdict
     def teststopsexist(self):
         stopset = {stop for line in self.linedict for stop in self.linedict[line]}
         for stop in stopset:
@@ -18,40 +19,35 @@ class TestTramData(unittest.TestCase):
 
     def test_all_stops_included(self):
         test1 = ['1','2','3','4','5','6','7','8','9','10','11','13']
-        x = 0 
         for i in range(len(test1)):
-            if test1[i] in self.linedict:
-                x+=1
-
-        print(f'{x} passed test out of {len(test1)} passed')
+            self.assertIn( test1[i], self.linedict.keys(), msg = "didnt work")
 
     def test_stops_in_line(self):
         test2 = ["Ullevi Norra", "Chalmers", "Angered Centrum", "Saltholmen", "Hagen", "Rambergsvallen"]
-        x =0
         for i in range(len(test2)):
-            for k in self.linedict.values():
-                if test2[i] in k:
-                    x+=1
-                    break
-        print(f'{x} passed test out of {len(test2)} passed')
+                self.assertIn(test2[i], [item for sublist in list(self.linedict.values()) for item in sublist], msg = "didnt work")
 
     def test_distance_feasible(self):
-        x = 0
-        if distance_between_stops(self.stopdict, "Ullevi Norra", "Chalmers") < 20:
-            x+=1
-        if distance_between_stops(self.stopdict, "Angered Centrum", "Saltholmen") < 20:
-            x+=1
-        if distance_between_stops(self.stopdict, "Hagen", "Rambergsvallen") < 20:
-            x+=1
-        print(f'{x} passed test ouf of {3}')
+
+        for stop1 in self.stopdict:
+            for stop2 in self.stopdict:
+                self.assertLess(distance_between_stops(self.stopdict, stop1, stop2), 20, msg = "didnt work")
+                    
 
     def test_times_beetween_stops(self):
+        
+        for line in self.linedict:
+            for stop1 in self.linedict[line]:
+                for stop2 in self.linedict[line]:
+                    self.assertEqual(time_between_stops(self.linedict, self.timedict, line, stop1, stop2),time_between_stops(self.linedict, self.timedict, line, stop2, stop1) , msg = "didnt work")
+    
+    def test_query(self):
+        test3 = ["between norrköping and linköping", "via chalmers", "between chalmers and ullevi norra", "time with 8 from chalmers to ullevi", "distance from Hagen to Rambergsvallen", "quit", "hejehjehejehje"]
         x = 0
-        if time_between_stops(self.linedict,self.timedict, 8,  "Ullevi Norra", "Chalmers") == time_between_stops(self.linedict,self.timedict, 8, "Chalmers", "Ullevi Norra"):
-            x+=1
-        if time_between_stops(self.linedict,self.timedict, 1,  "Östra Sjukhuset", "Opaltorget") == time_between_stops(self.linedict,self.timedict, 1, "Opaltorget", "Östra Sjukhuset"):
-            x+=1
-        print(f'{x} passed test ouf of {2}')
+        for i in test3:
+            if answer_query(self.tramdict, i) ==  str or int or list or float:
+                x+=1
+        print(f'query {x} passed test ouf of {len(test3)}')
 
 if __name__ == '__main__':
     unittest.main()
