@@ -71,10 +71,18 @@ def tramdoc():
         ['line', 'stops'],
         [[line, ', '.join(stops)] for line, stops in lines]
         )
-    return html([h1('The Tram Lines of Gothenburg')],
-                [p(['For timetables, see ',
-                    a('https://www.vasttrafik.se/en/', 'Västtrafik')]),
-                 linetable])
+    return html(
+        [intag('meta', [], attrs={'charset': "UTF-8"})],
+        [
+            h1('The Tram Lines of Gothenburg'),
+            p(
+                ['For timetables, see ',
+                 a('https://www.vasttrafik.se/en/', 'Västtrafik')
+                ]
+              ),
+            linetable
+        ]
+      )
 
 
 if __name__ == '__main__':
