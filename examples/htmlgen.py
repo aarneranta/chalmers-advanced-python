@@ -1,18 +1,40 @@
 # a simple library for generating well-formatted HTML code
 
-def intag(tag, elems, attrs=None, newlines=True):
+class Tree:
+    "HTML elements as trees (or XML, since no tagset is assumed)."
+    def __init__(self, tag, elems, attrs=None, newlines=True):
+        self._tag = tag
+        self._elems = elems
+        self._attrs = attrs
+        self._newlines = newlines
+
+    def render(self):
+        if attrs := self._attrs:
+            attrs = f" {' '.join([f'{key}={value}' for key, value in attrs.items()])}"
+        else:
+            attrs = ""
+        start = '<' + self._tag + attrs + '>'
+        end = '</'+ self._tag + '>'
+        sep = '\n' if self._newlines else ''
+        
+        def renders(elem):
+            return elem.render() if isinstance(elem, Tree) else str(elem)
+        
+        content = sep.join([renders(e) for e in self._elems])
+        return sep.join([start, content, end])
+
+
+def intag(tag, parts, attrs=None, newlines=True):
     """
     Creates a HTML element by wrapping a given element
-    or a list of elements
+    or a list of elements or strings
     between a start tag and matching end tag, 
     optionally adding newlines.
     """
-    attrs = f" {' '.join([f'{key}={value}' for key, value in attrs.items()])}" if attrs else ""
-    start = '<' + tag + attrs + '>'
-    end = '</'+ tag + '>'
-    sep = '\n' if newlines else ''
-    content = sep.join(map(str, elems)) if isinstance(elems, list) else str(elems)
-    return sep.join([start, content, end])
+    if isinstance(parts, list):
+        return Tree(tag, parts, attrs, newlines)
+    else:
+        return Tree(tag, [parts], attrs, newlines)
 
 
 def b(s):
@@ -21,21 +43,22 @@ def b(s):
 
 
 def p(ss):
-    "Generates a paragraph from a list of strings."
+    "Generates a paragraph from a string or a list of elements."
     return intag('p', ss)
 
 
 def a(url, s):
     "Generates a hypertag from a URL and an element."
-    return intag('a', [s], attrs={'href': url}, newlines=False)
+    return intag('a', s, attrs={'href': url}, newlines=False)
 
 
 def html(head, body):
     "Generates a complete HTML document from a head and a body lists of elements."
-    return '<!DOCTYPE html>\n' + intag('html',
-                      [intag('head', head),
-                       intag('body', body)],
-                      attrs={'xmlns': "http://www.w3.org/1999/xhtml"})
+    # return '<!DOCTYPE html>\n' +
+    return intag('html',
+                 [intag('head', head),
+                   intag('body', body)],
+                 attrs={'xmlns': "http://www.w3.org/1999/xhtml"})
 
 
 def title(s):
@@ -84,8 +107,10 @@ def tramdoc():
         ]
       )
 
+koe = b(a('https://www.vasttrafik.se/en/', b('Västtrafik')))
 
 if __name__ == '__main__':
-    print(tramdoc())
+    print(tramdoc().render())
+#    print(koe.render())
 
 
