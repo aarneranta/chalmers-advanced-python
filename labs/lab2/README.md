@@ -34,7 +34,6 @@ The following UML diagram shows the classes that you are expected to implement i
 ![tram-uml](../images/tram-classes.png)
 
 The underscored variables right after the class names are just a hint that need not be followed.
-In fact, the implementation of `Graph` does not need them at all.
 The important thing is that the public methods are implemented with
 the names given here.
 
@@ -69,11 +68,11 @@ The class `Graph` can be initialized in two ways:
 The class builds internally a data structure that supports different graph operations.
 This data structure is kept hidden, and it is inherited from the Graph
 class of the networkx library.
-The public methods to be implemented are:
+The public methods needed are:
 
 - `neighbors(vertex)`
 - `vertices()`
-- `edges()` (only given in one direction for undirected graphs)
+- `edges()` (only given in one direction)
 - `__len__()`, the number of vertices
 - `add_vertex(vertex)`
 - `add_edge(vertex, vertex)` 
