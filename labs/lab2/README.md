@@ -34,7 +34,6 @@ The following UML diagram shows the classes that you are expected to implement i
 ![tram-uml](../images/tram-classes.png)
 
 The underscored variables right after the class names are just a hint that need not be followed.
-In fact, the implementation of `Graph` does not need them at all.
 The important thing is that the public methods are implemented with
 the names given here.
 
