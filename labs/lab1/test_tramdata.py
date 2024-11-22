@@ -46,10 +46,12 @@ class TestTramData(unittest.TestCase):
         print(f'{x} passed test ouf of {3}')
 
     def test_times_beetween_stops(self):
-        pass
-        test3 = {"Tingvallsvägen": {"Kaggeledstorget": 2}}
-
-        print(self.timedict) 
+        x = 0
+        if time_between_stops(self.linedict,self.timedict, 8,  "Ullevi Norra", "Chalmers") == time_between_stops(self.linedict,self.timedict, 8, "Chalmers", "Ullevi Norra"):
+            x+=1
+        if time_between_stops(self.linedict,self.timedict, 1,  "Östra Sjukhuset", "Opaltorget") == time_between_stops(self.linedict,self.timedict, 1, "Opaltorget", "Östra Sjukhuset"):
+            x+=1
+        print(f'{x} passed test ouf of {2}')
 
 if __name__ == '__main__':
     unittest.main()
