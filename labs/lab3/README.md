@@ -4,6 +4,8 @@ Advanced Python Course, Chalmers DAT516, 2024
 
 by Aarne Ranta
 
+## Note
+In 2024, there are no bonus parts, but just one and the same lab for everyone. The movie linked from the Canvas page speaks about "bonus parts". They are now obligatory for everyone, but we will provide more ready-made material for them.
 
 ## Purpose
 
