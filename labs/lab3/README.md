@@ -7,6 +7,13 @@ by Aarne Ranta
 ## Note
 In 2024, there are no bonus parts, but just one and the same lab for everyone. The movie linked from the Canvas page speaks about "bonus parts". They are now obligatory for everyone, but we will provide more ready-made material for them.
 
+(Added 2024-12-01:) In the movie linked from the course webpage as lecture 8, there are a few things that differ from this year:
+
+- when it says Friday, you should think of Tuesday 3 December 2024
+- when it says "bonus parts", they are now just compulsory parts of the lab (but we give some more help on them than when they were optional)
+- at 23:30 in the film, `python manage.py migrate tram` was forgotten
+- at 47:40, what is called "baseline" is not sufficient this year, because the "bonus parts" are also required. But it is a good idea to start with this "baseline", because you can get it directly from you Lab 2 and you will then know that everything works.
+
 ## Purpose
 
 The purpose is to build a web application replicating some functionalities of apps such as [Västtrafik](https://www.vasttrafik.se/reseplanering/reseplaneraren/).
@@ -35,7 +42,7 @@ Unlike the official app, ours will not have access to the actual timetables, but
 This is of course a severe simplification - but, on the other hand,
 our app will be usable for any transport system that can be
 represented by the class `TramNetwork`.
-In addition, the bonus part will give access to actual traffic information from Västtrafik.
+Clicking at the created map will give access to actual traffic information from Västtrafik.
 
 Another difference from the official app is that we only run ours in a safe `localhost` environment.
 Thereby we do not have to cope with security issues, and it will also be much easier for all groups to finish the project.
@@ -86,7 +93,7 @@ lab3
 │   └── ... !! (many files, no need to touch)
 ├── static
 │   ├── tramnetwork.json ?!
-│   └── tram-url.json !! or ?! (bonus)
+│   └── tram-url.json !! or ?!
 └── tram
     ├── __init__.py
     ├── admin.py
@@ -100,7 +107,7 @@ lab3
     │      ├── find_route.html !!
     │      ├── home.html !!
     │      ├── images
-    │      │   ├── gbg_tramnet.svg !! or ?! (bonus)
+    │      │   ├── gbg_tramnet.svg !! or ?!
     │      │   └── shortest_path.svg ?!
     │      └── show_route.html !!
     ├── tests.py
@@ -135,7 +142,9 @@ If not, the following steps must be taken at the first time:
    This will create the directory `myvenv` with lots of contents.
 4. activate the virtual environment: 
    - `$ source myvenv/bin/activate` on Linux/Mac 
-   - `$ myvenv/Scripts/activate.bat` or `$ myvenv/Scripts/activate.ps1` on Windows. Which of these two commands will work depends on what shell you are using. If unsure, try both
+   - `$ myvenv/Scripts/activate.bat` or `$ myvenv/Scripts/activate.ps1` on Windows.
+
+   Which of these two commands will work depends on what shell you are using. If unsure, try both
    You should now see the string `(myvenv)` prefixed to your command line prompt.
 5. install the necessary Python libraries (`networkx` is only necessary if you did the baseline version of lab 2):
   ```
@@ -319,18 +328,18 @@ Also create the `images` subdirectory, which is linked from `home.html`:
 ```
 $ mkdir tram/templates/tram/images
 ```
-Then copy the Wikipedia tram network image `gbg_tramnet.svg` (also under `files`) there so that you can view the pages by running the server again,
+Then copy the tram network image `gbg_tramnet.svg` (also under `files`) there so that you can view the pages by running the server again,
 ```
 $ python manage.py runserver
 ```
 and opening `http://127.0.0.1:8000/` in a web browser.
 You will see a home screen with the gorgeous SVG image of Gotheburg tram network.
 
-If you want, you can replace this standard image with your own one: the script `file/create_network_picture.py` does this for you by calling your own `tram.py` on your own `tramnet.json` file.
+If you want, you can replace this standard image with your own one: the script `files/create_network_picture.py` does this for you by calling your own `tram.py` on your own `tramnet.json` file.
 You can also try to make the picture nicer by changing positioning and other parameters.
 But before doing this, make sure to implement the rest of the baseline functionalities!
 
-You can return to image generation in the bonus task where you are expected to change the URLs in the tram stops.
+You can return to image generation in the task where you are expected to change the URLs in the tram stops.
 Right now, when you click at them, you should be taken to a Google search about that stop.
 
 
