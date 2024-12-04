@@ -34,5 +34,10 @@ for link in soup.find_all('a'):
         name, town, _ = stop[:3]
         stopdict[name.strip() + ';' + town.strip()] = stop_prefix + id[prefixlen:-1]
 
-print(json.dumps(stopdict, indent=2, ensure_ascii=False))
+
+tramstopdict = {name.split(';')[0]: url
+                for name, url in stopdict.items()
+                if name.split(';')[1] in {'Göteborg', 'Mölndal'}}
+
+print(json.dumps(tramstopdict, indent=2, ensure_ascii=False))
 
