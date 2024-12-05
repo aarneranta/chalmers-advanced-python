@@ -198,7 +198,14 @@ The function
 uses the `graphviz` library, whose documentation can be found [here](https://graphviz.readthedocs.io/en/stable/api.html).
 Many examples can be found in the lecture notes, sections 5.1 and 5.2, with a description of an algorithm in section 5.7.
 The description is simple but sufficient for this function, except for how to use `nodecolors`, which you should look up in the library documentation.
-The slides for lecture 7 also give an example.
+The slides for lecture 10 also give an example.
+
+The view parameter can be used with the following values.
+- `view='view'`: a window with the graph picture is popped up (by calling `render(view=True)` in Graphvix)
+- `view='pdf'`: just generate a pdf file without opening it (call `render()` without arguments)
+
+The first of these is presupposed in the `view_shortest` example.
+The other values can be used for any purpose you may want to try.
 
 The first intended use of `nodecolors` is to show the nodes along the shortest path in a different colour.
 You can append the following code to your file to demonstrate this:
