@@ -20,7 +20,7 @@ Each reviewing group have to assess whether the submitted solution is acceptable
 - the web application account for changes
 - it is possible to access actual traffic information by clicking on any stop
 
-These five points points will be assessed during a live presentation (physical or online) conducted by the submitting group on their own machines (we do not expect you to run someone else's code).
+These five points will be assessed during a live presentation (physical or online) conducted by the submitting group on their own machines (we do not expect you to run someone else's code).
 
 ## Report
 
@@ -40,7 +40,7 @@ Section 1: Core assignment
 - Q5: Does the application show current traffic information? --> yes/no
 
 
-Section 3: Code quality
+Section 2: Code quality
 
 It must at least include whether:
 - code from lab 2 has been properly reused (i.e., in an efficient way without [boilerplate code](https://en.wikipedia.org/wiki/Boilerplate_code))
@@ -48,13 +48,13 @@ It must at least include whether:
   one definition of the function itself, and different distances are
   obtained by just changing the cost function
 
-Section 4: Screenshots
+Section 3: Screenshots
 Insert two screenshots: 
 - screenshot 1 must present the web application displaying a shortest path between two stops (similar to the one presented in the assignement [here](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/show_route.html) but with **different tram stops** than in the example)
 - screenshot 2 must present the code of the function `show_shortest()` (the main function required in the core part of the assignment, see [here](https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/lab3.md#your-todo-continue-from-here)).
 
 Note that all Sections are **mandatory** in the report.
-Section 3 is more open than the other sections, you can write general comments on the optimization of the code and good practices of Object Oriented Programming.
+Section 2 is more open than the other sections, you can write general comments on the optimization of the code and good practices of Object Oriented Programming.
 
 ## Deadlines
 
