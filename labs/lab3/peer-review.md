@@ -4,8 +4,9 @@ Peer-Review Guidelines
 ## General description
 
 For Lab 3, each group of students (hereinafter the submitting group) is expected to submit their solution to another group (hereinafter the reviewing group), which will have to assess whether the submission passes or fails.
-Each submitting group will submit to a reviewing group **selected by the teaching team** in order to reduce conflicts of interest (matching groups who tackled the same Bonus parts as much as possible).
-However, the review process is not blinded.
+Each submitting group will submit to a reviewing group **selected by the teaching team** in order to reduce conflicts of interest.
+The selections are published directly after the 17 December deadline, when we know which groups have submitted their Lab 3.
+The review process is not blinded.
 
 The groups are paired and will review each other, as such, *submitting* or *reviewing* should be seen as a role that each group will have to endorse.
 Each submitted solution must be clear whether any bonus part has been tackled or not.
@@ -16,12 +17,10 @@ Each reviewing group have to assess whether the submitted solution is acceptable
 - the web application runs
 - it displays the complete map of tram lines
 - it is possible to query the shortest path between any two points
+- the web application account for changes
+- it is possible to access actual traffic information by clicking on any stop
 
-Optionally, the reviewing group may have to assess the bonus assignments:
-- whether the web application account for changes (Bonus 1)
-- whether it is possible to select departures by clicking on any stops (Bonus 2)
-
-These points 3 (+ 2) points will be assessed during a live presentation (physical or online) conducted by the submitting group on their own machines (we do not expect you to run someone else's code).
+These five points points will be assessed during a live presentation (physical or online) conducted by the submitting group on their own machines (we do not expect you to run someone else's code).
 
 ## Report
 
@@ -29,7 +28,7 @@ The reviewing group must write a short report motivating their decision accordin
 The report must been submitted as an issue opened on the other group's repository.
 In order to open such an issue, you must first invite the other team as collaborators, as explained [here](https://docs.github.com/en/account-and-profile/setting-up-and-managing-your-personal-account-on-github/managing-access-to-your-personal-repositories/inviting-collaborators-to-a-personal-repository).
 
-You must mention in this issue the name of which must include the names of the reviewing group (person 1 and person 2 if the group is a pair) and of the submitting group (person 3 and person 4 if the group is a pair) as `name1-surname1_name2-surname2_reporting_name3-surname3_name4-surname4`.
+You must mention in this issue the name of which must include the LabGroup number of the reviewing group (number1) and of the group that is reviewed (number2) as `group_<number1>_reviewing_group_<number2>`.
 
 This is the template for the report/issue:
 
@@ -58,16 +57,15 @@ Note that all Sections are **mandatory** in the report.
 Section 3 is more open than the other sections, you can write general comments on the optimization of the code and good practices of Object Oriented Programming.
 
 ## Deadlines
-### Registration
-
-TBA
 
 ### Code 
 The deadline for the submission of your code is **Dec 17** firm, but you can submit beforehand.
 
 ### Report, demonstration, and self-registration
 
-TBA
+Demonstrations for reviewers are carried out on 18, 19 or 20 December. You can use any of the lab times and rooms scheduled in TimeEdit, as well as GD-salen on the lecture time 18 December. You can also agree on peer reviewing on Zoom or other video meeting platform.
+
+After the reviews, the reports are to be submitted on GitHub classroom, in the same repository as the lab3 solution itself. **You must submit both reports: the one you wrote about the other group, and the one they wrote about you**. This is of course redundant, but it will make the TAs' work much easier, because they only have to look at one repository to see both reports.
 
 ## Other considerations - resubmission
 
