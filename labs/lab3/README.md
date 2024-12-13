@@ -448,6 +448,10 @@ After this, you need to update the SVG image by these URLs. The simplest way to 
 Another possibility is process the file `gbg_tramnet.svg` directly.
 You can do this by following the model of `tram/utils/color_tram_svg.py`.
 
+**New 2024-12-16**: you can now do this with `files/change_urls.py`.
+**Both methods should be applied outside your project environment, directly in `files` and only once.
+Hence there is no need to copy those Python files from `files` to `tram/utils` or any such place.
+
 After doing this, make another search in your web application and click at some stop to verify that the link has been updated.
 
 The standard library for parsing HTML is

@@ -1,9 +1,7 @@
 # baseline tram visualization for Lab 3
 # creates by default an SVG image usable on the home page
 # this image can then be coloured by using tramviz.py, which operates directly on the SVG file
-# you don't need to use this file unless you want to use your own gbg_tramnet.svg
-# this will be needed in Bonus task 2, where you change the URLs of vertices
-# but you should only do this once, not every time you display a route
+# You only need to run this file once, to change the URLs of vertices
 # rename the resulting file to gbg_tramnet.svg when you have your final version
 
 from trams import readTramNetwork
@@ -12,7 +10,7 @@ import json
 
 MY_GBG_SVG = 'my_gbg_tramnet.svg'  # the output SVG file
 MY_TRAMNETWORK_JSON = '../../lab1/tramnetwork.json'  # JSON file from lab1
-TRAM_URL_FILE = 'tramstop_google_url.json'  # given in lab3/files, replace with your own in bonus 2
+TRAM_URL_FILE = 'tramstop_google_url.json'  # given in lab3/files, replace with your own stop id file
 
 # assign colors to lines, indexed by line number; not quite accurate
 gbg_linecolors = {
@@ -32,7 +30,7 @@ def scaled_position(network):
     
     return lambda xy: (x_factor*(xy[0]-minlon), y_factor*(xy[1]-minlat))
 
-# Bonus task 2: create a json file that returns the actual traffic information, and rerun the map creation
+# create a json file that returns the actual traffic information, and rerun the map creation
 
 def stop_url(stop):
     with open(TRAM_URL_FILE) as file:
