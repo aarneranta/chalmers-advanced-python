@@ -87,7 +87,7 @@ class Square(Rectangle):
     def __init__(self, side):
         super().__init__(side, side)
         
-        # also Rectangle.__init__(side, side) is OK
+        # also Rectangle.__init__(self, side, side) is OK
         # and so is explicitly defining length and width as side,
         # because __init__() has to be overwritten
 # The important thing is that area() and perimeter() are not redefined but inherited
