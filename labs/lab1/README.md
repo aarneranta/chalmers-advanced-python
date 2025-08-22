@@ -165,7 +165,7 @@ Moreover,
 third one, entitled `tramnetwork.json`.
 This JSON file represents a dictionary that contains the three dictionaries built:
 
-```json
+```jsonc
 {
   "stops": {
     "Östra Sjukhuset": {
