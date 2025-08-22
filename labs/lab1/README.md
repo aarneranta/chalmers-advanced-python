@@ -79,12 +79,12 @@ The dialogue function should be divided into two parts to enable more accurate t
 
 Here is a part of the stop dictionary, showing just one stop:
 
-```json
+```py
 {
   'Majvallen': {
     'lat': 57.6909343,
     'lon': 11.9354935
-    }
+  }
 }
 ```
 
@@ -98,7 +98,7 @@ The function involves an easy conversion using the `json` library.
 
 Here is an example:
 
-```json
+```py
 {
   "9": [
     "Angered Centrum",
@@ -143,7 +143,7 @@ Instead, from the file [`tramlines.txt`](../data/tramlines.txt), we also build a
 
 Here is an example of a time dictionary entry:
 
-```json
+```py
 {
   "Tingvallsvägen": {
       "Kaggeledstorget": 2
@@ -163,8 +163,7 @@ Moreover,
 
 `build_tram_network(stopfile, linefile)` puts everything together. It reads the two input files and writes a
 third one, entitled `tramnetwork.json`.
-This JSON file represents a dictionary that contains the three dictionaries
-built:
+This JSON file represents a dictionary that contains the three dictionaries built:
 
 ```json
 {
@@ -172,19 +171,19 @@ built:
     "Östra Sjukhuset": {
       "lat": 57.7224618,
       "lon": 12.0478166
-    },  # and so on, the entire stop dict
+    },  // and so on, the entire stop dict
   },
   "lines": {
     "1": [
       "Östra Sjukhuset",
       "Tingvallsvägen",
-      # and so on, all stops on line 1
-    ],  # and so on, the entire line dict
+      // and so on, all stops on line 1
+    ],  // and so on, the entire line dict
   },
   "times": {
     "Tingvallsvägen": {
       "Kaggeledstorget": 2
-    },  # and so on, the entire time dict
+    },  // and so on, the entire time dict
   }
 }
 ```
