@@ -127,7 +127,7 @@ Kaggeledstorget           10:03
 Thus, for each tram line, there is a section starting with the line number and a colon.
 After that, the stops are given together with times.
 For simplicity, each line starts from time 10:00.
-We are not interested in these times as such, but in the **transition times** between stops.
+We are not interested in these times as such, but in the **transition times** between adjacent stops.
 Thus, for instance, the transition time between Tingvallsvägen and Kaggeledstorget is 2 minutes.
 We want to store the transition times in a non-redundant way, under the following assumptions:
 
@@ -136,7 +136,7 @@ We want to store the transition times in a non-redundant way, under the followin
   - the transition time from B to A is always the same as from A to B
 
 Hence, we don't want to add transition times to the line dictionary, because this would lead to storing redundant information.
-Instead, from the file [`tramlines.txt`](../data/tramlines.txt), we also build a **time dictionary**, where
+Instead, from the file [`tramlines.txt`](../data/tramlines.txt), we also build a **time dictionary** which stores the times between adjacent stops, where
 
 - keys are stop names
 - values are dictionaries from stop names to numbers of minutes
@@ -146,7 +146,7 @@ Here is an example of a time dictionary entry:
 ```py
 {
   "Tingvallsvägen": {
-      "Kaggeledstorget": 2
+    "Kaggeledstorget": 2
   }
 }
 ```
@@ -155,7 +155,7 @@ To summarize, the general idea with these data structures and functions is to **
 In particular,
 
 - the location of each stop is given only once, in the stop dictionary,
-- the time between any two stops is given only once, in the time dictionary.
+- the time between two adjacent stops is given only once, in the time dictionary.
 
 Moreover,
 
