@@ -1,10 +1,11 @@
-# Lab3: A web application for the tram network
+# Lab 3: A web application for the tram network
 
-Advanced Python Course, Chalmers DAT516, 2024
+Advanced Python Course, Chalmers DAT516, 2025
 
 by Aarne Ranta
 
 ## Note
+
 In 2024, there are no bonus parts, but just one and the same lab for everyone. The movie linked from the Canvas page speaks about "bonus parts". They are now obligatory for everyone, but we will provide more ready-made material for them.
 
 (Added 2024-12-01:) In the movie linked from the course webpage as lecture 8, there are a few things that differ from this year:
@@ -120,7 +121,6 @@ lab3
     │   └── tramviz.py ??
     └── views.py !!
 ```
-
 
 ## The Django workflow
 

@@ -1,4 +1,4 @@
-# Lab2: Graphs and transport networks
+# Lab 2: Graphs and transport networks
 
 Advanced Python Course, Chalmers DAT516, 2025
 
@@ -15,6 +15,7 @@ The main learning outcomes are:
 - Python's data model for classes
 - class definitions with private instance variables, public methods, and "hidden" methods
 - inheritance between classes
+- understanding and extending an external library, the `networkx` library
 - representations of graphs
 - Dijkstra's shortest path algorithm with different cost functions
 - visualization of graphs and paths in them, using the `graphviz` library
@@ -22,10 +23,10 @@ The main learning outcomes are:
 
 ## The task: overview
 
-You are expected to submit two Python files,
+You are expected to submit two Python files:
 
-- `graphs.py` implementing general graphs and graph algorithms,
-- `trams.py` implementing transport networks by using concepts from `graphs.py`.
+- `graphs.py` implementing general graphs and graph algorithms
+- `trams.py` implementing transport networks by using concepts from `graphs.py`
 
 The following UML diagram shows the classes that you are expected to implement in these files.
 
@@ -35,6 +36,7 @@ The underscored instance variables shown above are just hints that need not be f
 The important thing is that the public methods are implemented with
 the names given here.
 
+<!-- TODO confusing here -->
 As will be specified below, it is not necessary to use `TramLine` and
 `TramStop` dictionaries in `TramNetwork`, but one can just use the Lab
 1 dictionaries directly in `_linedict`, `_stopdict`, and `_timedict`.
@@ -50,8 +52,7 @@ visualize(graph, view='dot', name='mygraph', nodecolors={}, engine='dot')
 readTramNetwork(file='tramnetwork.json')
 ```
 
-The functionalities of these classes and functions will be specified
-in detail below.
+The functionalities of these classes and functions will be specified in detail below.
 
 Last but not least, you will have to write tests using either the `unittest` or `hypothesis` libraries, or both.
 
@@ -59,14 +60,28 @@ Last but not least, you will have to write tests using either the `unittest` or 
 
 ### The `Graph` class
 
-The class `Graph` can be initialized in two ways:
+The class `Graph` represents an undirected graph, built of **vertices** and **edges**, where the vertices can have **values** associated with them.
+
+The class can be initialized in two ways:
 
 - from `None` (the default)
 - from a list of edges
 
+The implementation is by inheritance from `networkx.Graph`:
+
+```python
+class Graph(nx.Graph):
+    def __init__(self, start=None):
+        super().__init__(start)
+```
+
+Note that the `start` argument of `nx.Graph()` can be a list of edges, as required in this lab, but it can also be other things, such as an adjacency list.
+
 The class internally builds a data structure that supports different graph operations.
-This data structure is kept hidden, and it is inherited from the `Graph`
-class of the `networkx` library.
+This data structure is kept hidden, and it is inherited from the `Graph` class of the `networkx` library, so you don't need to define any hidden variables.
+
+#### Methods
+
 The public methods needed are:
 
 - `neighbors(vertex)`
@@ -80,44 +95,30 @@ The public methods needed are:
 - `get_vertex_value(vertex)`
 - `set_vertex_value(vertex, value)`
 
-The *vertex values* can initially be `None`, but they are useful for storing information such as the location of a tram stop.
-
-If you have read an earlier draft of this document, you may notice that we have simplified the specification a bit:
-
-- we only deal with undirected graphs
-- we have fewer arguments in initialization
-
-The implementation is by inheritance from `networkx.Graph`:
-
-```python
-class Graph(nx.Graph):
-    def __init__(self, start=None):
-        super().__init__(start)
-```
-
-The internal representation is inherited from `nx.Graph`, so you don't need to define any hidden variables.
-(The start argument of `nx.Graph()` can be a list of edges, as required in this lab, but it can also be other things, such as an adjacency list.)
-
 Some of the public methods required in this lab exist in `nx.Graph` with exactly the same names.
 They need not be defined in your class, since they are inherited.
-Some other methods have different names, so that to implement the desired API, you have to write, for example,
+Some other methods have different names, so that to implement the desired API, you have to write, for example:
 
 ```python
 def vertices(self):
     return self.nodes()
 ```
 
-The trickiest part is perhaps the values of vertices.
-In `networkx`,  they are stored in dictionaries associated with the vertices themselves.
-Here is a minimal example suggesting how you could do to set and get values of nodes:
+#### Vertex values
+
+The trickiest part is perhaps the **values** of vertices.
+In `networkx`, they are stored in dictionaries associated with the nodes themselves.
+Here is a minimal example suggesting how you could set and get values of nodes:
 
 ```python
 >>> G = nx.Graph()
 >>> G.add_node(9)
->>> G.nodes[9]['location'] = 234
+>>> G.nodes[9]['value'] = 234
 >>> G.nodes[9]
-{'location': 234}
+{'value': 234}
 ```
+
+The vertex values can initially be `None`.
 
 ### The `WeightedGraph` class
 
@@ -130,7 +131,7 @@ The class stores weights internally (e.g. in a dictionary) and supports two publ
 - `get_weight(vertex, vertex)`
 - `set_weight(vertex, vertex, weight)`
 
-Since `Graph` is implemented by inheritance from  `networkx`, you can
+Since `Graph` is implemented by inheritance from `networkx`, you can
 implement these methods by using the representation of weights that is
 already available there:
 
@@ -157,7 +158,7 @@ What is shortest is calculated by the minimum sum of `cost` function applied to 
 For example, if `graph` is a `WeightedGraph`, its `get_weight()` method can be used.
 But any function that takes two vertex arguments is possible, for instance, their geographical distance (which is calculated from vertex values rather than stored for each edge: this is to avoid redundancy).
 
-#### Using the Networkx implementation
+#### Using the `networkx` implementation
 
 The [`networkx` implementation](https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.shortest_paths.generic.shortest_path.html#networkx.algorithms.shortest_paths.generic.shortest_path) of Dijkstra's algorithm is the function
 
@@ -173,7 +174,7 @@ To do so, you
 - convert the `cost` function to a `weight` attribute,
 - leave out the `method`, so that the default is used.
 
-The tricky part is the conversion of `cost`, which is a function, to a `weight`, which is an attribute of edges.
+The tricky part is the conversion of `cost` in our code (which is a function) to `weight` in the `networkx` implementation (which is an attribute of edges).
 The following helper function can be used for this purpose:
 
 ```python
@@ -195,7 +196,7 @@ But they can be constructed inside the same algorithm when the `dist` dictionary
 
 ### Visualization
 
-A very simple visualization function is expected in Lab 2; we will make it more sophisticated in Lab3.
+A very simple visualization function is expected in Lab 2; we will make it more sophisticated in Lab 3.
 The function
 
 ```python
@@ -301,12 +302,12 @@ The detailed design is left to you.
 ### The `TramNetwork` class
 
 The class `TramNetwork` is a `WeightedGraph` (i.e. inherits from it).
-It stores internally either (object-oriented way)
+It stores internally either (object-oriented way):
 
 - stops and their positions (objects of class `TramStop`)
 - lines and their stops (objects of class `TramLine`)
 
-or (simpler way)
+or (simpler way):
 
 - the dictionaries for lines, stops, and times from Lab 1
 
