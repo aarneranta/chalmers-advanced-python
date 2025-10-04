@@ -33,23 +33,23 @@ The following UML diagram shows the classes that you are expected to implement i
 ![tram-uml](../images/tram-classes.png)
 
 The underscored instance variables shown above are just hints that need not be followed.
-The important thing is that the public methods are implemented with
-the names given here.
+The important thing is that the public methods are implemented with the names given here.
 
-<!-- TODO confusing here -->
+<!--
 As will be specified below, it is not necessary to use `TramLine` and
 `TramStop` dictionaries in `TramNetwork`, but one can just use the Lab
 1 dictionaries directly in `_linedict`, `_stopdict`, and `_timedict`.
+-->
 
-In addition to the classes, you will have to implement the following functions:
+In addition to these classes, you will have to implement the following functions:
 
 ```python
 # in graphs.py
 dijkstra(graph, source, cost=lambda u,v: 1)
-visualize(graph, view='dot', name='mygraph', nodecolors={}, engine='dot')
+visualize(graph, view='view', name='mygraph', nodecolors={})
 
 # in trams.py
-readTramNetwork(file='tramnetwork.json')
+readTramNetwork(file=TRAM_FILE)
 ```
 
 The functionalities of these classes and functions will be specified in detail below.
@@ -260,14 +260,13 @@ To prevent this from happening, we recommend that you take your own testing seri
 
 ## Task 2: file `trams.py`
 
-This file needs to import from two other files of your own
+This file needs to import two of your own modules:
 
 - `graphs.py` from Lab 2
 - `tramdata.py` from Lab 1
 
-as well as from the standard libraries `sys` and `json`.
-The `sys` library is needed if you have your lab1 solution in a different directory.
-Then you need to tell Python where to find the file `tramdata.py`:
+The standard `sys` library is needed if you have your Lab 1 solution in a different directory (which we recommend).
+If so you need to tell Python where to find the file `tramdata.py` as follows:
 
 ```python
 import sys
@@ -275,97 +274,96 @@ sys.path.append('../lab1/')
 import tramdata as td
 ```
 
-*We assume that your Git repository has subdirectories for lab1/, lab2/, and lab3/.*
-
 If you have not yet done so, it is an easy task to restructure your repository: use `git mv` to move files in the correct directories after you have created them.
 
 ### The `TramStop` class
 
 The class `TramStop` reflects the data stored in the stop dictionary in Lab 1, plus some more information.
-It has to store
+It has to store:
 
 - the name of the stop
 - its position (latitude and longitude)
 - the list of lines that serve the stop (not explicit in Lab 1)
 
 Its `__init__()` method needs the name as a required argument, whereas the position and line list are optional.
-The public methods should enable
+The public methods should enable:
 
 - getting the name of the stop
 - getting and setting the position
 - getting the list of lines and adding lines to the list
 
-This time, we leave it to you to decide what methods exactly there are.
+This time, we leave it to you to decide exactly what methods there should be.
 
 ### The `TramLine` class
 
 The class `TramLine` reflects exactly the line dictionary of Lab 1.
-Thus it should store internally, and make publicly available,
+Thus it should store internally, and make publicly available:
 
 - the name of the line (in Gothenburg usually a number, but do not assume this)
 - the list of stops in order, in one direction
 
-The detailed design is left to you.
+The detailed design is left up to you.
 
 ### The `TramNetwork` class
 
 The class `TramNetwork` is a `WeightedGraph` (i.e. inherits from it).
-It stores internally either (object-oriented way):
 
-- stops and their positions (objects of class `TramStop`)
-- lines and their stops (objects of class `TramLine`)
+#### Internal implementation
 
-or (simpler way):
+The internals of this class can be implemented in one of two ways:
 
-- the dictionaries for lines, stops, and times from Lab 1
+1. object-oriented way:
+    - stops and their positions (objects of class `TramStop`)
+    - lines and their stops (objects of class `TramLine`)
+2. simpler way:
+    - the dictionaries for lines, stops, and times from Lab 1
 
-Since these are internal implementation details, you can choose either
-of them.
-Whatever way you choose, you can build a `WeightedGraph` with
+Since these are internal implementation details, you can choose either of them.
+Whichever way you choose, you can build a `WeightedGraph` with:
 
 - vertices, which are all the stops
 - edges, which are transitions between consecutive stops on some line
 - weights, which are the transition times between adjacent stops
 
-In the object-oriented method, the simplest way to store the stops and lines is at dictionaries, where the stop or line name is the key and the corresponding object is the value.
+In the object-oriented method, the easiest way to store the stops and lines is as dictionaries, where the stop or line name is the key and the corresponding object is the value.
 (This comes with some redundancy, because the names are stored both in the keys and in the values.
 But it is more scalable, in cases where stops in different positions can have the same names: then the keys should be some unique identifiers, but the values can still be TramStop objects.)
-Notice that you need not store geographical distances between stops,
-because they can be computed from the positions of stops.
+
+Notice that you need not store geographical distances between stops, because they can be computed from the positions of stops.
 For this, you can use the geographical distance function from Lab 1.
 
-The object-oriented way, which uses classes for tram stops and lines
-may sound a bit redundant compared with using the dictionaries directly.
-But it has the advantage that using the classes helps make sure that
-each tram stop and line in fact does have all the necessary
-information.
+The object-oriented way, which uses classes for tram stops and lines may sound a bit redundant compared with using the dictionaries directly.
+But it has the advantage that using the classes helps make sure that each tram stop and line in fact does have all the necessary information.
 
-The public methods that we need are getters:
+#### Methods
+
+The public methods that we need are getters for:
 
 - the position of a stop
 - the transition time between two subsequent stops
-- the geographical distance between any two stops (from Lab 1!)
+- the geographical distance between any two stops (from Lab 1)
 - list the lines through a stop (just the line numbers, or whole objects)
 - list the stops along a line (just the stop names, or whole objects)
 - list all stops (just the stop names, or whole objects)
 - list all lines (just the line numbers, or whole objects)
 
-If you use the names suggested in the UML diagram, some things in Lab3
-will be easier.
+If you use the names suggested in the UML diagram, some things in Lab 3 will be easier.
 
-Note that the `.extreme_position()` method should return the minimum and maximum latitude and longitude found among all stop position. This will be needed for correctly visualizing the tram network in lab 3.
+Finally, the class should have a `extreme_position()` method should return the minimum and maximum latitude and longitude found among all stop positions.
+This will be needed for correctly visualizing the tram network in Lab 3.
 
 ### Reading a `TramNetwork`
 
-The JSON file `tramnetwork.json` produced in Lab 1 contains all information needed for building an instance of `TramNetwork`.
-The function
+The JSON file `tramnetwork.json` produced in Lab 1 contains all the information needed for building an instance of `TramNetwork`.
+The function:
 
 ```python
 readTramNetwork(tramfile=TRAM_FILE)
 ```
 
-should do this, defaulting to `tramnetwork.json`, which should however be given via the variable `TRAM_FILE`.
+should do exactly this, defaulting to `tramnetwork.json`, which should however be given via the global variable `TRAM_FILE`.
 It should return an object of class `TramNetwork`.
+Remember that you will need to import the standard `json` library to parse JSON files.
 
 ### Testing `trams.py`
 
@@ -373,9 +371,10 @@ Some of the tests from Lab 1 are also relevant here, now performed on the `TramN
 You can try to generate data for them from the stop and line lists by using `hypothesis`.
 
 Another thing to test is the connectedness of the tram network.
-This could be done simply by just depth-first or breadth-first search, as explained in lecture notes Section 5.5.
+This could be done simply by just depth-first or breadth-first search.
+<!-- as explained in lecture notes Section 5.5. -->
 
-The following demo is also a good test for yourself: if you see that it works flawlessly, you can be rather sure that all parts of your code work as they should.
+The following demo is also a good test for yourself: if you see that it works flawlessly, you can be fairly sure that all parts of your code work as they should.
 
 ## Demo
 
@@ -392,11 +391,11 @@ if __name__ == '__main__':
 ```
 
 When you run the code, it asks you to enter two tram stop names separated by a comma (no spaces between).
-Then displays the whole tram network, with the shortest path (as the number of stops) coloured.
+It then displays the whole tram network, with the shortest path (as the number of stops) coloured.
 
 ## Submission
 
-Submit the following files via the [Lab2 GitHub Classroom](https://classroom.github.com/a/nzzzyYrY) repository.
+Submit the following files via the [Lab 2 GitHub Classroom](https://classroom.github.com/a/nzzzyYrY) repository:
 
 - `graphs.py`
 - `trams.py`
