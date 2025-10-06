@@ -19,32 +19,34 @@ In 2024, there are no bonus parts, but just one and the same lab for everyone. T
 
 ## Purpose
 
-The purpose is to build a web application replicating some functionalities of apps such as [Västtrafik's Travel Planner](https://www.vasttrafik.se/reseplanering/reseplaneraren/).
+The purpose of this lab is to build a web application replicating some functionalities of apps such as [Västtrafik's Travel Planner](https://www.vasttrafik.se/reseplanering/reseplaneraren/).
 Your application will:
 
 - display the complete map of tram lines
 - highlight shortest paths in terms of time and geographical distance
-- make the calculations more precise by taking changes into account
-- show actual departures from any stops by clicking at it on the map
+- calculate total travel time by taking changes into account
+- show actual departures from any stop by clicking on it
 
 Here is an example screenshot:
 
 ![shortest-path](../images/app-shortest.png)
 
-In some more detail, here is what the three different screens should look:
+In some more detail, here is what the three different screens should look like:
 
-- [the home screen](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/home.html)
-- [the route search form](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/find_route.html)
-- [the search result](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/show_route.html)
+- [home screen](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/home.html)
+- [route search form](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/find_route.html)
+- [search result](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/show_route.html)
 
+<!--
 The HTML code of each of these pages is already included in the template files in `files/`.
 Thus these examples show how the pages should look when you have filled in the templates with your program.
+-->
 
 Unlike the official app, ours will not have access to the actual timetables, but just to the distances and times as defined in Labs 1 and 2.
-This is of course a severe simplification - but, on the other hand,
+This is of course a severe simplification — but, on the other hand,
 our app will be usable for any transport system that can be
 represented by the class `TramNetwork`.
-Clicking at the created map will give access to actual traffic information from Västtrafik.
+Clicking on the created map will give access to actual traffic information from Västtrafik.
 
 Another difference from the official app is that we only run ours in a safe `localhost` environment.
 Thereby we do not have to deal with security issues, and it will also be much easier for all groups to finish the project.
@@ -59,14 +61,14 @@ The learning outcomes include:
 
 ## The task
 
-We will follow a standard line of work for the `django` network.
+We will follow a standard line of work for the `django` package.
 There are several tutorials available, for instance,
 
 - [Django Girls Tutorial](https://tutorial.djangogirls.org/en/), partly followed in this document
 - [w3schools Django Tutorial](https://www.w3schools.com/django/), more concise
 - [Official Django Tutorial](https://docs.djangoproject.com/en/3.2/intro/tutorial01/), more details and options
 
-You can look at these for more information, but this lab spec is aimed to be self-contained and sufficient for the lab.
+You can look at these for more information, but this document is aimed to be self-contained and sufficient for the lab.
 
 ### Files to write
 
@@ -128,26 +130,26 @@ files, you can go down to the section "Your TODO: continue from here".
 
 If not, the following steps must be taken at the first time:
 
-1. create a directory for this project (not the same as in course GitHub):
+1. Create a directory for this project (not the same as in course GitHub):
 
     ```sh
     $ mkdir lab3
     ```
 
-2. move inside it:
+2. Move inside it:
 
     ```sh
     $ cd lab3
     ```
 
-3. create a Python virtual environment (maybe not necessary, but the best practice):
+3. Create a Python virtual environment (maybe not necessary, but the best practice):
 
     ```sh
     $ python3 -m venv myvenv
     ```
 
     This will create the directory `myvenv` with lots of contents.
-4. activate the virtual environment:
+4. Activate the virtual environment:
     - on Linux/Mac:
 
       ```sh
@@ -169,35 +171,33 @@ If not, the following steps must be taken at the first time:
       Which of these two commands will work depends on what shell you are using. If unsure, try both.
   
     You should now see the string `(myvenv)` prefixed to your command line prompt.
-5. Install the necessary Python libraries (`networkx` is only necessary if you did the baseline version of Lab 2):
+5. Install the necessary Python libraries into the virtual environment:
 
     ```sh
-    $ pip install django
-    $ pip install networkx 
+    (myvenv) $ pip install django
+    (myvenv) $ pip install networkx 
     ```
 
-    (notice that you can now use just `python` to run Python, because
-  you are in a special environment).
 6. Run
 
     ```sh
-    django-admin startproject mysite .
+    (myvenv) $ django-admin startproject mysite .
     ```
 
-    (the last dot is necessary: it refers to your working directory, where it creates a directory named
+    (the last dot `.` is necessary: it refers to your working directory, where it creates a directory named
   `mysite` and the file `manage.py`).
 
 At later times (every time you resume working on the project), only the `activate` step (4) is needed.
 
 ## Change default settings
 
-In the generated `mysite/settings.py`, you need to change `ALLOWED_HOSTS` to
+In the generated `mysite/settings.py`, you need to change `ALLOWED_HOSTS` to:
 
 ```python
 ALLOWED_HOSTS = ['127.0.0.1']
 ```
 
-and add to the end
+and add this to the end:
 
 ```python
 import os
@@ -241,7 +241,7 @@ $ python manage.py startapp tram
 
 This creates the directory `tram`, with a lot of predefined contents, but also many things that you will have to complete with your own code.
 
-To recognize this file in your Django website, add the line
+To recognize this file in your Django website, add the line:
 
 ```python
 'tram.apps.TramConfig',
@@ -340,7 +340,7 @@ This is the next topic.
 
 ### Create a form
 
-In order for `tram/views.py` to work, we need to create `tram/forms.py`,
+In order for `tram/views.py` to work, we need to create `tram/forms.py`:
 
 ```python
 from django import forms
@@ -364,7 +364,7 @@ $ mkdir tram/templates
 $ mkdir tram/templates/tram
 ```
 
-Copy the HTML files mentioned in `tram/views.py` from the course GitHub `labs/lab3/files` folder to the newly created `tram/templates/tram`, so that
+Copy the HTML files mentioned in `tram/views.py` from the course GitHub `labs/lab3/files` folder to the newly created `tram/templates/tram`, so that:
 
 ```sh
 $ ls tram/templates/tram/
@@ -377,14 +377,14 @@ Also create the `images` subdirectory, which is linked from `home.html`:
 $ mkdir tram/templates/tram/images
 ```
 
-Then copy the tram network image `gbg_tramnet.svg` (also under `files`) there so that you can view the pages by running the server again,
+Then copy the tram network image `gbg_tramnet.svg` (also under `files`) there so that you can view the pages by running the server again:
 
 ```sh
 $ python manage.py runserver
 ```
 
 and opening `http://127.0.0.1:8000/` in a web browser.
-You will see a home screen with the gorgeous SVG image of Gotheburg tram network.
+You will see a home screen with the gorgeous SVG image of Gothenburg tram network.
 
 If you want, you can replace this standard image with your own one: the script `files/create_network_picture.py` does this for you by calling your own `tram.py` on your own `tramnet.json` file.
 You can also try to make the picture nicer by changing positioning and other parameters.
@@ -402,7 +402,7 @@ One effect happens, though: stop names that you have entered are remembered, at 
 So now we want to create a baseline functionality that actually shows the shortest path.
 The following things are needed:
 
-- a "utility" function that actually calculates the shortest path (from your Lab 2)
+- a "utility" function that actually calculates the shortest path (from Lab 2)
 - an extended `find_route()` function in `tram/views.py` (to be copied from `files/`)
 - a template that shows the route that is found (already copied from `files/`)
 
@@ -458,13 +458,13 @@ In Lab2 shortest path, we ignored the effect of changing from one line to the ot
 This effect is that major factor that can make "shortest time" and "shortest distance" differ.
 Its implementation requires that we recognize when a change must be made and add a suitable number of minutes or meters to the cost.
 
-One way to do this with the existing algorithms is simply to build a new graph for the network, where
+One way to do this with the existing algorithms is simply to build a new graph for the network, where:
 
 - vertices are pairs `(stop, line)` for each `stop` in the original graph and each `line` than passes through it,
 - every edge `(a, b)` of the original graph is multiplied to edges `((a, line), (b, line))` for every `line` that serves both `a` and `b`,
 - edges are added between all vertices that have the same `stop`,
 - distances and transfer time between different stops are the same as in the original graph,
-- a special change distance and change time is added between vertices that have the same stop but different times - for instance, 20 metres and 10 minutes, respectively.
+- a special change distance and change time is added between vertices that have the same stop but different times — for instance, 20 metres and 10 minutes, respectively.
 
 ## Adding links to actual traffic information
 
@@ -503,7 +503,7 @@ Another possibility is process the file `gbg_tramnet.svg` directly.
 You can do this by following the model of `tram/utils/color_tram_svg.py`.
 
 **New 2024-12-16**: you can now do this with `files/change_urls.py`.
-**Both methods should be applied outside your project environment, directly in `files` and only once.
+Both methods should be applied outside your project environment, directly in `files` and only once.
 Hence there is no need to copy those Python files from `files` to `tram/utils` or any such place.
 
 After doing this, make another search in your web application and click at some stop to verify that the link has been updated.
@@ -514,18 +514,14 @@ The standard library for parsing HTML is
 https://docs.python.org/3/library/html.parser.html
 ```
 
-A slightly more convenient third party library can also be used, in the way explained in Lecture 8.
-
-```plain
-https://www.crummy.com/software/BeautifulSoup/bs4/doc/
-```
+A slightly more convenient third party library which can be used for this is [Beatiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
 
 ## Submission
 
 Via [GitHub Classroom](https://classroom.github.com/a/hnF26g57) as usual.
-You are recommended to use `.gitignore` in order not to store the virtual environment directory.
+
+We recommended that you use `.gitignore` in order not to accidentally commit the virtual environment directory.
 
 Before inspecting your code, we will organize peer reviewing sessions, where each group tests and reviews some other group's lab.
 The review report that you write will be added as a part of your submission.
-
-[More details about peer reviewing](./peer-review.md)
+[More details about peer reviewing](./peer-review.md).
