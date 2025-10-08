@@ -1,4 +1,4 @@
-# Lab 1: Information Extraction
+# Lab 1: Information extraction
 
 Advanced Python Course, Chalmers DAT690 / DIT516 / DAT516, 2025
 
@@ -20,7 +20,7 @@ The command `python3 tramdata.py init` produces this file.
 The target data structures are dictionaries, which enable efficient queries about the data.
 If run with the command `python3 tramdata.py`, the program will enable the following kind of dialogue:
 
-```sh
+```plain
 $ python3 tramdata.py
 > via Chalmers
 ['6', '7', '8', '10', '13']
