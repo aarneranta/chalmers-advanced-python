@@ -2,11 +2,11 @@ import json
 
 # quick and dirty way to change links in our SVG IN_FILE
 
-STOPID_FILE = 'stopids.json'  # your generated file, see lecture 7
+STOPID_FILE = 'stopids.json'  # your generated file
 
 
-GOOGLE_FILE = 'tramstop_google_url.json'  # in lab3/files/ directory
-SVG_IN_FILE = 'gbg_tramnet.svg'  # in lab3/files/
+GOOGLE_FILE = 'tramstop_google_url.json'
+SVG_IN_FILE = 'gbg_tramnet.svg'
 
 GOOGLE_PREFIX = 'https://www.google.com/'
 

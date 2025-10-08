@@ -1,8 +1,8 @@
 # Lab 2: Graphs and transport networks
 
-Advanced Python Course, Chalmers DAT516, 2025
+Advanced Python Course, Chalmers DAT690 / DIT516 / DAT516, 2025
 
-by Aarne Ranta
+by Aarne Ranta & John J. Camilleri
 
 ## Purpose
 
@@ -30,16 +30,10 @@ You are expected to submit two Python files:
 
 The following UML diagram shows the classes that you are expected to implement in these files.
 
-![tram-uml](../images/tram-classes.png)
+![tram-uml](./tram-classes.png)
 
 The underscored instance variables shown above are just hints that need not be followed.
 The important thing is that the public methods are implemented with the names given here.
-
-<!--
-As will be specified below, it is not necessary to use `TramLine` and
-`TramStop` dictionaries in `TramNetwork`, but one can just use the Lab
-1 dictionaries directly in `_linedict`, `_stopdict`, and `_timedict`.
--->
 
 In addition to these classes, you will have to implement the following functions:
 
@@ -276,66 +270,15 @@ import tramdata as td
 
 If you have not yet done so, it is an easy task to restructure your repository: use `git mv` to move files in the correct directories after you have created them.
 
-### The `TramStop` class
-
-The class `TramStop` reflects the data stored in the stop dictionary in Lab 1, plus some more information.
-It has to store:
-
-- the name of the stop
-- its position (latitude and longitude)
-- the list of lines that serve the stop (not explicit in Lab 1)
-
-Its `__init__()` method needs the name as a required argument, whereas the position and line list are optional.
-The public methods should enable:
-
-- getting the name of the stop
-- getting and setting the position
-- getting the list of lines and adding lines to the list
-
-This time, we leave it to you to decide exactly what methods there should be.
-
-### The `TramLine` class
-
-The class `TramLine` reflects exactly the line dictionary of Lab 1.
-Thus it should store internally, and make publicly available:
-
-- the name of the line (in Gothenburg usually a number, but do not assume this)
-- the list of stops in order, in one direction
-
-The detailed design is left up to you.
-
 ### The `TramNetwork` class
 
-The class `TramNetwork` is a `WeightedGraph` (i.e. inherits from it).
+The class `TramNetwork` is a `WeightedGraph` (i.e. inherits from it) where:
 
-#### Internal implementation
+- the **vertices** are all the stops
+- the **edges** are transitions between consecutive stops on some line
+- the **weights** are the transition times between adjacent stops
 
-The internals of this class can be implemented in one of two ways:
-
-1. object-oriented way:
-    - stops and their positions (objects of class `TramStop`)
-    - lines and their stops (objects of class `TramLine`)
-2. simpler way:
-    - the dictionaries for lines, stops, and times from Lab 1
-
-Since these are internal implementation details, you can choose either of them.
-Whichever way you choose, you can build a `WeightedGraph` with:
-
-- vertices, which are all the stops
-- edges, which are transitions between consecutive stops on some line
-- weights, which are the transition times between adjacent stops
-
-In the object-oriented method, the easiest way to store the stops and lines is as dictionaries, where the stop or line name is the key and the corresponding object is the value.
-(This comes with some redundancy, because the names are stored both in the keys and in the values.
-But it is more scalable, in cases where stops in different positions can have the same names: then the keys should be some unique identifiers, but the values can still be TramStop objects.)
-
-Notice that you need not store geographical distances between stops, because they can be computed from the positions of stops.
-For this, you can use the geographical distance function from Lab 1.
-
-The object-oriented way, which uses classes for tram stops and lines may sound a bit redundant compared with using the dictionaries directly.
-But it has the advantage that using the classes helps make sure that each tram stop and line in fact does have all the necessary information.
-
-#### Methods
+The internals of this class can be implemented using the dictionaries for lines, stops, and times from Lab 1.
 
 The public methods that we need are getters for:
 
@@ -348,6 +291,9 @@ The public methods that we need are getters for:
 - list all lines (just the line numbers, or whole objects)
 
 If you use the names suggested in the UML diagram, some things in Lab 3 will be easier.
+
+Notice that you need not store geographical distances between stops, because they can be computed from the positions of stops.
+For this, you can use the geographical distance function from Lab 1.
 
 Finally, the class should have a `extreme_position()` method should return the minimum and maximum latitude and longitude found among all stop positions.
 This will be needed for correctly visualizing the tram network in Lab 3.
@@ -394,6 +340,8 @@ When you run the code, it asks you to enter two tram stop names separated by a c
 It then displays the whole tram network, with the shortest path (as the number of stops) coloured.
 
 ## Submission
+
+TODO
 
 Submit the following files via the [Lab 2 GitHub Classroom](https://classroom.github.com/a/nzzzyYrY) repository:
 

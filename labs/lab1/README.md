@@ -1,8 +1,8 @@
 # Lab 1: Information Extraction
 
-Advanced Python Course, Chalmers DAT516, 2025
+Advanced Python Course, Chalmers DAT690 / DIT516 / DAT516, 2025
 
-by Aarne Ranta
+by Aarne Ranta & John J. Camilleri
 
 ## Purpose
 
@@ -88,7 +88,7 @@ Here is a part of the stop dictionary, showing just one stop:
 }
 ```
 
-An input file in the expected format is [`tramstops.json`](../data/tramstops.json).
+An input file in the expected format is [`tramstops.json`](./template/data/tramstops.json).
 The function involves an easy conversion using the `json` library.
 
 `build_tram_lines(lines)`, building a **line dictionary**, where
@@ -112,7 +112,7 @@ Here is an example:
 ```
 
 An input file in the expected format is
-[`tramlines.txt`](../data/tramlines.txt).
+[`tramlines.txt`](./template/data/tramlines.txt).
 It is a textual representation of timetables for each line, looking as
 follows:
 
@@ -136,7 +136,7 @@ We want to store the transition times in a non-redundant way, under the followin
   - the transition time from B to A is always the same as from A to B
 
 Hence, we don't want to add transition times to the line dictionary, because this would lead to storing redundant information.
-Instead, from the file [`tramlines.txt`](../data/tramlines.txt), we also build a **time dictionary** which stores the times between adjacent stops, where
+Instead, from the file [`tramlines.txt`](./template/data/tramlines.txt), we also build a **time dictionary** which stores the times between adjacent stops, where
 
 - keys are stop names
 - values are dictionaries from stop names to numbers of minutes
@@ -260,7 +260,7 @@ At the end of your file, make a conditional call under
 if __name__ == '__main__':
 ```
 
-calling `build_tram_network()` if the argument `init` is present, `dialogue()` otherwise.
+calling `build_tram_network()` if the argument `init` is present, `dialogue()` otherwise.  
 **Hint**: You can check the presence of this argument by using `sys.argv`:
 
 ```py
@@ -275,7 +275,9 @@ You also need to import `sys`.
 
 ## Submission
 
-The submission repository will be automatically cloned when you subscribe to the [Lab1 Github Classroom](https://classroom.github.com/a/OfI3pLUt) where you can find detailed information on how to submit - please specify your lab group number in the repository name, for example group-1.
+TODO
+
+The submission repository will be automatically cloned when you subscribe to the [Lab 1 Github Classroom](https://classroom.github.com/a/OfI3pLUt) where you can find detailed information on how to submit - please specify your lab group number in the repository name, for example group-1.
 You will be graded on [Canvas](https://chalmers.instructure.com/courses/31748).
 
 The files that you submit must be usable in the following ways:

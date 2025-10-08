@@ -1,17 +1,18 @@
-Peer-Review Guidelines
-======================
+TODO update
+
+# Peer-Review Guidelines
 
 ## General description
 
 For Lab 3, each group of students (hereinafter the submitting group) is expected to submit their solution to another group (hereinafter the reviewing group), which will have to assess whether the submission passes or fails.
 Each submitting group will submit to a reviewing group **selected by the teaching team** in order to reduce conflicts of interest.
 The selections are published directly after the 17 December deadline, when we know which groups have submitted their Lab 3.
-The review process is not blinded.
+The review process is not blind.
 
 The groups are paired and will review each other, as such, *submitting* or *reviewing* should be seen as a role that each group will have to endorse.
-Each submitted solution must be clear whether any bonus part has been tackled or not.
 
 ## Assessment
+
 Each reviewing group have to assess whether the submitted solution is acceptable or not according to the following criteria:
 
 - the web application runs
@@ -32,24 +33,27 @@ You must mention in this issue the name of which must include the LabGroup numbe
 
 This is the template for the report/issue:
 
-Section 1: Core assignment
-- Q1: Does the application run? --> yes/no
-- Q2: Does the application display the complete map of tram lines? --> yes/no
-- Q3: Is it possible to query shortest path between any two points? --> yes/no
-- Q4: Does the application deal with changes correctly? --> yes/no
-- Q5: Does the application show current traffic information? --> yes/no
+### Section 1: Core assignment
 
+- Q1: Does the application run? (yes/no)
+- Q2: Does the application display the complete map of tram lines? (yes/no)
+- Q3: Is it possible to query shortest path between any two points? (yes/no)
+- Q4: Does the application deal with changes correctly? (yes/no)
+- Q5: Does the application show current traffic information?  (yes/no)
 
-Section 2: Code quality
+### Section 2: Code quality
 
 It must at least include whether:
+
 - code from lab 2 has been properly reused (i.e., in an efficient way without [boilerplate code](https://en.wikipedia.org/wiki/Boilerplate_code))
 - dijkstra has been implemented and used as intended: there is just
   one definition of the function itself, and different distances are
   obtained by just changing the cost function
 
-Section 3: Screenshots
-Insert two screenshots: 
+### Section 3: Screenshots
+
+Insert two screenshots:
+
 - screenshot 1 must present the web application displaying a shortest path between two stops (similar to the one presented in the assignement [here](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/show_route.html) but with **different tram stops** than in the example)
 - screenshot 2 must present the code of the function `show_shortest()` (the main function required in the core part of the assignment, see [here](https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/lab3.md#your-todo-continue-from-here)).
 
@@ -58,7 +62,8 @@ Section 2 is more open than the other sections, you can write general comments o
 
 ## Deadlines
 
-### Code 
+### Code
+
 The deadline for the submission of your code is **Dec 17** firm, but you can submit beforehand.
 
 ### Report, demonstration, and self-registration
@@ -78,4 +83,3 @@ The resubmission report must be written **within 1 day (24 hours)** after resubm
 We invite you to self-manage your resubmission on your private time, which includes a new demonstration.
 
 **The deadline for resubmitting the report/issue of lab 3 is Jan 9.**
-
