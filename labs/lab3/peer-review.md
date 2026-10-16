@@ -2,111 +2,42 @@
 
 ## Overview
 
-- For Lab 3, each group of students (hereinafter the _submitting group_) is expected to submit their solution to another group (hereinafter the _reviewing group_), which will have to assess whether the submission passes or fails.
-- The reviewing groups will be **selected by the teaching team** in order to reduce conflicts of interest.
-- The selections will be published directly after the first deadline for Lab 3.
-- The review process is not blind, i.e. the identities of the submitting and reviewing groups are known to each other.
+For Lab 3, each group must participate in one obligatory peer review session during the final week of the course.
 
-## Assessment
+A session is 2 scheduled hours (45 + 45 minutes).
+In each session, groups will be put together in clusters of up to 6 groups.
+Each group in the cluster will have a 15 minute slot to present to the other groups in the cluster.
 
-Each reviewing group have to assess whether the submitted solution is acceptable or not as follows:
+In each 15 minute slot, the **presenting group** should:
 
-1. The submitting group should demonstrate their application running on their own machines during a live presentation (physical or online) to the reviewing group
-  (the reviewing group is not expected to run the code of the submitting group).
-  From this presentation, the reviewing group can evaluate the **core functionality** of the application (see [Section 1](#section-1-core-functionality) below).
-2. The reviewing group must also be shown the code of the submitting group, in order to see their code. From this they can evaluate the **code quality** of the project (see [Section 2](#section-2-code-quality) below)
+- demonstrate their application in use
+- show what additional features were implemented, and describe how they were implemented
+- describe and reflect on their development process, in particular AI usage
 
-## Report
+During this time, the **non-presenting groups** are expected to ask questions and comment on the presenting group's solution.
+Examples of things you can ask/comment about:
 
-The reviewing group must write a short report giving their assessment and motivating their decision according to the given criteria.
-The template for the report is found below.
-Note that all Sections are **mandatory** in the report.
+- technical details about feature implementation
+- code quality and future maintainability
+- what was hardest? what didn't work as expected?
+- what would you recommend/not recommend about the tools/process you used?
 
-Submssion instructions can be found further down in this document.
+The slot should _not_ be a formal presentation with slides and questions only at the end.
+The entire 15 minute slot should be an interactive discussion between all members of the cluster.
 
----
+When one group in the cluster has finished their 15 minute slot, the next group in the cluster can present.
 
-### Lab 3 peer review
+## Registration
 
-- Reviewing group number: X
-- Submitting group number: Y
+In the final week there will be multiple sessions you can choose from.
+Each group must sign up for a single 2 hour session.
 
-### Section 1: Core functionality
+_Registration link TBA_
 
-1. Does the application run? (yes/no)
-2. Does the application display the complete map of tram lines? (yes/no)
-3. Is it possible to query shortest path between any two points? (yes/no)
-4. Does the application deal with changes correctly? (yes/no)
-5. Does the application show current traffic information? (yes/no)
-6. Does the application correctly handle invalid input? (yes/no)
+## Examination
 
-### Section 2: Code quality
+- **All group members must be physically present** for the entire session that they registered for.
+- If you have a valid reason for not attending, you must contact your examiner with an explanation as soon as possible. You will be given an alternative task instead.
+- Teachers/TAs will be present to confirm attendance and also ask questions to the presenting groups.
+- Even if your group's application is not complete (or not working), you must still attend the peer review session and present the work that you have done.
 
-Make comments on the overall code quality of the submission, including whether:
-
-1. code from lab 2 has been properly reused (i.e. in an efficient way without [boilerplate code](https://en.wikipedia.org/wiki/Boilerplate_code))
-2. the `dijkstra()` function has been implemented and used as intended: there is just
-  one definition of the function itself, and different distances are
-  obtained by just changing the cost function
-
-You may add any other comments about code quality you wish,
-for example suggestions for code optimization and good practices of object-oriented programming.
-
-### Section 3: Screenshots
-
-Include two screenshots:
-
-- screenshot 1 must show the web application displaying a shortest path between two stops (similar to the one presented in the example [here](https://htmlpreview.github.io/?https://github.com/cse-chalmers-gu-python/chalmers-advanced-python/blob/main/labs/lab3/examples/show_route.html) but with **different tram stops** than in the example)
-- screenshot 2 must show the code of the function `show_shortest()` (the main function required in the core part of the assignment).
-
-These screenshots should be taken by the submitting group and sent to the reviewing group, for inclusion in their review.
-
----
-
-## Submission
-
-### Code
-
-The deadline for the submission of your code is the end of study week 6, but you can submit beforehand.
-Submit your code in the usual way: commit your code, push to GitLab, then create a submission tag (e.g. `submission1`).
-
-### Demonstration and report
-
-Demonstrations for reviewers are carried out in study week 7.
-You can use any of the regular lab times and rooms scheduled for this course.
-You can also agree to do your peer review remotely.
-
-After the reviews, the reports are to be submitted in GitLab, using the same repository as the Lab 3 solution itself:
-
-- **You must submit both reports: the one you wrote about the other group, and the one they wrote about you**.
-- Create a folder in the root of your repository called `reviews`, with a subfolder `groupX` where `X` is the group number of the reviewing group (the other group).
-- Write your report using Markdown syntax, in a file called `reviewY.md` where `Y` is the group number of the submitting group (your group).
-- Put your screenshots in the same subfolder.
-- Do the same with the review you receive from the other group, so that finally your file structure should look like this:
-
-  ```plain
-  lab3
-  ├── ... 
-  └── reviews
-      ├── groupX
-      │   ├── reviewY.md
-      │   ├── screenshot-1.png
-      │   └── screenshot-2.png
-      └── groupY
-          ├── reviewX.md
-          ├── screenshot-1.png
-          └── screenshot-2.png
-  ```
-
-- Commit and push your reviews to GitLab, then create a new submission tag (e.g. `submission2`).
-
-The deadline for the submission of the reviews is the end of study week 7.
-
-### Resubmission
-
-- A TA is ultimately responsible for the evaluation of the submission, and also has the responsibility to support the reviewing group in their endeavour (typically for edge cases).
-- Note that a solution will have to be resubmitted if it doesn't pass the peer-review process. A submitting group can apply for resubmission **once**.
-- The same reviewing group and TA are assigned for the resubmission.
-- A group reviewing a resubmission can simply add an addendum to their initial report.
-The resubmission report must be written **within 1 day (24 hours)** after resubmission (as the structure should already be familiar to the reviewers).
-- We invite you to self-manage your resubmission on your private time, including a new demonstration.

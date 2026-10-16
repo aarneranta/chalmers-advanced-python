@@ -9,41 +9,70 @@ by Aarne Ranta & John J. Camilleri
 ## Purpose
 
 The purpose of this lab is to build a web application replicating some functionalities of apps such as [Västtrafik's Travel Planner](https://www.vasttrafik.se/reseplanering/reseplaneraren/).
-Your application will:
+Your application will display a map of tram lines and highlight the shortest paths between two stops, in terms of both time and geographical distance, taking changes into account.
 
-- display the complete map of tram lines
-- highlight shortest paths in terms of time and geographical distance
-- calculate total travel time by taking changes into account
-- show actual departures from any stop by clicking on it
-
-Here is an example screenshot:
+Here is an example screenshot showing the tram map with the quickest and shortest routes highlighted from stops Chalmers to Komettorget:
 
 ![shortest-path](./app-shortest.png)
 
-In some more detail, here is what the three different screens should look like:
-
-- [home screen](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/home.html)
-- [route search form](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/find_route.html)
-- [search result](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/show_route.html)
-
 Unlike the official app, ours will not have access to the actual timetables, but just to the distances and times as defined in Labs 1 and 2.
-This is of course a severe simplification, but on the other hand,
-our app will be usable for any transport system that can be
-represented by the class `TramNetwork`.
-Clicking on the created map will give access to actual traffic information from Västtrafik.
-
-Another difference from the official app is that we only run ours in a safe `localhost` environment.
-Thereby we do not have to deal with security issues, and it will also be much easier for all groups to finish the project.
+This is of course a severe simplification, but on the other hand, our app will be usable for any transport system that can be represented by the class `TramNetwork`.
 
 The learning outcomes include:
 
 - visualization with more details on positions and colours
 - simple front-end construction with HTML
 - putting everything together by using a web application framework, Django
-- more details of `graphviz` library, various libraries belonging to the Django framework
-- virtual environments, the `venv` module
+- understanding and using large libraries and frameworks
+- independently choosing what tools to use
+- reviewing the work of others
+- TODO
 
-## Getting started
+## Requirements
+
+### R1: core functionality
+
+For this lab you must develop a web application with the following functionality:
+
+1. display the complete map of all tram lines
+2. allow the user to input a source and destination tram stop, with basic error handling
+3. highlight on the map the shortest path in terms of time, taking changes into account
+4. highlight on the map the shortest path in terms of geographical distance, taking changes into account
+
+This document covers step-by-step instructions for how to build a web application from scratch using Django which fulfills requirements 1-4 above.
+Note that **using Django is not a requirement**.
+You are allowed to use other frameworks, as long as your application meets these functional requirements.
+
+### R2: additional features
+
+In addition to the core functionality described above, you are also required to add **at least one additional feature** to your application.
+What this additional feature will be is completely up to you. See Task 3 below for some suggestions.
+
+### AI Policy
+
+For this lab only, there are **no restrictions on AI usage**. You are allowed to use any tools you wish, as long as:
+
+1. Your web application works correctly and implements all the core requirements above (R1).
+2. Your application contains at least one addtional feature (R2).
+3. You can explain how your application works.
+4. You document your choices, including which tools/models were used, examples of prompts, integrations used, estimated costs, and can reflect on the process afterwards.
+
+**Using AI is not a requirement**, and it is entirely possible to complete this lab, together with additional features, without any AI at all.
+Whether to use AI or not is up to you, and whatever you choose to do, you should be ready to reflect on it during the peer review.
+
+### Submission & peer review
+
+1. The source code for your entire application should be **submitted by pushing it to GitLab**, being careful to avoid committing unnecessary files (see more details at the end of this document).
+2. In addition, every group must participate in an **obligatory peer review session**, where you will:
+    - demonstrate your application in use
+    - show what additional features were implemented, and describe how they were implemented
+    - describe and reflect on your development process, in particular AI usage
+    - answer questions about your application/process from peers and TAs
+    - ask questions about other groups' projects
+
+---
+
+## Task 0: Getting started
 
 We will follow the standard worklow for the Django framework.
 There are several tutorials available, for instance:
@@ -52,20 +81,20 @@ There are several tutorials available, for instance:
 - [Django Girls Tutorial](https://tutorial.djangogirls.org/en/)
 - [w3schools Django Tutorial](https://www.w3schools.com/django/)
 
-You can look at these for more information, but this document is aimed to be self-contained and sufficient for the lab.
+You can look at these for more information, but this document is aimed to be self-contained and sufficient.
 
 ### Directory structure
 
-For this lab, we will start from a blank slate and build up the project's directory structure step-by-step.
-The final structure will look as follows.
-The files are obtained as follows:
+We will start from a blank slate and build up the project's directory structure step-by-step.
+The final structure is shown below.
+The files are obtained in various ways:
 
-- copied from [`files`](./files/) in this repository (marked 🔵)
-- created automatically by Django (unmarked in the diagram)
-- slightly modified from automatic files (marked 🟡)
-- explained in detail but written by you (marked 🟠)
-- written by you (marked 🔴)
-- generated by your code (marked ⚪️)
+- copied from [`files`](./files/) in this repository (🔵)
+- created automatically by Django (unmarked)
+- slightly modified from automatic files (🟡)
+- explained in detail but written by you (🟠)
+- written by you (🔴)
+- generated by your code (⚪️)
 
 ```plain
 lab3
@@ -81,8 +110,7 @@ lab3
 ├── venv
 │   └── ...
 ├── static
-│   ├── tramnetwork.json ⚪️
-│   └── tram-url.json 🔵,⚪️
+│   └── tramnetwork.json ⚪️
 └── tram
     ├── __init__.py
     ├── admin.py
@@ -96,7 +124,7 @@ lab3
     │      ├── find_route.html 🔵
     │      ├── home.html 🔵
     │      ├── images
-    │      │   ├── gbg_tramnet.svg 🔵,⚪️
+    │      │   ├── gbg_tramnet.svg 🔵
     │      │   └── generated
     │      │       └── ... ⚪️
     │      └── show_route.html 🔵
@@ -115,19 +143,19 @@ lab3
 
 Now we will prepare our environment, install the Django library, and initialize our Django project.
 
-1. Create a directory for this project (not the same as in course GitHub):
+1. Clone the repository this project from GitLab onto your computer (replace `group-0` with your own group number):
 
     ```sh
-    $ mkdir lab3
+    $ git clone git@git.chalmers.se:courses/advanced-python/2026/lab-3/lab3-group-0.git
     ```
 
 2. Move inside it:
 
     ```sh
-    $ cd lab3
+    $ cd lab3-group-0
     ```
 
-3. Create a Python virtual environment (maybe not necessary, but the best practice):
+3. Create a Python virtual environment:
 
     ```sh
     $ python3 -m venv venv
@@ -156,25 +184,30 @@ Now we will prepare our environment, install the Django library, and initialize 
 
       Which of these two commands will work depends on what shell you are using. If unsure, try both.
   
-    You should now see the string `(venv)` prefixed to your command line prompt.
+    You should now see the string `(venv)` prefixed to your command line prompt something like this:
 
-5. Install the necessary Python libraries into the virtual environment:
+    ```plain
+    (venv) $
+    ```
+
+    This will be assumed for the rest of this document.
+
+5. Install the necessary Python libraries (specified in the file `requirements.txt`) into the virtual environment:
 
     ```sh
-    (venv) $ pip install django==5.2.7
-    (venv) $ pip install networkx==3.5
+    $ pip install -r requirements.txt
     ```
 
 6. Create a new Django project with:
 
     ```sh
-    (venv) $ django-admin startproject mysite .
+    $ django-admin startproject mysite .
     ```
 
-    (the last dot `.` is necessary: it refers to your working directory, where it creates a directory named
-  `mysite` and the file `manage.py`).
+    The last dot `.` is necessary: it refers to your working directory, where it creates a directory named
+  `mysite` and the file `manage.py`.
 
-At later times (every time you resume working on the project), only the `activate` step (4) is needed.
+The next time you resume working on the project in a new terminal, you only need the `activate` step (4).
 
 ### Initialize database
 
@@ -188,7 +221,7 @@ It creates a database (in the file `db.sqlite3`), which is a standard part of an
 
 ### Run web server
 
-Now we can start the web server with:
+Now we can start the web server locally with:
 
 ```sh
 $ python manage.py runserver
@@ -197,12 +230,13 @@ Starting development server at http://127.0.0.1:8000/
 ...
 ```
 
+`127.0.0.1` is the IP address associated with your own computer, also called `localhost`.
 Open the URL above in a web browser to check if the installation succeeded.
 You should see a generic Django-generated page, which tells you one important thing: that your server is up and running.
 
-## Create the `tram` Django app
+## Task 1: Building the Django "app"
 
-Now that we have a basic Django server set up, it's time to start customising it for our task. For this we will create a Django "app" with the name `tram`:
+Now that we have a basic Django server set up, it's time to start customising it for our task. For this we will create a Django "app" with the name `tram` (not to be confused with the entire web _application_ itself):
 
 ```sh
 $ python manage.py startapp tram
@@ -371,15 +405,6 @@ To avoid adding any of these generated images to the repository, tell Git to ign
 tram/templates/tram/images/generated/
 ```
 
-#### Customise image (optional)
-
-If you want, you can replace this standard image with your own one. The script [`create_network_picture.py`](./files/create_network_picture.py) does this for you by calling your own `tram.py` on your own `tramnet.json` file.
-You can also try to make the picture nicer by changing positioning and other parameters.
-But before doing this, make sure to implement the rest of the basic functionalities!
-
-You can return to image generation in the task where you are expected to change the URLs in the tram stops.
-Right now, when you click at them, you should be taken to a Google search about that stop.
-
 ### Render dynamic content
 
 The form `find_route.html` does not find any routes yet.
@@ -412,9 +437,9 @@ Copy the following Python files from [`files`](./files/) into `tram/utils`:
 
 Now that you have created the utility files, you can replace the simplified `tram/views.py` with the one given in [`files`](./files/views.py).
 
-Now you can visit <http://127.0.0.1:8000/route/>, submit a query and get a response (although this is just using a dummy implementation for now).
+Now you can visit `http://127.0.0.1:8000/route/`, submit a query and get a response (although this is just using a dummy implementation for now).
 
-## Task 1: Implement shortest path functionality
+## Task 2: Implementing the shortest path functionality
 
 It is now time to implement the core function in our app: calculating the shortest path between two stops.
 
@@ -431,7 +456,7 @@ Its task is to:
 
 ### Add colours
 
-As the example for the [search result](https://htmlpreview.github.io/?https://github.com/aarneranta/chalmers-advanced-python/blob/main/labs/lab3/examples/show_route.html) page shows, we expect three different colours to be used:
+We expect three different colours to be used (see image at the top of this document):
 
 - <span style="color:green">green</span> for stops on the shortest path
 - <span style="color:orange">orange</span> for stops on quickest path
@@ -445,7 +470,7 @@ You can of course also makes the HTML files look nicer if you have time!
 
 ### Account for line changes
 
-In Lab 2 shortest path, we ignored the effect of changing from one line to the other.
+In the Lab 2 shortest path, we ignored the effect of changing from one line to the other.
 This effect is a major factor that can make the "shortest time" and "shortest distance" differ significantly.
 Its implementation requires that we recognize when a change must be made and add a suitable number of minutes or meters to the cost.
 
@@ -460,7 +485,7 @@ One way to do this with the existing algorithms is to build a new graph for the 
 Implement the `specialize_stops_to_lines()` function which builds such a graph. You can then run the Dijkstra algorithm with cost functions `specialized_transition_time()` and `specialized_geo_distance()` for finding the quickest and shortest paths respectively.
 You will need to figure out how to use stop names as individual strings with this new graph containing vertices as tuples.
 
-## Task 2: Data validation
+## Task 3: Adding data validation
 
 You should now have a working application which returns the shortest routes between two stops.
 But what happens when you enter a stop name that doesn't exist (e.g. you make a typo)?
@@ -476,51 +501,19 @@ from django.http import HttpResponseBadRequest
 return HttpResponseBadRequest(f"Unknown stop name: {stop}")
 ```
 
-## Task 3: Add links to live traffic information
+## Task 4: Additional features
 
-The main home page image `gbg_tramnet.svg` is not just a static image, but an SVG file which contains hyperlinks.
-Currently, clicking on a stop name will search the Västtrafik website for that stop name.
+Finally, for R2 you should add at least one custom feature of your own to the application.
+This is up to you, but some ideas include:
 
-Instead, we want clicking on a stop name to take you to Västtrafik's live traffic information page for that stop, for example the [page for Nordstan](https://avgangstavla.vasttrafik.se/?stopAreaGid=9021014004945000) which has URL:
+1. Improving the visual styles of the application, including making it work well at narrow screen sizes.
+1. Adding drop-downs or other user-friendly ways for selecting tram stops.
+1. Allowing the changeover time and distance to be adjusted by the user.
+1. Storing a history of past searches.
+1. Having a "favourite routes" functionality.
+1. Anything else you can think of! (within reason)
 
-```plain
-https://avgangstavla.vasttrafik.se/?stopAreaGid=9021014004945000
-```
-
-To do this, we need to:
-
-1. Create URLs for the traffic information page of each stop name, by finding the `Gid` which corresponds to each stop.
-2. Update the SVG file to replace the "search" URLs with these traffic information URLs.
-
-### Create URLs
-
-The first challenge is to create the traffic information URLs corresponding to each stop name.
-For this, we need the `Gid` of each stop.
-
-An HTML page containing a full list of stop identifiers can be found in the file [`files/hållplatslista.html`](./files/hållplatslista.html).
-This file was captured from the original URL <https://www.vasttrafik.se/reseplanering/hallplatslista/>. It may look strange if you open it in your browser, but if you look at the HTML source in your text editor you will see that all stops and their `Gid`s are in fact contained there.
-So, your task is as follows:
-
-1. Investigate where and how `Gid`s are given in the HTML document.
-2. Extract the `Gid`s of all tram stops from the document.
-3. Create traffic information URLs for every stop.
-4. Save the stop-URL dictionary as a JSON file.
-
-For step 2, you can use the [standard library for parsing HTML](https://docs.python.org/3/library/html.parser.html).
-A slightly more convenient third party library which can be used for this is [Beatiful Soup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/).
-
-### Update SVG
-
-After this, you need to create a new SVG image with these new URLs.
-To do this:
-
-1. Run [`files/create_network_picture.py`](files/create_network_picture.py) making sure that `TRAM_URL_FILE` and `MY_TRAMNETWORK_JSON` point to your URL dictionary and tramnetwork file, respectively.
-2. Move the resulting file `my_gbg_tramnet.svg` to `tram/templates/tram/images/gbg_tramnet.svg`
-
-Note that this only needs to be done once for the entire project (not every time a request to the web server is made).
-There is no need to copy `create_network_picture.py` from `files` to `tram/utils` or any such place.
-
-After doing this, make another search in your web application and click at some stop to verify that the link has been updated to take you to the traffic information page for that stop.
+Whatever features you add, be ready to show them and explain how they work in the peer review session.
 
 ## Submission
 
@@ -534,8 +527,6 @@ but take care to **avoid committing automatically generated files**, in particul
 You should use a `.gitignore` file to avoid committing such paths to the repository.
 The `.gitignore` file itself _should_ be committed to the repository.
 
-### Peer review
+## Peer review
 
-Before inspecting your code, we will organize peer reviewing sessions, where each group tests and reviews another group's work.
-The review report that you write will be added as a part of your submission.
-[More details about peer reviewing](./peer-review.md).
+Apart from submitting your code, the examination of this lab also includes participation a mandatory peer review session. [More details about peer reviewing](./peer-review.md)

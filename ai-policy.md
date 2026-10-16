@@ -4,7 +4,7 @@
 
 Generative AI (or simply AI) refers to tools that use probability models and machine learning methods to generate new content based on data from previously published content. Examples of modern generative AI tools include ChatGPT (OpenAI), Gemini (Google) and Copilot (Microsoft). Many desktop applications and web search engines today also incorporate AI into their products by default, i.e. without you choosing to activate or use it.
 
-The use of Generative AI is neither required nor prohibited in this course. Instead, we take a case-based approach, with **different uses of AI classified as “permitted,” “problematic,” and “prohibited.”** The following guide is intended to support you in making informed decisions about using AI in your studies, as well as to explain the course policy and provide information about the AI disclosure statement you are required to submit as part of the examination.
+The use of Generative AI is neither required nor prohibited in this course. Instead, we take a case-based approach, with **different uses of AI classified as “permitted”, “problematic”, and “prohibited”.** The following guide is intended to support you in making informed decisions about using AI in your studies, as well as to explain the course policy and provide information about the AI disclosure statement you are required to submit as part of the examination.
 
 ## Permitted, problematic, and prohibited use
 
@@ -22,7 +22,7 @@ Using AI as a tutor to explain specific questions is considered permissible if i
 
 ### 🟠 Problematic use
 
-Using AI to look up things in the documentation of a language/library/framework is considered problematic. A particular reason for this is that API details frequently change between versions and AI tools often do not have adequate context to answer accurately. Moreover, being able to understand and use programming documentation is a learning outcome of this course, and therefore something which you need to learn to do yourself.
+Using AI to look up things in the documentation of a language/library/framework can be problematic. A particular reason for this is that API details frequently change between versions and AI tools often do not have adequate context to answer accurately. Moreover, being able to understand and use programming documentation is a learning outcome of this course, and therefore something which you need to learn to do yourself.
 
 > Example: "Is count a keyword argument in Python's str.replace() method?"
 
@@ -36,9 +36,14 @@ Using AI to write complete code for you is completely prohibited. This is equiva
 
 > Example: "Give me Python code which implements this assignment description."
 
-## Self-disclosure
+## Exception: Lab 3 Web Application
 
-At the end of the course, you must submit an [AI self-disclosure](https://chalmers.instructure.com/courses/36887/assignments/116389) in which you explain the extent to which you did (or did not use) AI tools during this course. This is to be completely individually.
+Specifically in lab 3, there are no restrictions on AI usage.
+This means you are allowed to use any tool you like in order to complete lab 3, as long as you:
+
+1. Fulfill all the lab requirements.
+2. Can explain how your application works.
+3. Document your process, explain it in detail, and reflect on its effectiveness (or not).
 
 ## References
 
