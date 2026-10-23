@@ -21,12 +21,10 @@ This is of course a severe simplification, but on the other hand, our app will b
 The learning outcomes include:
 
 - visualization with more details on positions and colours
-- simple front-end construction with HTML
-- putting everything together by using a web application framework, Django
+- constructing a full-stack web application with front-end and back-end
 - understanding and using large libraries and frameworks
-- independently choosing what tools to use
-- reviewing the work of others
-- TODO
+- independently choosing tools and technologies
+- reflecting on your development process and critically reviewing the work of others
 
 ## Requirements
 
@@ -41,7 +39,7 @@ For this lab you must develop a web application with the following functionality
 
 This document covers step-by-step instructions for how to build a web application from scratch using Django which fulfills requirements 1-4 above.
 Note that **using Django is not a requirement**.
-You are allowed to use other frameworks, as long as your application meets these functional requirements.
+You are allowed to use other Python frameworks, as long as your application meets these functional requirements.
 
 ### R2: additional features
 
@@ -52,9 +50,9 @@ What this additional feature will be is completely up to you. See Task 3 below f
 
 For this lab only, there are **no restrictions on AI usage**. You are allowed to use any tools you wish, as long as:
 
-1. Your web application works correctly and implements all the core requirements above (R1).
-2. Your application contains at least one addtional feature (R2).
-3. You can explain how your application works.
+1. Your web application works correctly and implements all the core requirements above (R1). Note that your backend **must** be implemented in Python.
+2. Your application contains at least one additional feature (R2).
+3. You can navigate your application's source code and explain how it works.
 4. You document your choices, including which tools/models were used, examples of prompts, integrations used, estimated costs, and can reflect on the process afterwards.
 
 **Using AI is not a requirement**, and it is entirely possible to complete this lab, together with additional features, without any AI at all.
@@ -74,7 +72,7 @@ Whether to use AI or not is up to you, and whatever you choose to do, you should
 
 ## Task 0: Getting started
 
-We will follow the standard worklow for the Django framework.
+We will follow the standard workflow for the Django framework.
 There are several tutorials available, for instance:
 
 - [Official Django Tutorial](https://docs.djangoproject.com/en/5.2/intro/tutorial01/)
